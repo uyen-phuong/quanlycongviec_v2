@@ -1,0 +1,23 @@
+.login-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(92, 31, 31, 0.14), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(155, 107, 61, 0.16), transparent 22%),
+    linear-gradient(180deg, #f7f2e8 0%, #efe7d9 100%);
+}
+
+.login-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.login-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -24px -24px auto;
+  height: 140px;
+  width: 140px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(92, 31, 31, 0.16), transparent 70%);
+  pointer-events: none;
+}

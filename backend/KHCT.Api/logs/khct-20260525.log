@@ -1,0 +1,992 @@
+2026-05-25 02:23:36.431 +00:00 [WRN] Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://0.0.0.0:8080'.
+2026-05-25 02:23:36.533 +00:00 [INF] KHCT API started on http://0.0.0.0:8080
+2026-05-25 02:23:39.236 +00:00 [INF] HTTP GET /health responded 200 in 143.6484 ms
+2026-05-25 02:29:01.052 +00:00 [INF] HTTP GET /api/health responded 200 in 20.7508 ms
+2026-05-25 02:29:03.524 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 1714.2693 ms
+2026-05-25 02:29:03.707 +00:00 [INF] HTTP GET /api/departments responded 200 in 118.9729 ms
+2026-05-25 02:29:03.734 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 92.0463 ms
+2026-05-25 02:29:03.740 +00:00 [INF] HTTP GET /api/notifications responded 200 in 151.9289 ms
+2026-05-25 02:29:09.551 +00:00 [INF] HTTP POST /api/auth/logout responded 200 in 29.3847 ms
+2026-05-25 02:29:10.005 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 5.7930 ms
+2026-05-25 02:29:11.066 +00:00 [INF] HTTP POST /api/auth/login responded 200 in 275.0172 ms
+2026-05-25 02:29:11.104 +00:00 [INF] HTTP GET /api/departments responded 200 in 5.1779 ms
+2026-05-25 02:29:11.105 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.3885 ms
+2026-05-25 02:29:11.112 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 12.1728 ms
+2026-05-25 02:29:11.188 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 64.9650 ms
+2026-05-25 02:29:11.462 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 28.8186 ms
+2026-05-25 02:29:11.501 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 68.1260 ms
+2026-05-25 02:30:12.156 +00:00 [INF] HTTP GET /api/notifications responded 200 in 8.7821 ms
+2026-05-25 02:30:57.672 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 30.1222 ms
+2026-05-25 02:30:57.770 +00:00 [INF] HTTP GET /api/departments responded 200 in 4.8549 ms
+2026-05-25 02:30:57.770 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 4.7706 ms
+2026-05-25 02:30:57.771 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.1096 ms
+2026-05-25 02:30:57.900 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 8.7992 ms
+2026-05-25 02:30:57.900 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 8.9000 ms
+2026-05-25 02:30:58.204 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 7.7720 ms
+2026-05-25 02:31:12.139 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 22.5781 ms
+2026-05-25 02:31:12.237 +00:00 [INF] HTTP GET /api/departments responded 200 in 3.2165 ms
+2026-05-25 02:31:12.238 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.1968 ms
+2026-05-25 02:31:12.556 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 4.2608 ms
+2026-05-25 02:31:13.056 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 4.2405 ms
+2026-05-25 02:31:13.057 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 5.4500 ms
+2026-05-25 02:31:13.058 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 6.3189 ms
+2026-05-25 02:32:05.098 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 1.3830 ms
+2026-05-25 02:32:12.325 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 2.0680 ms
+2026-05-25 02:32:18.361 +00:00 [INF] HTTP POST /api/auth/login responded 200 in 187.2758 ms
+2026-05-25 02:32:18.473 +00:00 [INF] HTTP GET /api/departments responded 200 in 4.0111 ms
+2026-05-25 02:32:18.474 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.8584 ms
+2026-05-25 02:32:18.476 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.5174 ms
+2026-05-25 02:32:18.530 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 5.3871 ms
+2026-05-25 02:32:18.531 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 4.3343 ms
+2026-05-25 02:32:18.532 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 5.3456 ms
+2026-05-25 02:32:25.952 +00:00 [INF] HTTP GET /api/admin/approval-configs responded 200 in 36.2726 ms
+2026-05-25 02:32:25.994 +00:00 [INF] HTTP GET /api/admin/roles responded 200 in 13.5570 ms
+2026-05-25 02:32:26.792 +00:00 [INF] HTTP GET /api/admin/departments responded 200 in 14.9438 ms
+2026-05-25 02:32:48.521 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.6138 ms
+2026-05-25 02:32:59.774 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 5.2979 ms
+2026-05-25 02:33:00.218 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 4.3300 ms
+2026-05-25 02:33:18.559 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.4480 ms
+2026-05-25 02:33:48.610 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.3612 ms
+2026-05-25 02:34:18.656 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3455 ms
+2026-05-25 02:34:48.699 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3927 ms
+2026-05-25 02:35:18.741 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6105 ms
+2026-05-25 02:35:48.782 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6040 ms
+2026-05-25 02:36:18.812 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5291 ms
+2026-05-25 02:36:48.853 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2053 ms
+2026-05-25 02:37:18.889 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.1459 ms
+2026-05-25 02:37:22.004 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 16.8106 ms
+2026-05-25 02:37:22.176 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.2674 ms
+2026-05-25 02:37:22.212 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.7292 ms
+2026-05-25 02:37:22.283 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 5.6935 ms
+2026-05-25 02:37:22.388 +00:00 [INF] HTTP GET /api/departments responded 200 in 218.1533 ms
+2026-05-25 02:37:22.390 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 111.4500 ms
+2026-05-25 02:37:22.391 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 111.1715 ms
+2026-05-25 02:37:29.036 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 1.5736 ms
+2026-05-25 02:37:48.936 +00:00 [INF] HTTP GET /api/notifications responded 200 in 7.4082 ms
+2026-05-25 02:38:18.983 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.2269 ms
+2026-05-25 02:38:49.023 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8281 ms
+2026-05-25 02:39:19.060 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9299 ms
+2026-05-25 02:39:49.099 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1687 ms
+2026-05-25 02:40:19.137 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9400 ms
+2026-05-25 02:40:49.176 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1562 ms
+2026-05-25 02:41:19.204 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6612 ms
+2026-05-25 02:41:49.237 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4314 ms
+2026-05-25 02:42:19.272 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0799 ms
+2026-05-25 02:42:47.359 +00:00 [INF] HTTP POST /api/auth/login responded 401 in 11.1515 ms
+2026-05-25 02:42:49.308 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3438 ms
+2026-05-25 02:42:52.141 +00:00 [INF] HTTP POST /api/auth/login responded 401 in 3.1377 ms
+2026-05-25 02:43:19.185 +00:00 [INF] HTTP POST /api/auth/login responded 401 in 3.4428 ms
+2026-05-25 02:43:19.343 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8345 ms
+2026-05-25 02:43:21.664 +00:00 [INF] HTTP POST /api/auth/login responded 401 in 138.0211 ms
+2026-05-25 02:43:40.854 +00:00 [INF] HTTP POST /api/auth/login responded 200 in 136.6746 ms
+2026-05-25 02:43:40.949 +00:00 [INF] HTTP GET /api/departments responded 200 in 3.7911 ms
+2026-05-25 02:43:40.950 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.8393 ms
+2026-05-25 02:43:41.013 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 6.4395 ms
+2026-05-25 02:43:41.095 +00:00 [INF] HTTP GET /api/notifications responded 200 in 148.7398 ms
+2026-05-25 02:43:41.096 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 87.9871 ms
+2026-05-25 02:43:41.096 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 88.4441 ms
+2026-05-25 02:43:49.371 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2249 ms
+2026-05-25 02:44:11.140 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7342 ms
+2026-05-25 02:44:19.398 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6105 ms
+2026-05-25 02:44:30.101 +00:00 [INF] HTTP POST /api/auth/logout responded 200 in 10.6966 ms
+2026-05-25 02:44:30.736 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 0.7439 ms
+2026-05-25 02:44:49.440 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6372 ms
+2026-05-25 02:44:58.522 +00:00 [INF] HTTP POST /api/auth/login responded 200 in 136.5728 ms
+2026-05-25 02:44:58.595 +00:00 [INF] HTTP GET /api/departments responded 200 in 2.2543 ms
+2026-05-25 02:44:58.599 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.6459 ms
+2026-05-25 02:44:58.600 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.3986 ms
+2026-05-25 02:44:58.660 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 3.7816 ms
+2026-05-25 02:44:58.660 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 4.2581 ms
+2026-05-25 02:44:58.663 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 4.3342 ms
+2026-05-25 02:45:12.707 +00:00 [INF] HTTP GET /api/api/plans/9555be4b-2666-4fd5-9304-276a0023f509/attachments responded 404 in 0.2638 ms
+2026-05-25 02:45:12.710 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 2.7885 ms
+2026-05-25 02:45:12.734 +00:00 [INF] HTTP GET /api/plans/main/9555be4b-2666-4fd5-9304-276a0023f509 responded 200 in 27.3229 ms
+2026-05-25 02:45:13.732 +00:00 [INF] HTTP GET /api/api/plans/9555be4b-2666-4fd5-9304-276a0023f509/attachments responded 404 in 0.2761 ms
+2026-05-25 02:45:19.475 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5472 ms
+2026-05-25 02:45:21.354 +00:00 [INF] HTTP POST /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approve responded 200 in 187.0359 ms
+2026-05-25 02:45:21.394 +00:00 [INF] HTTP GET /api/plans/main/9555be4b-2666-4fd5-9304-276a0023f509 responded 200 in 4.8090 ms
+2026-05-25 02:45:21.396 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 4.6991 ms
+2026-05-25 02:45:21.401 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 5.4369 ms
+2026-05-25 02:45:21.403 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 4.7910 ms
+2026-05-25 02:45:21.443 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 4.2993 ms
+2026-05-25 02:45:21.443 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 4.5166 ms
+2026-05-25 02:45:25.923 +00:00 [INF] HTTP POST /api/auth/logout responded 200 in 10.3751 ms
+2026-05-25 02:45:26.489 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 0.7943 ms
+2026-05-25 02:45:49.519 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9191 ms
+2026-05-25 02:46:00.913 +00:00 [INF] HTTP POST /api/auth/login responded 200 in 126.8251 ms
+2026-05-25 02:46:00.983 +00:00 [INF] HTTP GET /api/departments responded 200 in 2.5573 ms
+2026-05-25 02:46:00.985 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 3.1526 ms
+2026-05-25 02:46:00.986 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.2000 ms
+2026-05-25 02:46:01.045 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 3.1588 ms
+2026-05-25 02:46:01.045 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 2.7123 ms
+2026-05-25 02:46:01.046 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 4.5192 ms
+2026-05-25 02:46:06.171 +00:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-05-25 02:46:06.252 +00:00 [INF] HTTP POST /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approve responded 200 in 118.7381 ms
+2026-05-25 02:46:06.295 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.7571 ms
+2026-05-25 02:46:06.301 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 4.7912 ms
+2026-05-25 02:46:06.303 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 4.3269 ms
+2026-05-25 02:46:06.303 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 3.4272 ms
+2026-05-25 02:46:15.022 +00:00 [INF] HTTP GET /api/admin/departments responded 200 in 3.6723 ms
+2026-05-25 02:46:15.362 +00:00 [INF] HTTP GET /api/admin/roles responded 200 in 3.2377 ms
+2026-05-25 02:46:15.388 +00:00 [INF] HTTP GET /api/admin/users responded 200 in 29.5241 ms
+2026-05-25 02:46:19.557 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7416 ms
+2026-05-25 02:46:27.129 +00:00 [INF] HTTP POST /api/auth/logout responded 200 in 9.1384 ms
+2026-05-25 02:46:27.937 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 0.8095 ms
+2026-05-25 02:46:31.031 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8083 ms
+2026-05-25 02:46:42.298 +00:00 [INF] HTTP POST /api/auth/login responded 401 in 119.3134 ms
+2026-05-25 02:46:50.139 +00:00 [INF] HTTP POST /api/auth/login responded 401 in 117.4031 ms
+2026-05-25 02:46:54.972 +00:00 [INF] HTTP POST /api/notifications/read-all responded 200 in 36.0121 ms
+2026-05-25 02:46:55.012 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3049 ms
+2026-05-25 02:47:19.501 +00:00 [INF] HTTP POST /api/auth/logout responded 200 in 18.7814 ms
+2026-05-25 02:47:20.167 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 0.7036 ms
+2026-05-25 02:47:29.914 +00:00 [INF] HTTP POST /api/auth/login responded 200 in 132.9040 ms
+2026-05-25 02:47:30.009 +00:00 [INF] HTTP GET /api/departments responded 200 in 2.3095 ms
+2026-05-25 02:47:30.009 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 4.6521 ms
+2026-05-25 02:47:30.010 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9742 ms
+2026-05-25 02:47:30.076 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/approval-history responded 200 in 3.3940 ms
+2026-05-25 02:47:30.076 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/line-comments responded 200 in 2.8988 ms
+2026-05-25 02:47:30.089 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/tasks responded 200 in 18.6751 ms
+2026-05-25 02:47:51.911 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/tasks responded 200 in 24.0584 ms
+2026-05-25 02:48:00.057 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1244 ms
+2026-05-25 02:48:12.476 +00:00 [INF] HTTP POST /api/notifications/read-all responded 200 in 9.3272 ms
+2026-05-25 02:48:12.508 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4683 ms
+2026-05-25 02:48:42.547 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6310 ms
+2026-05-25 02:49:12.583 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7487 ms
+2026-05-25 02:49:42.615 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5254 ms
+2026-05-25 02:50:12.646 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7643 ms
+2026-05-25 02:50:42.678 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7830 ms
+2026-05-25 02:51:12.705 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1592 ms
+2026-05-25 02:51:42.742 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0923 ms
+2026-05-25 02:52:12.778 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9077 ms
+2026-05-25 02:52:42.819 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9907 ms
+2026-05-25 02:53:12.852 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8567 ms
+2026-05-25 02:53:42.891 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0196 ms
+2026-05-25 02:54:12.926 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2262 ms
+2026-05-25 02:54:42.961 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2954 ms
+2026-05-25 02:55:13.005 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6718 ms
+2026-05-25 02:55:43.042 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0183 ms
+2026-05-25 02:56:13.083 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.3279 ms
+2026-05-25 02:56:43.114 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3929 ms
+2026-05-25 02:57:13.151 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2223 ms
+2026-05-25 02:57:43.193 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.3017 ms
+2026-05-25 02:58:13.222 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1816 ms
+2026-05-25 02:58:43.263 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9165 ms
+2026-05-25 02:59:13.310 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5032 ms
+2026-05-25 02:59:43.346 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3314 ms
+2026-05-25 03:00:13.381 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5375 ms
+2026-05-25 03:00:43.415 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8532 ms
+2026-05-25 03:01:13.448 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7754 ms
+2026-05-25 03:01:43.481 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.8866 ms
+2026-05-25 03:02:13.512 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4897 ms
+2026-05-25 03:02:43.540 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5525 ms
+2026-05-25 03:03:13.581 +00:00 [INF] HTTP GET /api/notifications responded 401 in 5.1455 ms
+2026-05-25 03:03:13.611 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 13.7732 ms
+2026-05-25 03:03:13.638 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3697 ms
+2026-05-25 03:03:43.677 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2954 ms
+2026-05-25 03:04:03.074 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 14.2151 ms
+2026-05-25 03:04:03.208 +00:00 [INF] HTTP GET /api/departments responded 200 in 1.6933 ms
+2026-05-25 03:04:03.210 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8396 ms
+2026-05-25 03:04:03.216 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.2167 ms
+2026-05-25 03:04:03.276 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 3.1726 ms
+2026-05-25 03:04:03.369 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 97.6710 ms
+2026-05-25 03:04:03.372 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 99.2234 ms
+2026-05-25 03:04:06.048 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 3.3843 ms
+2026-05-25 03:04:06.079 +00:00 [INF] HTTP GET /api/plans/f662db5e-b57f-456b-9ae8-8e255af49c8e/tasks responded 200 in 3.7836 ms
+2026-05-25 03:04:06.079 +00:00 [INF] HTTP GET /api/plans/f662db5e-b57f-456b-9ae8-8e255af49c8e/approval-history responded 200 in 2.4590 ms
+2026-05-25 03:04:06.079 +00:00 [INF] HTTP GET /api/plans/f662db5e-b57f-456b-9ae8-8e255af49c8e/line-comments responded 200 in 3.4820 ms
+2026-05-25 03:04:06.535 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.8708 ms
+2026-05-25 03:04:06.567 +00:00 [INF] HTTP GET /api/plans/74fcbad6-515b-428d-8006-fa453c06dfb6/approval-history responded 200 in 2.3402 ms
+2026-05-25 03:04:06.567 +00:00 [INF] HTTP GET /api/plans/74fcbad6-515b-428d-8006-fa453c06dfb6/line-comments responded 200 in 2.9418 ms
+2026-05-25 03:04:06.567 +00:00 [INF] HTTP GET /api/plans/74fcbad6-515b-428d-8006-fa453c06dfb6/tasks responded 200 in 3.8725 ms
+2026-05-25 03:04:07.755 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.7639 ms
+2026-05-25 03:04:07.782 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/line-comments responded 200 in 3.2439 ms
+2026-05-25 03:04:07.782 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/tasks responded 200 in 3.2071 ms
+2026-05-25 03:04:07.783 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/approval-history responded 200 in 2.2186 ms
+2026-05-25 03:04:08.168 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.9066 ms
+2026-05-25 03:04:08.196 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/line-comments responded 200 in 4.0800 ms
+2026-05-25 03:04:08.196 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/approval-history responded 200 in 2.3405 ms
+2026-05-25 03:04:08.197 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/tasks responded 200 in 3.5133 ms
+2026-05-25 03:04:08.669 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.5762 ms
+2026-05-25 03:04:08.695 +00:00 [INF] HTTP GET /api/plans/48216cad-a5f8-42b9-9124-28b6acde2656/line-comments responded 200 in 2.4896 ms
+2026-05-25 03:04:08.695 +00:00 [INF] HTTP GET /api/plans/48216cad-a5f8-42b9-9124-28b6acde2656/tasks responded 200 in 3.1297 ms
+2026-05-25 03:04:08.696 +00:00 [INF] HTTP GET /api/plans/48216cad-a5f8-42b9-9124-28b6acde2656/approval-history responded 200 in 2.3452 ms
+2026-05-25 03:04:13.708 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7087 ms
+2026-05-25 03:04:16.660 +00:00 [INF] HTTP GET /api/admin/approval-configs responded 200 in 3.2521 ms
+2026-05-25 03:04:16.688 +00:00 [INF] HTTP GET /api/admin/roles responded 200 in 2.6245 ms
+2026-05-25 03:04:17.762 +00:00 [INF] HTTP GET /api/admin/departments responded 200 in 2.3227 ms
+2026-05-25 03:04:17.764 +00:00 [INF] HTTP GET /api/admin/users responded 200 in 4.5413 ms
+2026-05-25 03:04:33.278 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4647 ms
+2026-05-25 03:04:43.755 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5518 ms
+2026-05-25 03:05:03.314 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.3566 ms
+2026-05-25 03:05:13.790 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5675 ms
+2026-05-25 03:05:33.342 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5850 ms
+2026-05-25 03:05:38.361 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.4510 ms
+2026-05-25 03:05:38.361 +00:00 [INF] HTTP GET /api/plans/74fcbad6-515b-428d-8006-fa453c06dfb6/line-comments responded 200 in 3.6631 ms
+2026-05-25 03:05:38.364 +00:00 [INF] HTTP GET /api/plans/74fcbad6-515b-428d-8006-fa453c06dfb6/tasks responded 200 in 3.7493 ms
+2026-05-25 03:05:38.365 +00:00 [INF] HTTP GET /api/plans/74fcbad6-515b-428d-8006-fa453c06dfb6/approval-history responded 200 in 3.4696 ms
+2026-05-25 03:05:42.457 +00:00 [INF] HTTP GET /api/plans/f662db5e-b57f-456b-9ae8-8e255af49c8e/approval-history responded 200 in 2.9285 ms
+2026-05-25 03:05:42.457 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.7504 ms
+2026-05-25 03:05:42.458 +00:00 [INF] HTTP GET /api/plans/f662db5e-b57f-456b-9ae8-8e255af49c8e/line-comments responded 200 in 2.3022 ms
+2026-05-25 03:05:42.464 +00:00 [INF] HTTP GET /api/plans/f662db5e-b57f-456b-9ae8-8e255af49c8e/tasks responded 200 in 9.2390 ms
+2026-05-25 03:05:43.036 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/approval-history responded 200 in 2.4259 ms
+2026-05-25 03:05:43.037 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/line-comments responded 200 in 3.7471 ms
+2026-05-25 03:05:43.037 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 3.1532 ms
+2026-05-25 03:05:43.038 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/tasks responded 200 in 3.5981 ms
+2026-05-25 03:05:43.608 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/approval-history responded 200 in 4.2754 ms
+2026-05-25 03:05:43.608 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 3.3754 ms
+2026-05-25 03:05:43.609 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/tasks responded 200 in 3.7841 ms
+2026-05-25 03:05:43.612 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/line-comments responded 200 in 5.7712 ms
+2026-05-25 03:05:43.817 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6319 ms
+2026-05-25 03:05:44.825 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 3.1455 ms
+2026-05-25 03:05:44.825 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 1.8043 ms
+2026-05-25 03:05:44.827 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 2.8266 ms
+2026-05-25 03:05:44.828 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 3.8332 ms
+2026-05-25 03:05:52.963 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.5668 ms
+2026-05-25 03:05:53.877 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.8984 ms
+2026-05-25 03:05:54.955 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.9408 ms
+2026-05-25 03:05:55.343 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.5003 ms
+2026-05-25 03:05:55.369 +00:00 [INF] HTTP GET /api/plans/9403a1f7-d104-4af2-8aa7-420cf0b74680/line-comments responded 200 in 2.6068 ms
+2026-05-25 03:05:55.369 +00:00 [INF] HTTP GET /api/plans/9403a1f7-d104-4af2-8aa7-420cf0b74680/approval-history responded 200 in 2.1123 ms
+2026-05-25 03:05:55.369 +00:00 [INF] HTTP GET /api/plans/9403a1f7-d104-4af2-8aa7-420cf0b74680/tasks responded 200 in 3.3071 ms
+2026-05-25 03:05:56.318 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 3.1146 ms
+2026-05-25 03:05:56.319 +00:00 [INF] HTTP GET /api/plans/48216cad-a5f8-42b9-9124-28b6acde2656/tasks responded 200 in 2.8901 ms
+2026-05-25 03:05:56.319 +00:00 [INF] HTTP GET /api/plans/48216cad-a5f8-42b9-9124-28b6acde2656/approval-history responded 200 in 2.4076 ms
+2026-05-25 03:05:56.321 +00:00 [INF] HTTP GET /api/plans/48216cad-a5f8-42b9-9124-28b6acde2656/line-comments responded 200 in 2.9392 ms
+2026-05-25 03:06:03.373 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9101 ms
+2026-05-25 03:06:13.852 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.3286 ms
+2026-05-25 03:06:33.399 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7419 ms
+2026-05-25 03:06:42.341 +00:00 [INF] HTTP GET /api/api/tasks/45879c98-272a-4bdb-bb52-86618f37fc9b/attachments responded 404 in 0.1753 ms
+2026-05-25 03:06:43.370 +00:00 [INF] HTTP GET /api/api/tasks/45879c98-272a-4bdb-bb52-86618f37fc9b/attachments responded 404 in 0.7140 ms
+2026-05-25 03:06:43.899 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6186 ms
+2026-05-25 03:07:03.434 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8437 ms
+2026-05-25 03:07:13.934 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9373 ms
+2026-05-25 03:07:43.969 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7660 ms
+2026-05-25 03:08:14.007 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9024 ms
+2026-05-25 03:08:44.040 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7820 ms
+2026-05-25 03:09:14.074 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7199 ms
+2026-05-25 03:09:44.118 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3737 ms
+2026-05-25 03:10:14.161 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5662 ms
+2026-05-25 03:10:44.194 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2497 ms
+2026-05-25 03:11:14.233 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8445 ms
+2026-05-25 03:11:44.270 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8412 ms
+2026-05-25 03:12:14.305 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6443 ms
+2026-05-25 03:12:44.348 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.9207 ms
+2026-05-25 03:13:14.390 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6511 ms
+2026-05-25 03:13:44.432 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9177 ms
+2026-05-25 03:14:14.464 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1416 ms
+2026-05-25 03:14:44.497 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4961 ms
+2026-05-25 03:15:14.536 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2233 ms
+2026-05-25 03:15:44.572 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.5519 ms
+2026-05-25 03:16:14.603 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0645 ms
+2026-05-25 03:16:44.642 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6075 ms
+2026-05-25 03:17:14.681 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7610 ms
+2026-05-25 03:17:44.722 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.2217 ms
+2026-05-25 03:18:14.758 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9129 ms
+2026-05-25 03:18:44.798 +00:00 [INF] HTTP GET /api/notifications responded 401 in 1.7203 ms
+2026-05-25 03:18:44.832 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 16.1907 ms
+2026-05-25 03:18:44.862 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7453 ms
+2026-05-25 03:19:14.901 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7553 ms
+2026-05-25 03:19:44.929 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1832 ms
+2026-05-25 03:20:14.962 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3617 ms
+2026-05-25 03:20:44.997 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1253 ms
+2026-05-25 03:21:15.031 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3183 ms
+2026-05-25 03:21:45.064 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4652 ms
+2026-05-25 03:22:15.097 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8737 ms
+2026-05-25 03:22:45.130 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5979 ms
+2026-05-25 03:23:15.159 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4167 ms
+2026-05-25 03:23:45.192 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4856 ms
+2026-05-25 03:24:15.238 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8128 ms
+2026-05-25 03:24:45.271 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1956 ms
+2026-05-25 03:25:15.302 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5790 ms
+2026-05-25 03:25:45.335 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7430 ms
+2026-05-25 03:26:15.366 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7429 ms
+2026-05-25 03:26:45.399 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4589 ms
+2026-05-25 03:27:15.439 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7028 ms
+2026-05-25 03:27:45.473 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7437 ms
+2026-05-25 03:28:15.513 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8866 ms
+2026-05-25 03:28:45.542 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7353 ms
+2026-05-25 03:29:15.581 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.7293 ms
+2026-05-25 03:29:45.624 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6666 ms
+2026-05-25 03:30:15.663 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2993 ms
+2026-05-25 03:30:45.701 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0154 ms
+2026-05-25 03:31:05.722 +00:00 [INF] HTTP GET /api/notifications responded 401 in 0.8652 ms
+2026-05-25 03:31:05.765 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 14.3474 ms
+2026-05-25 03:31:05.795 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9602 ms
+2026-05-25 03:31:15.743 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4387 ms
+2026-05-25 03:31:45.791 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9861 ms
+2026-05-25 03:32:15.830 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7745 ms
+2026-05-25 03:32:45.868 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8142 ms
+2026-05-25 03:33:15.902 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9021 ms
+2026-05-25 03:33:45.937 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7661 ms
+2026-05-25 03:34:15.972 +00:00 [INF] HTTP GET /api/notifications responded 401 in 0.4696 ms
+2026-05-25 03:34:16.004 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 16.2466 ms
+2026-05-25 03:34:16.030 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1689 ms
+2026-05-25 03:34:46.059 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0144 ms
+2026-05-25 03:35:16.100 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9444 ms
+2026-05-25 03:35:46.128 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1563 ms
+2026-05-25 03:36:16.171 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0762 ms
+2026-05-25 03:36:46.200 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.3737 ms
+2026-05-25 03:37:16.239 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8205 ms
+2026-05-25 03:37:46.274 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5819 ms
+2026-05-25 03:38:13.250 +00:00 [INF] HTTP POST /api/auth/login responded 200 in 135.9582 ms
+2026-05-25 03:38:13.309 +00:00 [INF] HTTP GET /api/departments responded 200 in 2.4193 ms
+2026-05-25 03:38:13.311 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.6859 ms
+2026-05-25 03:38:13.365 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 3.6544 ms
+2026-05-25 03:38:13.447 +00:00 [INF] HTTP GET /api/notifications responded 200 in 139.7482 ms
+2026-05-25 03:38:13.448 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 88.6269 ms
+2026-05-25 03:38:13.449 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 89.0989 ms
+2026-05-25 03:38:16.310 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7564 ms
+2026-05-25 03:38:43.487 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0928 ms
+2026-05-25 03:38:46.337 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8311 ms
+2026-05-25 03:39:13.522 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6075 ms
+2026-05-25 03:39:16.378 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.2155 ms
+2026-05-25 03:39:43.566 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4152 ms
+2026-05-25 03:39:46.413 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9299 ms
+2026-05-25 03:40:16.440 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.1067 ms
+2026-05-25 03:40:43.611 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.7555 ms
+2026-05-25 03:40:46.475 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.4994 ms
+2026-05-25 03:41:16.514 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9471 ms
+2026-05-25 03:41:46.585 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.3252 ms
+2026-05-25 03:42:16.622 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6022 ms
+2026-05-25 03:42:46.659 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.1124 ms
+2026-05-25 03:43:16.701 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3636 ms
+2026-05-25 03:43:46.733 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0835 ms
+2026-05-25 03:44:16.773 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0466 ms
+2026-05-25 03:44:46.811 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9287 ms
+2026-05-25 03:45:16.846 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0328 ms
+2026-05-25 03:45:46.887 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7547 ms
+2026-05-25 03:46:03.665 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 55.1635 ms
+2026-05-25 03:46:03.690 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 29.6067 ms
+2026-05-25 03:46:03.872 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 12.2860 ms
+2026-05-25 03:46:04.138 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/approval-history responded 200 in 13.6757 ms
+2026-05-25 03:46:04.254 +00:00 [INF] HTTP GET /api/departments responded 200 in 395.2565 ms
+2026-05-25 03:46:04.259 +00:00 [INF] HTTP GET /api/notifications responded 200 in 399.3100 ms
+2026-05-25 03:46:04.273 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/tasks responded 200 in 146.6159 ms
+2026-05-25 03:46:04.275 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/line-comments responded 200 in 146.4452 ms
+2026-05-25 03:46:04.564 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 4.8425 ms
+2026-05-25 03:46:04.564 +00:00 [INF] HTTP GET /api/departments responded 200 in 3.1999 ms
+2026-05-25 03:46:04.565 +00:00 [INF] HTTP GET /api/notifications responded 200 in 8.6417 ms
+2026-05-25 03:46:04.611 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 27.2309 ms
+2026-05-25 03:46:04.700 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 9.1842 ms
+2026-05-25 03:46:04.706 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 8.5510 ms
+2026-05-25 03:46:04.707 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 9.8719 ms
+2026-05-25 03:46:04.925 +00:00 [INF] HTTP GET /api/departments responded 200 in 2.9831 ms
+2026-05-25 03:46:04.926 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9523 ms
+2026-05-25 03:46:05.238 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 2.9164 ms
+2026-05-25 03:46:05.782 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 3.2406 ms
+2026-05-25 03:46:05.782 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 3.7017 ms
+2026-05-25 03:46:05.784 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 5.2758 ms
+2026-05-25 03:46:34.353 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.5065 ms
+2026-05-25 03:47:04.333 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 27.3527 ms
+2026-05-25 03:47:04.527 +00:00 [INF] HTTP GET /api/departments responded 200 in 5.4570 ms
+2026-05-25 03:47:04.531 +00:00 [INF] HTTP GET /api/notifications responded 200 in 7.5466 ms
+2026-05-25 03:47:04.534 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 8.6229 ms
+2026-05-25 03:47:04.660 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/approval-history responded 200 in 7.2486 ms
+2026-05-25 03:47:04.663 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/line-comments responded 200 in 6.8381 ms
+2026-05-25 03:47:04.667 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/tasks responded 200 in 9.6799 ms
+2026-05-25 03:47:34.596 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9703 ms
+2026-05-25 03:48:04.628 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4461 ms
+2026-05-25 03:48:34.668 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3437 ms
+2026-05-25 03:49:04.702 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3882 ms
+2026-05-25 03:49:34.736 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3357 ms
+2026-05-25 03:50:04.778 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2392 ms
+2026-05-25 03:50:34.821 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7010 ms
+2026-05-25 03:51:04.863 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1520 ms
+2026-05-25 03:51:34.897 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0688 ms
+2026-05-25 03:52:04.937 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.2182 ms
+2026-05-25 03:52:34.974 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7911 ms
+2026-05-25 03:53:05.018 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0900 ms
+2026-05-25 03:53:35.058 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5650 ms
+2026-05-25 03:54:05.102 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3890 ms
+2026-05-25 03:54:35.146 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0331 ms
+2026-05-25 03:55:05.183 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5091 ms
+2026-05-25 03:55:35.220 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8874 ms
+2026-05-25 03:56:05.252 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6879 ms
+2026-05-25 03:56:35.290 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2008 ms
+2026-05-25 03:57:05.326 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2154 ms
+2026-05-25 03:57:35.361 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7728 ms
+2026-05-25 03:58:05.401 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9166 ms
+2026-05-25 03:58:35.436 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1723 ms
+2026-05-25 03:59:05.475 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0100 ms
+2026-05-25 03:59:35.506 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.2230 ms
+2026-05-25 04:00:05.540 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0015 ms
+2026-05-25 04:04:48.346 +00:00 [INF] HTTP GET /api/notifications responded 401 in 17.5137 ms
+2026-05-25 04:04:49.162 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 738.0015 ms
+2026-05-25 04:04:49.235 +00:00 [INF] HTTP GET /api/notifications responded 200 in 10.4634 ms
+2026-05-25 04:05:19.287 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.4109 ms
+2026-05-25 04:05:49.326 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9807 ms
+2026-05-25 04:06:19.371 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3245 ms
+2026-05-25 04:06:49.400 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.5162 ms
+2026-05-25 04:07:19.443 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1504 ms
+2026-05-25 04:07:49.484 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1954 ms
+2026-05-25 04:08:19.523 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3090 ms
+2026-05-25 04:08:49.562 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7105 ms
+2026-05-25 04:09:19.609 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3346 ms
+2026-05-25 04:09:49.654 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5444 ms
+2026-05-25 04:12:19.687 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3975 ms
+2026-05-25 04:12:49.726 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4810 ms
+2026-05-25 04:13:19.764 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4388 ms
+2026-05-25 04:13:49.798 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4742 ms
+2026-05-25 04:14:19.838 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0257 ms
+2026-05-25 04:14:49.874 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.3150 ms
+2026-05-25 04:15:19.912 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8577 ms
+2026-05-25 04:18:19.946 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7740 ms
+2026-05-25 04:18:49.982 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5466 ms
+2026-05-25 04:19:20.021 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5517 ms
+2026-05-25 04:19:50.056 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4566 ms
+2026-05-25 06:21:41.469 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 193.4759 ms
+2026-05-25 06:21:41.593 +00:00 [INF] HTTP GET /api/departments responded 200 in 3.0908 ms
+2026-05-25 06:21:41.595 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7170 ms
+2026-05-25 06:21:41.605 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 13.8893 ms
+2026-05-25 06:21:41.671 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/approval-history responded 200 in 5.3174 ms
+2026-05-25 06:21:41.673 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/tasks responded 200 in 9.0755 ms
+2026-05-25 06:21:41.680 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/line-comments responded 200 in 15.8980 ms
+2026-05-25 06:22:11.648 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1294 ms
+2026-05-25 06:22:41.687 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9039 ms
+2026-05-25 06:23:11.726 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9146 ms
+2026-05-25 06:23:41.757 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1985 ms
+2026-05-25 06:24:11.790 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6852 ms
+2026-05-25 06:24:41.831 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5573 ms
+2026-05-25 06:25:11.870 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7414 ms
+2026-05-25 06:25:41.898 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5021 ms
+2026-05-25 06:26:11.931 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9984 ms
+2026-05-25 06:26:41.961 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7111 ms
+2026-05-25 06:27:12.003 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4794 ms
+2026-05-25 06:27:42.043 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9219 ms
+2026-05-25 06:28:12.089 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7496 ms
+2026-05-25 06:28:42.129 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0363 ms
+2026-05-25 06:29:12.187 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0742 ms
+2026-05-25 06:29:42.218 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.3362 ms
+2026-05-25 06:30:12.259 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.6097 ms
+2026-05-25 06:31:12.307 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7565 ms
+2026-05-25 06:31:42.361 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6419 ms
+2026-05-25 06:32:12.400 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5803 ms
+2026-05-25 06:32:42.442 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1981 ms
+2026-05-25 06:33:12.484 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5628 ms
+2026-05-25 06:33:42.528 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9147 ms
+2026-05-25 06:34:12.564 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1844 ms
+2026-05-25 06:34:42.597 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2121 ms
+2026-05-25 06:35:12.651 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1328 ms
+2026-05-25 06:35:42.691 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6953 ms
+2026-05-25 06:36:12.727 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1577 ms
+2026-05-25 06:36:42.771 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1665 ms
+2026-05-25 06:37:12.802 +00:00 [INF] HTTP GET /api/notifications responded 401 in 0.9100 ms
+2026-05-25 06:37:12.844 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 22.6726 ms
+2026-05-25 06:37:12.872 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9762 ms
+2026-05-25 06:37:42.914 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0385 ms
+2026-05-25 06:38:12.986 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.6167 ms
+2026-05-25 06:38:43.040 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0518 ms
+2026-05-25 06:39:13.077 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7793 ms
+2026-05-25 06:39:43.131 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6849 ms
+2026-05-25 06:40:13.171 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1040 ms
+2026-05-25 06:40:43.213 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1475 ms
+2026-05-25 06:41:13.251 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0155 ms
+2026-05-25 06:41:43.296 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9010 ms
+2026-05-25 06:42:13.336 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5570 ms
+2026-05-25 06:42:43.379 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5236 ms
+2026-05-25 06:43:13.416 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1015 ms
+2026-05-25 06:43:43.459 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2146 ms
+2026-05-25 06:44:13.498 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4878 ms
+2026-05-25 06:44:43.536 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0511 ms
+2026-05-25 06:45:13.574 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4068 ms
+2026-05-25 06:45:43.613 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6090 ms
+2026-05-25 06:46:13.651 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1600 ms
+2026-05-25 06:46:43.705 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0411 ms
+2026-05-25 06:47:13.749 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7344 ms
+2026-05-25 06:47:43.783 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4724 ms
+2026-05-25 06:48:13.824 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7763 ms
+2026-05-25 06:48:43.872 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8827 ms
+2026-05-25 06:49:13.923 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.4556 ms
+2026-05-25 06:49:43.954 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3241 ms
+2026-05-25 06:50:13.995 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2511 ms
+2026-05-25 06:50:44.030 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2612 ms
+2026-05-25 06:51:14.072 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.5168 ms
+2026-05-25 06:51:44.111 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6044 ms
+2026-05-25 06:52:14.149 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2901 ms
+2026-05-25 06:52:44.181 +00:00 [INF] HTTP GET /api/notifications responded 401 in 0.4439 ms
+2026-05-25 06:52:44.212 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 13.7252 ms
+2026-05-25 06:52:44.238 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7032 ms
+2026-05-25 06:53:14.283 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0992 ms
+2026-05-25 06:53:44.324 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3211 ms
+2026-05-25 06:54:14.364 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4943 ms
+2026-05-25 06:54:44.409 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6511 ms
+2026-05-25 06:55:14.440 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4559 ms
+2026-05-25 06:55:44.470 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1842 ms
+2026-05-25 06:56:14.507 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5789 ms
+2026-05-25 06:56:44.548 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9962 ms
+2026-05-25 06:57:14.592 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9764 ms
+2026-05-25 06:57:44.630 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.5153 ms
+2026-05-25 06:58:03.846 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/tasks responded 200 in 9.4389 ms
+2026-05-25 06:58:14.667 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7421 ms
+2026-05-25 07:43:23.118 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 14.0161 ms
+2026-05-25 07:47:37.177 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 4.3101 ms
+2026-05-25 07:47:41.292 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 299.2913 ms
+2026-05-25 07:47:41.359 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 0.1372 ms
+2026-05-25 07:47:41.365 +00:00 [INF] HTTP GET /api/departments responded 200 in 7.3200 ms
+2026-05-25 07:47:41.379 +00:00 [INF] HTTP GET /api/notifications responded 200 in 20.1157 ms
+2026-05-25 07:47:43.665 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 0.3524 ms
+2026-05-25 07:47:56.811 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 20.9376 ms
+2026-05-25 07:47:56.911 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 0.3436 ms
+2026-05-25 07:47:56.916 +00:00 [INF] HTTP GET /api/departments responded 200 in 3.3623 ms
+2026-05-25 07:47:56.918 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.4432 ms
+2026-05-25 07:47:57.939 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 0.2335 ms
+2026-05-25 07:48:26.975 +00:00 [INF] HTTP GET /api/notifications responded 200 in 9.5080 ms
+2026-05-25 07:48:57.031 +00:00 [INF] HTTP GET /api/notifications responded 200 in 9.6521 ms
+2026-05-25 07:49:27.068 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.3443 ms
+2026-05-25 07:49:30.015 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 0.6776 ms
+2026-05-25 07:49:31.046 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 0.2432 ms
+2026-05-25 07:49:57.108 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.4165 ms
+2026-05-25 07:50:27.148 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7240 ms
+2026-05-25 07:50:57.187 +00:00 [INF] HTTP GET /api/notifications responded 200 in 7.6432 ms
+2026-05-25 07:51:18.885 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 39.7999 ms
+2026-05-25 07:51:19.018 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 0.5665 ms
+2026-05-25 07:51:19.022 +00:00 [INF] HTTP GET /api/departments responded 200 in 7.3545 ms
+2026-05-25 07:51:19.029 +00:00 [INF] HTTP GET /api/notifications responded 200 in 8.4224 ms
+2026-05-25 07:51:20.062 +00:00 [INF] HTTP GET /api/personal-evaluations responded 404 in 0.2655 ms
+2026-05-25 07:51:49.085 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.2448 ms
+2026-05-25 07:52:19.128 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1841 ms
+2026-05-25 07:52:49.174 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.9752 ms
+2026-05-25 07:53:40.776 +00:00 [WRN] Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://0.0.0.0:8080'.
+2026-05-25 07:53:40.947 +00:00 [INF] KHCT API started on http://0.0.0.0:8080
+2026-05-25 07:53:46.901 +00:00 [ERR] An error occurred using the connection to database 'khct' on server 'db'.
+2026-05-25 07:53:46.940 +00:00 [ERR] Unhandled exception
+System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Threading.CancellationToken.ThrowIfCancellationRequested()
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 390
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at KHCT.Application.Auth.Login.LoginHandler.Handle(LoginCommand request, CancellationToken ct) in /src/backend/KHCT.Application/Auth/Login/LoginCommand.cs:line 37
+   at KHCT.Application.Common.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /src/backend/KHCT.Application/Common/Behaviors/ValidationBehavior.cs:line 26
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at KHCT.Api.Controllers.AuthController.Login(LoginRequest body, CancellationToken ct) in /src/backend/KHCT.Api/Controllers/AuthController.cs:line 32
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at KHCT.Api.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in /src/backend/KHCT.Api/Middleware/ExceptionMiddleware.cs:line 23
+2026-05-25 07:53:47.065 +00:00 [ERR] HTTP POST /api/auth/login responded 500 in 2096.6489 ms
+2026-05-25 07:53:49.458 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 1192.3731 ms
+2026-05-25 07:53:49.716 +00:00 [INF] HTTP GET /api/departments responded 200 in 125.7893 ms
+2026-05-25 07:53:49.786 +00:00 [INF] HTTP GET /api/notifications responded 200 in 195.1916 ms
+2026-05-25 07:53:49.788 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 199.2017 ms
+2026-05-25 07:53:49.953 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/approval-history responded 200 in 86.6297 ms
+2026-05-25 07:53:49.974 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/line-comments responded 200 in 104.7431 ms
+2026-05-25 07:53:49.978 +00:00 [INF] HTTP GET /api/plans/34d45f31-2500-45e4-8bd2-bbda8551b618/tasks responded 200 in 111.3162 ms
+2026-05-25 07:53:54.495 +00:00 [INF] HTTP POST /api/auth/logout responded 200 in 27.6759 ms
+2026-05-25 07:53:55.542 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 3.6539 ms
+2026-05-25 07:53:57.499 +00:00 [INF] HTTP POST /api/auth/login responded 200 in 241.3844 ms
+2026-05-25 07:53:57.590 +00:00 [INF] HTTP GET /api/departments responded 200 in 4.6278 ms
+2026-05-25 07:53:57.591 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.6237 ms
+2026-05-25 07:53:57.600 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 12.1540 ms
+2026-05-25 07:53:57.665 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 10.6650 ms
+2026-05-25 07:53:57.667 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 15.0315 ms
+2026-05-25 07:53:57.692 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 40.3230 ms
+2026-05-25 07:53:59.230 +00:00 [INF] HTTP POST /api/auth/logout responded 200 in 18.3229 ms
+2026-05-25 07:54:00.500 +00:00 [INF] HTTP POST /api/auth/refresh responded 401 in 1.4790 ms
+2026-05-25 07:54:10.547 +00:00 [INF] HTTP POST /api/auth/login responded 200 in 147.3631 ms
+2026-05-25 07:54:10.647 +00:00 [INF] HTTP GET /api/departments responded 200 in 5.0337 ms
+2026-05-25 07:54:10.672 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 8.0155 ms
+2026-05-25 07:54:10.672 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.8493 ms
+2026-05-25 07:54:10.738 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/approval-history responded 200 in 4.9684 ms
+2026-05-25 07:54:10.738 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/tasks responded 200 in 7.4770 ms
+2026-05-25 07:54:10.738 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/line-comments responded 200 in 5.7634 ms
+2026-05-25 07:54:12.429 +00:00 [ERR] Failed executing DbCommand (9ms) [Parameters=[@__targetUserId_0='?' (DbType = Guid), @__request_Year_1='?' (DbType = Int32), @__request_Month_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`id`, `t`.`capacity_attitude_deputy_score`, `t`.`capacity_attitude_head_score`, `t`.`capacity_attitude_manager_score`, `t`.`capacity_attitude_self_score`, `t`.`capacity_attitude_team_lead_score`, `t`.`created_at`, `t`.`department_id`, `t`.`discipline_deputy_score`, `t`.`discipline_head_score`, `t`.`discipline_manager_score`, `t`.`discipline_self_score`, `t`.`discipline_team_lead_score`, `t`.`inspection_deputy_score`, `t`.`inspection_head_score`, `t`.`inspection_manager_score`, `t`.`inspection_self_score`, `t`.`inspection_team_lead_score`, `t`.`report_month`, `t`.`report_year`, `t`.`status`, `t`.`updated_at`, `t`.`user_id`, `t`.`id0`, `t`.`created_at0`, `t`.`department_id0`, `t`.`email`, `t`.`full_name`, `t`.`is_active`, `t`.`last_login_at`, `t`.`password_hash`, `t`.`updated_at0`, `t`.`username`, `t`.`id1`, `t`.`code`, `t`.`created_at1`, `t`.`is_active0`, `t`.`name`, `t`.`updated_at1`, `p0`.`id`, `p0`.`actual_result`, `p0`.`assignment_source`, `p0`.`completed_at`, `p0`.`created_at`, `p0`.`deadline`, `p0`.`deputy_progress_score`, `p0`.`deputy_quality_score`, `p0`.`display_order`, `p0`.`head_progress_score`, `p0`.`head_quality_score`, `p0`.`manager_progress_score`, `p0`.`manager_quality_score`, `p0`.`note`, `p0`.`period_id`, `p0`.`self_progress_score`, `p0`.`self_quality_score`, `p0`.`task_detail`, `p0`.`task_name`, `p0`.`team_lead_progress_score`, `p0`.`team_lead_quality_score`, `p0`.`updated_at`
+FROM (
+    SELECT `p`.`id`, `p`.`capacity_attitude_deputy_score`, `p`.`capacity_attitude_head_score`, `p`.`capacity_attitude_manager_score`, `p`.`capacity_attitude_self_score`, `p`.`capacity_attitude_team_lead_score`, `p`.`created_at`, `p`.`department_id`, `p`.`discipline_deputy_score`, `p`.`discipline_head_score`, `p`.`discipline_manager_score`, `p`.`discipline_self_score`, `p`.`discipline_team_lead_score`, `p`.`inspection_deputy_score`, `p`.`inspection_head_score`, `p`.`inspection_manager_score`, `p`.`inspection_self_score`, `p`.`inspection_team_lead_score`, `p`.`report_month`, `p`.`report_year`, `p`.`status`, `p`.`updated_at`, `p`.`user_id`, `a`.`id` AS `id0`, `a`.`created_at` AS `created_at0`, `a`.`department_id` AS `department_id0`, `a`.`email`, `a`.`full_name`, `a`.`is_active`, `a`.`last_login_at`, `a`.`password_hash`, `a`.`updated_at` AS `updated_at0`, `a`.`username`, `d`.`id` AS `id1`, `d`.`code`, `d`.`created_at` AS `created_at1`, `d`.`is_active` AS `is_active0`, `d`.`name`, `d`.`updated_at` AS `updated_at1`
+    FROM `personal_evaluation_period` AS `p`
+    INNER JOIN `app_user` AS `a` ON `p`.`user_id` = `a`.`id`
+    INNER JOIN `department` AS `d` ON `p`.`department_id` = `d`.`id`
+    WHERE ((`p`.`user_id` = @__targetUserId_0) AND (`p`.`report_year` = @__request_Year_1)) AND (`p`.`report_month` = @__request_Month_2)
+    LIMIT 1
+) AS `t`
+LEFT JOIN `personal_evaluation_item` AS `p0` ON `t`.`id` = `p0`.`period_id`
+ORDER BY `t`.`id`, `t`.`id0`, `t`.`id1`
+2026-05-25 07:54:12.436 +00:00 [ERR] An exception occurred while iterating over the results of a query for context type 'KHCT.Infrastructure.KhctDbContext'.
+MySqlConnector.MySqlException (0x80004005): Table 'khct.personal_evaluation_period' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Table 'khct.personal_evaluation_period' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2026-05-25 07:54:12.440 +00:00 [ERR] Unhandled exception
+MySqlConnector.MySqlException (0x80004005): Table 'khct.personal_evaluation_period' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at KHCT.Application.PersonalEvaluations.Queries.GetPersonalEvaluationHandler.Handle(GetPersonalEvaluationQuery request, CancellationToken ct) in /src/backend/KHCT.Application/PersonalEvaluations/Queries/GetPersonalEvaluationQuery.cs:line 39
+   at KHCT.Application.Common.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /src/backend/KHCT.Application/Common/Behaviors/ValidationBehavior.cs:line 18
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at KHCT.Api.Controllers.PersonalEvaluationsController.Get(Int32 year, Int32 month, Nullable`1 userId, CancellationToken ct) in /src/backend/KHCT.Api/Controllers/PersonalEvaluationsController.cs:line 65
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at KHCT.Api.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in /src/backend/KHCT.Api/Middleware/ExceptionMiddleware.cs:line 23
+2026-05-25 07:54:12.445 +00:00 [ERR] HTTP GET /api/personal-evaluations responded 500 in 64.4822 ms
+2026-05-25 07:54:13.469 +00:00 [ERR] Failed executing DbCommand (1ms) [Parameters=[@__targetUserId_0='?' (DbType = Guid), @__request_Year_1='?' (DbType = Int32), @__request_Month_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`id`, `t`.`capacity_attitude_deputy_score`, `t`.`capacity_attitude_head_score`, `t`.`capacity_attitude_manager_score`, `t`.`capacity_attitude_self_score`, `t`.`capacity_attitude_team_lead_score`, `t`.`created_at`, `t`.`department_id`, `t`.`discipline_deputy_score`, `t`.`discipline_head_score`, `t`.`discipline_manager_score`, `t`.`discipline_self_score`, `t`.`discipline_team_lead_score`, `t`.`inspection_deputy_score`, `t`.`inspection_head_score`, `t`.`inspection_manager_score`, `t`.`inspection_self_score`, `t`.`inspection_team_lead_score`, `t`.`report_month`, `t`.`report_year`, `t`.`status`, `t`.`updated_at`, `t`.`user_id`, `t`.`id0`, `t`.`created_at0`, `t`.`department_id0`, `t`.`email`, `t`.`full_name`, `t`.`is_active`, `t`.`last_login_at`, `t`.`password_hash`, `t`.`updated_at0`, `t`.`username`, `t`.`id1`, `t`.`code`, `t`.`created_at1`, `t`.`is_active0`, `t`.`name`, `t`.`updated_at1`, `p0`.`id`, `p0`.`actual_result`, `p0`.`assignment_source`, `p0`.`completed_at`, `p0`.`created_at`, `p0`.`deadline`, `p0`.`deputy_progress_score`, `p0`.`deputy_quality_score`, `p0`.`display_order`, `p0`.`head_progress_score`, `p0`.`head_quality_score`, `p0`.`manager_progress_score`, `p0`.`manager_quality_score`, `p0`.`note`, `p0`.`period_id`, `p0`.`self_progress_score`, `p0`.`self_quality_score`, `p0`.`task_detail`, `p0`.`task_name`, `p0`.`team_lead_progress_score`, `p0`.`team_lead_quality_score`, `p0`.`updated_at`
+FROM (
+    SELECT `p`.`id`, `p`.`capacity_attitude_deputy_score`, `p`.`capacity_attitude_head_score`, `p`.`capacity_attitude_manager_score`, `p`.`capacity_attitude_self_score`, `p`.`capacity_attitude_team_lead_score`, `p`.`created_at`, `p`.`department_id`, `p`.`discipline_deputy_score`, `p`.`discipline_head_score`, `p`.`discipline_manager_score`, `p`.`discipline_self_score`, `p`.`discipline_team_lead_score`, `p`.`inspection_deputy_score`, `p`.`inspection_head_score`, `p`.`inspection_manager_score`, `p`.`inspection_self_score`, `p`.`inspection_team_lead_score`, `p`.`report_month`, `p`.`report_year`, `p`.`status`, `p`.`updated_at`, `p`.`user_id`, `a`.`id` AS `id0`, `a`.`created_at` AS `created_at0`, `a`.`department_id` AS `department_id0`, `a`.`email`, `a`.`full_name`, `a`.`is_active`, `a`.`last_login_at`, `a`.`password_hash`, `a`.`updated_at` AS `updated_at0`, `a`.`username`, `d`.`id` AS `id1`, `d`.`code`, `d`.`created_at` AS `created_at1`, `d`.`is_active` AS `is_active0`, `d`.`name`, `d`.`updated_at` AS `updated_at1`
+    FROM `personal_evaluation_period` AS `p`
+    INNER JOIN `app_user` AS `a` ON `p`.`user_id` = `a`.`id`
+    INNER JOIN `department` AS `d` ON `p`.`department_id` = `d`.`id`
+    WHERE ((`p`.`user_id` = @__targetUserId_0) AND (`p`.`report_year` = @__request_Year_1)) AND (`p`.`report_month` = @__request_Month_2)
+    LIMIT 1
+) AS `t`
+LEFT JOIN `personal_evaluation_item` AS `p0` ON `t`.`id` = `p0`.`period_id`
+ORDER BY `t`.`id`, `t`.`id0`, `t`.`id1`
+2026-05-25 07:54:13.471 +00:00 [ERR] An exception occurred while iterating over the results of a query for context type 'KHCT.Infrastructure.KhctDbContext'.
+MySqlConnector.MySqlException (0x80004005): Table 'khct.personal_evaluation_period' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Table 'khct.personal_evaluation_period' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2026-05-25 07:54:13.474 +00:00 [ERR] Unhandled exception
+MySqlConnector.MySqlException (0x80004005): Table 'khct.personal_evaluation_period' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at KHCT.Application.PersonalEvaluations.Queries.GetPersonalEvaluationHandler.Handle(GetPersonalEvaluationQuery request, CancellationToken ct) in /src/backend/KHCT.Application/PersonalEvaluations/Queries/GetPersonalEvaluationQuery.cs:line 39
+   at KHCT.Application.Common.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in /src/backend/KHCT.Application/Common/Behaviors/ValidationBehavior.cs:line 18
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at KHCT.Api.Controllers.PersonalEvaluationsController.Get(Int32 year, Int32 month, Nullable`1 userId, CancellationToken ct) in /src/backend/KHCT.Api/Controllers/PersonalEvaluationsController.cs:line 65
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at KHCT.Api.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in /src/backend/KHCT.Api/Middleware/ExceptionMiddleware.cs:line 23
+2026-05-25 07:54:13.478 +00:00 [ERR] HTTP GET /api/personal-evaluations responded 500 in 15.1396 ms
+2026-05-25 07:54:25.255 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 38.6693 ms
+2026-05-25 07:54:26.330 +00:00 [INF] HTTP GET /api/departments responded 200 in 5.5223 ms
+2026-05-25 07:54:26.335 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 7.5337 ms
+2026-05-25 07:54:26.341 +00:00 [INF] HTTP GET /api/notifications responded 200 in 8.1030 ms
+2026-05-25 07:54:26.501 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 16.0607 ms
+2026-05-25 07:54:26.507 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 15.4104 ms
+2026-05-25 07:54:26.507 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 14.5887 ms
+2026-05-25 07:54:40.726 +00:00 [INF] HTTP GET /api/notifications responded 200 in 7.6572 ms
+2026-05-25 07:55:10.772 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.3631 ms
+2026-05-25 07:55:40.811 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.9270 ms
+2026-05-25 07:56:10.841 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0912 ms
+2026-05-25 07:56:40.881 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.8071 ms
+2026-05-25 07:57:10.922 +00:00 [INF] HTTP GET /api/notifications responded 200 in 7.9595 ms
+2026-05-25 07:57:40.974 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.1254 ms
+2026-05-25 07:58:11.009 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.0161 ms
+2026-05-25 07:58:41.056 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.9684 ms
+2026-05-25 07:59:11.102 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1386 ms
+2026-05-25 07:59:41.146 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.7453 ms
+2026-05-25 08:06:12.885 +00:00 [INF] HTTP GET /api/notifications responded 200 in 361.5893 ms
+2026-05-25 08:06:15.704 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 53.1898 ms
+2026-05-25 08:06:15.891 +00:00 [INF] HTTP GET /api/departments responded 200 in 6.9709 ms
+2026-05-25 08:06:15.913 +00:00 [INF] HTTP GET /api/notifications responded 200 in 25.9274 ms
+2026-05-25 08:06:16.219 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 330.5100 ms
+2026-05-25 08:06:46.027 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9665 ms
+2026-05-25 08:06:59.466 +00:00 [INF] HTTP POST /api/personal-evaluations/items responded 200 in 67.8448 ms
+2026-05-25 08:06:59.494 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 4.5431 ms
+2026-05-25 08:07:01.629 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 32.9562 ms
+2026-05-25 08:07:01.660 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 3.4874 ms
+2026-05-25 08:07:02.742 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 6.2162 ms
+2026-05-25 08:07:02.771 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 3.1302 ms
+2026-05-25 08:07:09.055 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 5.4560 ms
+2026-05-25 08:07:09.085 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 3.6141 ms
+2026-05-25 08:07:16.006 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 19.7310 ms
+2026-05-25 08:07:16.034 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 3.6783 ms
+2026-05-25 08:07:16.062 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8385 ms
+2026-05-25 08:07:30.683 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 12.1565 ms
+2026-05-25 08:07:30.709 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 3.4720 ms
+2026-05-25 08:07:44.720 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 3.5795 ms
+2026-05-25 08:07:44.751 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 3.2187 ms
+2026-05-25 08:07:46.096 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6513 ms
+2026-05-25 08:07:59.123 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 4.5254 ms
+2026-05-25 08:07:59.166 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 5.9700 ms
+2026-05-25 08:08:16.140 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3227 ms
+2026-05-25 08:08:46.190 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.4038 ms
+2026-05-25 08:09:16.235 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4837 ms
+2026-05-25 08:09:22.088 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 7.1641 ms
+2026-05-25 08:09:22.123 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 4.8260 ms
+2026-05-25 08:09:46.264 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0954 ms
+2026-05-25 08:09:47.048 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 4.2678 ms
+2026-05-25 08:09:47.103 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/tasks responded 200 in 4.6804 ms
+2026-05-25 08:09:47.105 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/approval-history responded 200 in 3.0609 ms
+2026-05-25 08:09:47.109 +00:00 [INF] HTTP GET /api/plans/c95a1aff-5f01-43ae-b6a9-b5c39ab158c2/line-comments responded 200 in 9.2012 ms
+2026-05-25 08:10:16.297 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9841 ms
+2026-05-25 08:10:46.328 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3774 ms
+2026-05-25 08:11:16.369 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9441 ms
+2026-05-25 08:11:46.405 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1475 ms
+2026-05-25 08:12:16.450 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3890 ms
+2026-05-25 08:12:46.493 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2999 ms
+2026-05-25 08:13:16.542 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9649 ms
+2026-05-25 08:13:46.583 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0216 ms
+2026-05-25 08:14:16.627 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7027 ms
+2026-05-25 08:14:46.659 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8848 ms
+2026-05-25 08:15:16.699 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0360 ms
+2026-05-25 08:15:46.745 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5132 ms
+2026-05-25 08:16:16.779 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9677 ms
+2026-05-25 08:16:46.821 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7730 ms
+2026-05-25 08:17:16.846 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2520 ms
+2026-05-25 08:17:46.893 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9202 ms
+2026-05-25 08:18:16.934 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5306 ms
+2026-05-25 08:18:46.978 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6076 ms
+2026-05-25 08:19:17.015 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1989 ms
+2026-05-25 08:19:47.069 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0853 ms
+2026-05-25 08:22:17.111 +00:00 [INF] HTTP GET /api/notifications responded 401 in 6.3782 ms
+2026-05-25 08:22:17.152 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 16.6886 ms
+2026-05-25 08:22:17.183 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8983 ms
+2026-05-25 08:22:47.221 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0984 ms
+2026-05-25 08:23:17.254 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8289 ms
+2026-05-25 08:23:47.293 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9531 ms
+2026-05-25 08:24:17.325 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7356 ms
+2026-05-25 08:24:47.374 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5838 ms
+2026-05-25 08:25:17.412 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8900 ms
+2026-05-25 08:25:47.455 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8804 ms
+2026-05-25 08:26:17.487 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2422 ms
+2026-05-25 08:26:47.518 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7408 ms
+2026-05-25 08:27:17.556 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3995 ms
+2026-05-25 08:27:47.594 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5320 ms
+2026-05-25 08:28:17.638 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.1265 ms
+2026-05-25 08:28:47.678 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7508 ms
+2026-05-25 08:29:17.714 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9638 ms
+2026-05-25 08:29:38.642 +00:00 [INF] HTTP POST /api/notifications/read-all responded 200 in 42.4097 ms
+2026-05-25 08:29:38.672 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9058 ms
+2026-05-25 08:30:08.704 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9792 ms
+2026-05-25 08:30:38.732 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0740 ms
+2026-05-25 08:31:08.760 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9816 ms
+2026-05-25 08:31:38.807 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6410 ms
+2026-05-25 08:32:08.849 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8172 ms
+2026-05-25 08:32:38.878 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0534 ms
+2026-05-25 08:33:08.921 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4626 ms
+2026-05-25 08:33:38.948 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8066 ms
+2026-05-25 08:34:08.982 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0683 ms
+2026-05-25 08:34:39.013 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8937 ms
+2026-05-25 08:34:46.488 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 17.2923 ms
+2026-05-25 08:34:46.516 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 3.4076 ms
+2026-05-25 08:34:48.345 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 17.5099 ms
+2026-05-25 08:34:48.370 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 3.0113 ms
+2026-05-25 08:34:50.300 +00:00 [INF] HTTP PUT /api/personal-evaluations/items/109a7935-411e-42bc-a0b2-2c0bcc9f1133 responded 200 in 12.0640 ms
+2026-05-25 08:34:50.326 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 2.8733 ms
+2026-05-25 08:34:51.174 +00:00 [INF] HTTP GET /api/personal-evaluations/3dff68d8-e734-42cc-b33f-669c1e6c476e/export/phu-luc-01 responded 200 in 804.2896 ms
+2026-05-25 09:02:04.483 +00:00 [INF] HTTP GET /api/notifications responded 401 in 2.6569 ms
+2026-05-25 09:02:04.654 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 146.4121 ms
+2026-05-25 09:02:04.687 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6438 ms
+2026-05-25 09:02:06.356 +00:00 [INF] HTTP GET /api/personal-evaluations/3dff68d8-e734-42cc-b33f-669c1e6c476e/export/phu-luc-01 responded 200 in 66.6898 ms
+2026-05-25 09:03:34.731 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.7102 ms
+2026-05-25 09:04:26.636 +00:00 [WRN] Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://0.0.0.0:8080'.
+2026-05-25 09:04:26.738 +00:00 [INF] KHCT API started on http://0.0.0.0:8080
+2026-05-25 09:04:37.290 +00:00 [INF] HTTP GET /api/notifications responded 200 in 1395.2285 ms
+2026-05-25 09:05:07.379 +00:00 [INF] HTTP GET /api/notifications responded 200 in 49.6890 ms
+2026-05-25 09:05:37.442 +00:00 [INF] HTTP GET /api/notifications responded 200 in 16.2406 ms
+2026-05-25 09:06:07.481 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.5836 ms
+2026-05-25 09:06:20.645 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 349.3313 ms
+2026-05-25 09:06:20.718 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.8630 ms
+2026-05-25 09:06:20.731 +00:00 [INF] HTTP GET /api/departments responded 200 in 16.7454 ms
+2026-05-25 09:06:20.824 +00:00 [INF] HTTP GET /api/personal-evaluations responded 200 in 111.9431 ms
+2026-05-25 09:06:23.538 +00:00 [INF] HTTP GET /api/personal-evaluations/3dff68d8-e734-42cc-b33f-669c1e6c476e/export/phu-luc-01 responded 200 in 825.5473 ms
+2026-05-25 09:10:09.716 +00:00 [INF] HTTP GET /api/notifications responded 200 in 145.2505 ms
+2026-05-25 09:10:39.759 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8498 ms
+2026-05-25 09:11:09.802 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7108 ms
+2026-05-25 09:11:39.843 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.0436 ms
+2026-05-25 09:12:09.871 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9057 ms
+2026-05-25 09:12:39.904 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9735 ms
+2026-05-25 09:13:09.950 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8795 ms
+2026-05-25 09:13:39.993 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.2213 ms
+2026-05-25 09:14:10.036 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.5864 ms
+2026-05-25 09:14:40.074 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5489 ms
+2026-05-25 09:15:10.107 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.7394 ms
+2026-05-25 09:15:40.158 +00:00 [INF] HTTP GET /api/notifications responded 200 in 8.2472 ms
+2026-05-25 09:16:10.192 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5696 ms
+2026-05-25 09:16:40.235 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1206 ms
+2026-05-25 09:17:10.279 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8760 ms
+2026-05-25 09:17:40.313 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9363 ms
+2026-05-25 09:18:10.362 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3865 ms
+2026-05-25 09:18:40.408 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3126 ms
+2026-05-25 09:19:10.452 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1810 ms
+2026-05-25 09:19:40.494 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.9027 ms
+2026-05-25 09:20:10.539 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3395 ms
+2026-05-25 09:20:40.575 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.7186 ms
+2026-05-25 09:21:10.610 +00:00 [INF] HTTP GET /api/notifications responded 200 in 5.1101 ms
+2026-05-25 09:21:40.647 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.6993 ms
+2026-05-25 09:22:10.687 +00:00 [INF] HTTP GET /api/notifications responded 401 in 5.0952 ms
+2026-05-25 09:22:10.733 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 24.2940 ms
+2026-05-25 09:22:10.762 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0286 ms
+2026-05-25 09:22:40.802 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2135 ms
+2026-05-25 09:23:10.832 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0511 ms
+2026-05-25 09:23:40.881 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8383 ms
+2026-05-25 09:24:10.919 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0866 ms
+2026-05-25 09:24:40.953 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3396 ms
+2026-05-25 09:25:10.991 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3549 ms
+2026-05-25 09:25:41.037 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1683 ms
+2026-05-25 09:26:11.078 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1174 ms
+2026-05-25 09:26:41.108 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3813 ms
+2026-05-25 09:27:11.137 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.4636 ms
+2026-05-25 09:27:41.169 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7751 ms
+2026-05-25 09:28:11.212 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1958 ms
+2026-05-25 09:28:41.246 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7669 ms
+2026-05-25 09:29:11.276 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7738 ms
+2026-05-25 09:29:41.316 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0297 ms
+2026-05-25 09:30:11.358 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1949 ms
+2026-05-25 09:30:41.387 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2169 ms
+2026-05-25 09:31:11.420 +00:00 [INF] HTTP GET /api/notifications responded 200 in 6.3266 ms
+2026-05-25 09:31:41.457 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3199 ms
+2026-05-25 09:32:11.495 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3004 ms
+2026-05-25 09:32:41.527 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5697 ms
+2026-05-25 09:33:11.563 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.9624 ms
+2026-05-25 09:33:41.608 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7394 ms
+2026-05-25 09:34:11.651 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8482 ms
+2026-05-25 09:34:41.683 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.6874 ms
+2026-05-25 09:35:11.738 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.5515 ms
+2026-05-25 09:35:41.777 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.1321 ms
+2026-05-25 09:36:11.820 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7396 ms
+2026-05-25 09:36:41.854 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0851 ms
+2026-05-25 09:37:11.891 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.1794 ms
+2026-05-25 09:37:41.921 +00:00 [INF] HTTP GET /api/notifications responded 401 in 1.2211 ms
+2026-05-25 09:37:41.958 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 17.8180 ms
+2026-05-25 09:37:41.988 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.8553 ms
+2026-05-25 09:38:12.023 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6923 ms
+2026-05-25 09:38:42.069 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.7056 ms
+2026-05-25 09:39:12.106 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.3368 ms
+2026-05-25 09:39:42.154 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.0119 ms
+2026-05-25 09:40:12.180 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.5639 ms
+2026-05-25 09:40:42.218 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.6412 ms
+2026-05-25 09:41:12.248 +00:00 [INF] HTTP GET /api/notifications responded 200 in 2.4951 ms
+2026-05-25 09:41:42.287 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8093 ms
+2026-05-25 09:42:12.332 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.7170 ms
+2026-05-25 09:42:42.358 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2698 ms
+2026-05-25 09:43:12.395 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.2129 ms
+2026-05-25 09:43:42.438 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.5190 ms
+2026-05-25 09:44:02.181 +00:00 [INF] HTTP GET /api/notifications responded 401 in 1.0802 ms
+2026-05-25 09:44:02.236 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 23.0745 ms
+2026-05-25 09:44:02.276 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.8982 ms
+2026-05-25 09:51:46.758 +00:00 [INF] HTTP GET /api/notifications responded 200 in 249.3311 ms
+2026-05-25 10:00:04.887 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 154.0160 ms
+2026-05-25 10:00:05.382 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.7679 ms
+2026-05-25 10:00:05.390 +00:00 [INF] HTTP GET /api/departments responded 200 in 12.9011 ms
+2026-05-25 10:00:05.679 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 52.3730 ms
+2026-05-25 10:00:05.849 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 55.7749 ms
+2026-05-25 10:00:05.855 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 61.8860 ms
+2026-05-25 10:00:06.115 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 19.9529 ms
+2026-05-25 10:10:50.723 +00:00 [INF] HTTP GET /api/notifications responded 401 in 2.0380 ms
+2026-05-25 10:10:50.880 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 129.0891 ms
+2026-05-25 10:10:50.910 +00:00 [INF] HTTP GET /api/notifications responded 200 in 3.9950 ms
+2026-05-25 10:10:51.948 +00:00 [INF] HTTP GET /api/notifications responded 401 in 0.3923 ms
+2026-05-25 10:10:53.346 +00:00 [INF] HTTP POST /api/auth/refresh responded 200 in 16.9691 ms
+2026-05-25 10:10:53.574 +00:00 [INF] HTTP GET /api/notifications responded 200 in 4.3910 ms
+2026-05-25 10:10:53.578 +00:00 [INF] HTTP GET /api/departments responded 200 in 6.9339 ms
+2026-05-25 10:10:53.583 +00:00 [INF] HTTP GET /api/plans/resolve responded 200 in 7.2416 ms
+2026-05-25 10:10:54.073 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/line-comments responded 200 in 6.5659 ms
+2026-05-25 10:10:54.080 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/tasks responded 200 in 13.8685 ms
+2026-05-25 10:10:54.387 +00:00 [INF] HTTP GET /api/plans/9555be4b-2666-4fd5-9304-276a0023f509/approval-history responded 200 in 5.8664 ms

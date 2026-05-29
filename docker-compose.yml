@@ -1,0 +1,54 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: khct-db
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-khct}
+      MYSQL_USER: ${MYSQL_USER:-khct}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-changeme}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpass}
+      TZ: Asia/Ho_Chi_Minh
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+
+  api:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    container_name: khct-api
+    working_dir: /src/backend
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/src/backend
+      - ./uploads:/src/uploads
+    command: >
+      sh -c "dotnet restore KHCT.Api/KHCT.Api.csproj &&
+             dotnet run --project KHCT.Api/KHCT.Api.csproj --urls http://0.0.0.0:8080"
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
+  web:
+    image: node:24-alpine
+    container_name: khct-web
+    working_dir: /app
+    env_file:
+      - .env
+    volumes:
+      - ./frontend:/app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0 --port 5173"
+    ports:
+      - "5173:5173"
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: khct-nginx
+    depends_on:
+      - api
+      - web
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "80:80"

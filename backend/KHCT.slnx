@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="KHCT.Api/KHCT.Api.csproj" />
+  <Project Path="KHCT.Application/KHCT.Application.csproj" />
+  <Project Path="KHCT.Domain/KHCT.Domain.csproj" />
+  <Project Path="KHCT.Infrastructure/KHCT.Infrastructure.csproj" />
+  <Project Path="KHCT.Tests/KHCT.Tests.csproj" />
+</Solution>

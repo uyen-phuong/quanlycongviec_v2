@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet build *)",
+      "Bash(dotnet tool *)",
+      "Bash(dotnet ef *)",
+      "Bash(dotnet test *)",
+      "PowerShell($env:KHCT_AUTO_MIGRATE=\"true\"; dotnet run --project backend/KHCT.Api/KHCT.Api.csproj)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\hi\\\\OneDrive\\\\Desktop\\\\khct\\\\backend\" -Directory -Force)",
+      "Bash(Select-Object Name)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\hi\\\\OneDrive\\\\Desktop\\\\khct\\\\backend\" -Directory)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\hi\\\\OneDrive\\\\Desktop\\\\khct\\\\backend\" -Recurse -Directory)",
+      "Bash(Select-Object FullName)",
+      "PowerShell(head -50)",
+      "Bash(grep -E \"\\\\.cs$\")",
+      "Bash(npx eslint *)",
+      "Bash(curl -s http://localhost:5120/health)",
+      "Bash(curl -s http://localhost:7120/health)",
+      "Bash(curl -s http://localhost:5051/health)",
+      "Bash(curl -s -X POST http://localhost:5051/api/auth/login -H \"Content-Type: application/json\" -d '{\"username\":\"admin\",\"password\":\"Admin@123\"}')",
+      "Bash(npx tsc *)",
+      "Bash(dotnet run *)",
+      "Bash(grep -n \"HttpDelete\\\\|\\\\\\\\[HttpDelete\" \"C:/Users/hi/OneDrive/Desktop/khct/backend/KHCT.Api/Controllers/PlansController.cs\")",
+      "PowerShell(Start-Process -FilePath \"dotnet\" -ArgumentList \"run\",\"--project\",\"C:\\\\Users\\\\hi\\\\OneDrive\\\\Desktop\\\\khct\\\\backend\\\\KHCT.Api\\\\KHCT.Api.csproj\",\"--no-build\" -WorkingDirectory \"C:\\\\Users\\\\hi\\\\OneDrive\\\\Desktop\\\\khct\\\\backend\\\\KHCT.Api\" -WindowStyle Hidden)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:5051/health\" -TimeoutSec 5 -UseBasicParsing; \"$\\($r.StatusCode\\): $\\($r.Content\\)\" } catch { \"error: $\\($_.Exception.Message\\)\" })",
+      "Bash(cp \"C:/Users/hi/Downloads/Phu luc 01.xlsx\" \"C:/Users/hi/OneDrive/Desktop/khct/backend/KHCT.Infrastructure/Excel/Templates/PhuLuc01.xlsx\")",
+      "Bash(cp \"C:/Users/hi/Downloads/Phu luc 01A.xlsx\" \"C:/Users/hi/OneDrive/Desktop/khct/backend/KHCT.Infrastructure/Excel/Templates/PhuLuc01A.xlsx\")",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(npx vite *)",
+      "PowerShell(mysql -u root -prootpass khct -e \"SELECT migration_id FROM __EFMigrationsHistory ORDER BY migration_id;\" 2>&1)",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import sys; sys.stdout.buffer.write\\(sys.stdin.buffer.read\\(\\)\\)\")",
+      "Read(//mnt/c/Users/hi/**)",
+      "Bash(python3 -c ' *)",
+      "PowerShell($timeout = 90; $elapsed = 0; do { Start-Sleep 5; $elapsed += 5; $log = docker logs khct-api --tail 5 2>&1; Write-Host \"[$elapsed s] $\\($log -join ' | '\\)\"; if \\($log -match \"Application started|Now listening\"\\) { break } } while \\($elapsed -lt $timeout\\))",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\hi\\\\OneDrive\\\\Desktop\\\\khct\\\\backend\\\\KHCT.Api\\\\Middleware\\\\\" -Force)"
+    ]
+  }
+}

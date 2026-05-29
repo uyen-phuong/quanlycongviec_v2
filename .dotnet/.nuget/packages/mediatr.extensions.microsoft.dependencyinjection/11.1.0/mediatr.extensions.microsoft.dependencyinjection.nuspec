@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>MediatR.Extensions.Microsoft.DependencyInjection</id>
+    <version>11.1.0</version>
+    <authors>Jimmy Bogard</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>gradient_128x128.png</icon>
+    <description>MediatR extensions for ASP.NET Core</description>
+    <copyright>Copyright Jimmy Bogard</copyright>
+    <tags>mediator request response queries commands notifications</tags>
+    <repository type="git" url="https://github.com/jbogard/MediatR.Extensions.Microsoft.DependencyInjection" commit="238a3770f16174f3585c58c390914ca58c7acf25" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="MediatR" version="[11.0.0, 12.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="7.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
