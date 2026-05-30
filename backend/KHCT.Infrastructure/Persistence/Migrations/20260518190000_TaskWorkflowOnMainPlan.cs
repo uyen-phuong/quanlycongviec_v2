@@ -69,9 +69,9 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_task_approval_history_user_actor_user_id",
+                        name: "fk_task_approval_history_app_user_actor_user_id",
                         column: x => x.actor_user_id,
-                        principalTable: "user",
+                        principalTable: "app_user",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 })

@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$workspace = "C:\Users\hi\OneDrive\Desktop\khct"
+$workspace = Split-Path -Parent $PSScriptRoot
 $logDir = Join-Path $workspace ".logs"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 $stdoutLog = Join-Path $logDir "backend-stdout.log"

@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$workspace = "C:\Users\hi\OneDrive\Desktop\khct"
+$workspace = Split-Path -Parent $PSScriptRoot
 $frontendDir = Join-Path $workspace "frontend"
 $logDir = Join-Path $workspace ".logs"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null

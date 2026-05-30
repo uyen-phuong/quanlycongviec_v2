@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -17,7 +17,7 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                 type: "timestamp(6)",
                 rowVersion: true,
                 nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                defaultValueSql: "CURRENT_TIMESTAMP(6)");
         }
 
         /// <inheritdoc />

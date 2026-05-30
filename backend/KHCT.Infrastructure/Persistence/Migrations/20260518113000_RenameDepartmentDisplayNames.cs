@@ -13,36 +13,14 @@ namespace KHCT.Infrastructure.Persistence.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.UpdateData(
-                table: "department",
-                keyColumn: "id",
-                keyValue: new Guid("11111111-0000-0000-0000-000000000008"),
-                column: "name",
-                value: "Văn phòng Tây Nam Bộ");
-
-            migrationBuilder.UpdateData(
-                table: "department",
-                keyColumn: "id",
-                keyValue: new Guid("11111111-0000-0000-0000-000000000009"),
-                column: "name",
-                value: "Bộ phận Thư ký tổng hợp");
+            migrationBuilder.Sql("UPDATE department SET name = 'Văn phòng Tây Nam Bộ' WHERE id = '11111111-0000-0000-0000-000000000008';");
+            migrationBuilder.Sql("UPDATE department SET name = 'Bộ phận Thư ký tổng hợp' WHERE id = '11111111-0000-0000-0000-000000000009';");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.UpdateData(
-                table: "department",
-                keyColumn: "id",
-                keyValue: new Guid("11111111-0000-0000-0000-000000000008"),
-                column: "name",
-                value: "Văn phòng Trưởng KTNB");
-
-            migrationBuilder.UpdateData(
-                table: "department",
-                keyColumn: "id",
-                keyValue: new Guid("11111111-0000-0000-0000-000000000009"),
-                column: "name",
-                value: "Tổng hợp");
+            migrationBuilder.Sql("UPDATE department SET name = 'Văn phòng Trưởng KTNB' WHERE id = '11111111-0000-0000-0000-000000000008';");
+            migrationBuilder.Sql("UPDATE department SET name = 'Tổng hợp' WHERE id = '11111111-0000-0000-0000-000000000009';");
         }
     }
 }
