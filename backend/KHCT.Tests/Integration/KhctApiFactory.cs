@@ -24,6 +24,7 @@ public sealed class KhctApiFactory : WebApplicationFactory<Program>, IAsyncLifet
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Development");
+        Environment.SetEnvironmentVariable("KHCT_AUTO_MIGRATE", "false");
         builder.ConfigureServices(services =>
         {
             services.RemoveAll<DbContextOptions<KhctDbContext>>();
@@ -35,6 +36,11 @@ public sealed class KhctApiFactory : WebApplicationFactory<Program>, IAsyncLifet
 
     public async System.Threading.Tasks.Task InitializeAsync()
     {
+        _connection.CreateCollation("ascii_general_ci", (x, y) => string.Compare(x, y, StringComparison.OrdinalIgnoreCase));
+        _connection.CreateCollation("utf8mb4_0900_ai_ci", (x, y) => string.Compare(x, y, StringComparison.OrdinalIgnoreCase));
+        _connection.CreateCollation("utf8mb4_general_ci", (x, y) => string.Compare(x, y, StringComparison.OrdinalIgnoreCase));
+        _connection.CreateCollation("utf8mb4_bin", (x, y) => string.Compare(x, y, StringComparison.Ordinal));
+
         await _connection.OpenAsync();
         using var scope = Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<KhctDbContext>();
@@ -108,7 +114,7 @@ public sealed class KhctApiFactory : WebApplicationFactory<Program>, IAsyncLifet
 
     public async System.Threading.Tasks.Task<Guid> CreateMainPlanAsync(HttpClient client, int year = 2026, int month = 5)
     {
-        var response = await client.PostAsJsonAsync("/api/plans/main", new { year, month });
+        var response = await client.PostAsJsonAsync("/api/plans/main", new { name = $"Kế hoạch {year}", year, month, reportingPeriodType = "monthly", ktnbLeaderId = (Guid?)null });
         response.EnsureSuccessStatusCode();
         var root = await response.Content.ReadFromJsonAsync<JsonElement>();
         return root.GetProperty("data").GetProperty("id").GetGuid();

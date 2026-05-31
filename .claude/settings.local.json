@@ -33,7 +33,9 @@
       "Read(//mnt/c/Users/hi/**)",
       "Bash(python3 -c ' *)",
       "PowerShell($timeout = 90; $elapsed = 0; do { Start-Sleep 5; $elapsed += 5; $log = docker logs khct-api --tail 5 2>&1; Write-Host \"[$elapsed s] $\\($log -join ' | '\\)\"; if \\($log -match \"Application started|Now listening\"\\) { break } } while \\($elapsed -lt $timeout\\))",
-      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\hi\\\\OneDrive\\\\Desktop\\\\khct\\\\backend\\\\KHCT.Api\\\\Middleware\\\\\" -Force)"
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\hi\\\\OneDrive\\\\Desktop\\\\khct\\\\backend\\\\KHCT.Api\\\\Middleware\\\\\" -Force)",
+      "Bash(Get-ChildItem -Recurse -Force)",
+      "PowerShell(head -200)"
     ]
   }
 }

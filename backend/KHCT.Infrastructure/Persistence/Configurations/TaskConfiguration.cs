@@ -18,7 +18,7 @@ public class TaskConfiguration : IEntityTypeConfiguration<TaskEntity>
         b.HasIndex(x => x.PlanId);
         b.HasIndex(x => x.ParentTaskId);
         b.HasIndex(x => x.OwnerDepartmentId);
-        b.HasIndex(x => x.ApprovalStatus);
+        b.HasIndex(x => x.WorkflowStatus);
         b.HasOne(x => x.Plan)
             .WithMany(p => p.Tasks)
             .HasForeignKey(x => x.PlanId)
@@ -39,5 +39,9 @@ public class TaskConfiguration : IEntityTypeConfiguration<TaskEntity>
             .WithMany()
             .HasForeignKey(x => x.OwnerDepartmentId)
             .OnDelete(DeleteBehavior.Restrict);
+        b.HasOne<Project>()
+            .WithMany(p => p.Tasks)
+            .HasForeignKey(x => x.ProjectId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

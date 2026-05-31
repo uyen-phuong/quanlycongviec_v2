@@ -126,7 +126,23 @@ builder.Services
         };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdmin", policy => 
+        policy.RequireRole(KHCT.Domain.Constants.RoleConstants.Admin));
+    options.AddPolicy("RequireLanhDao", policy => 
+        policy.RequireRole(
+            KHCT.Domain.Constants.RoleConstants.Admin,
+            KHCT.Domain.Constants.RoleConstants.TruongKtnb,
+            KHCT.Domain.Constants.RoleConstants.PhoTruongKtnb));
+    options.AddPolicy("RequireManager", policy => 
+        policy.RequireRole(
+            KHCT.Domain.Constants.RoleConstants.Admin,
+            KHCT.Domain.Constants.RoleConstants.TruongKtnb,
+            KHCT.Domain.Constants.RoleConstants.PhoTruongKtnb,
+            KHCT.Domain.Constants.RoleConstants.TruongPhong,
+            KHCT.Domain.Constants.RoleConstants.PhoPhong));
+});
 
 var app = builder.Build();
 

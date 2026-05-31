@@ -2,6 +2,7 @@ using KHCT.Application.Common.Interfaces;
 using KHCT.Domain.Common;
 using KHCT.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Position = KHCT.Domain.Entities.Position;
 
 namespace KHCT.Application.Admin;
 
@@ -29,9 +30,13 @@ internal static class AdminSupport
             user.Email,
             user.IsActive,
             user.LastLoginAt,
+            user.LastLogoutAt,
             user.DepartmentId,
             user.Department?.Code,
             user.Department?.Name,
+            user.PositionId,
+            user.Position?.Code,
+            user.Position?.Name,
             role?.Id,
             role?.Code,
             role?.Name);
@@ -47,15 +52,22 @@ internal static class AdminSupport
             user.Email,
             user.IsActive,
             user.LastLoginAt,
+            user.LastLogoutAt,
             user.DepartmentId,
             user.Department?.Code,
             user.Department?.Name,
+            user.PositionId,
+            user.Position?.Code,
+            user.Position?.Name,
             role?.Id,
             role?.Code,
             role?.Name,
             user.CreatedAt,
             user.UpdatedAt);
     }
+
+    public static PositionDto ToDto(Position position) =>
+        new(position.Id, position.Code, position.Name, position.IsActive, position.SortOrder);
 
     public static DepartmentDto ToDto(Department department) =>
         new(department.Id, department.Code, department.Name, department.IsActive);

@@ -51,9 +51,9 @@ public class ApproveTaskWorkflowHandler : IRequestHandler<ApproveTaskWorkflowCom
         var now = DateTime.UtcNow;
         foreach (var task in workflowTasks)
         {
-            var fromStatus = task.ApprovalStatus;
-            task.ApprovalStatus = nextStatus;
-            if (nextStatus == TaskApprovalStatus.ApprovedFinal)
+            var fromStatus = task.WorkflowStatus;
+            task.WorkflowStatus = nextStatus;
+            if (nextStatus == TaskWorkflowStatus.Completed)
             {
                 task.ApprovedAt = now;
             }
@@ -69,6 +69,6 @@ public class ApproveTaskWorkflowHandler : IRequestHandler<ApproveTaskWorkflowCom
         }
 
         await _db.SaveChangesAsync(ct);
-        return TaskSupport.TaskApprovalStatusCode(TaskWorkflowSupport.AggregateStatus(workflowTasks));
+        return TaskSupport.TaskWorkflowStatusCode(TaskWorkflowSupport.AggregateStatus(workflowTasks));
     }
 }

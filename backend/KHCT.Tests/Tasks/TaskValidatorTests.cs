@@ -67,8 +67,8 @@ public class TaskValidatorTests
     }
 
     private static CreateTaskCommand ValidCreate() =>
-        new(Guid.NewGuid(), null, "1", 10, false, "Task", 0, "not_started", null, null, null, null, null, null, null, null, []);
+        new(Guid.NewGuid(), null, "1", 10, false, "Task", 0, "not_started", null, null, null, null, null, null, null, null, null, "normal", "medium", []);
 
     private static UpdateTaskCommand ValidUpdate() =>
-        new(Guid.NewGuid(), null, "1", 10, false, "Task", 0, "not_started", null, null, null, null, null, null, null, null, []);
+        new(Guid.NewGuid(), null, "1", 10, false, "Task", 0, "not_started", null, null, null, null, null, null, null, null, null, "normal", "medium", []);
 }

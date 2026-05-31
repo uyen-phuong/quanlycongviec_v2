@@ -17,9 +17,9 @@ public sealed class PlansMainController : BaseApiController
     {
     }
 
-    public record CreateMainPlanRequest(int Year, int Month);
+    public record CreateMainPlanRequest(string Name, int Year, int Month, string ReportingPeriodType, Guid? KtnbLeaderId);
 
-    public record UpdateMainPlanRequest(int Year, int Month);
+    public record UpdateMainPlanRequest(string Name, int Year, int Month, string ReportingPeriodType, Guid? KtnbLeaderId);
 
     public record ImportMainPlanExcelRequest(IFormFile? File);
 
@@ -69,7 +69,7 @@ public sealed class PlansMainController : BaseApiController
     [HttpPost]
     public async Task<IActionResult> CreatePlan([FromBody] CreateMainPlanRequest request, CancellationToken ct)
     {
-        var result = await Sender.Send(new CreateMainPlanCommand(request.Year, request.Month), ct);
+        var result = await Sender.Send(new CreateMainPlanCommand(request.Name, request.Year, request.Month, request.ReportingPeriodType, request.KtnbLeaderId), ct);
         return Ok(new ApiEnvelope<object>(result));
     }
 
@@ -77,7 +77,7 @@ public sealed class PlansMainController : BaseApiController
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdatePlan(Guid id, [FromBody] UpdateMainPlanRequest request, CancellationToken ct)
     {
-        var result = await Sender.Send(new UpdateMainPlanCommand(id, request.Year, request.Month), ct);
+        var result = await Sender.Send(new UpdateMainPlanCommand(id, request.Name, request.Year, request.Month, request.ReportingPeriodType, request.KtnbLeaderId), ct);
         return Ok(new ApiEnvelope<object>(result));
     }
 
@@ -116,7 +116,7 @@ public sealed class PlansMainController : BaseApiController
         return Ok(new ApiEnvelope<object>(result));
     }
 
-    private static ApprovalStatus? ParseStatus(string? status)
+    private static WorkflowStatus? ParseStatus(string? status)
     {
         if (string.IsNullOrWhiteSpace(status))
         {
@@ -125,12 +125,12 @@ public sealed class PlansMainController : BaseApiController
 
         return status.Trim().ToLowerInvariant() switch
         {
-            "draft" => ApprovalStatus.Draft,
-            "pending" => ApprovalStatus.Pending,
-            "approved_1" => ApprovalStatus.Approved1,
-            "approved_2" => ApprovalStatus.Approved2,
-            "approved_3" => ApprovalStatus.Approved3,
-            "returned" => ApprovalStatus.Returned,
+            "draft" => WorkflowStatus.Draft,
+            "pending" => WorkflowStatus.Pending,
+            "approved_1" => WorkflowStatus.Approved1,
+            "approved_2" => WorkflowStatus.Approved2,
+            "approved_3" => WorkflowStatus.Approved3,
+            "returned" => WorkflowStatus.Returned,
             _ => throw new FluentValidation.ValidationException("Invalid status.")
         };
     }

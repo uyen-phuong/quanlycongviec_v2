@@ -39,14 +39,58 @@ public class DeleteTaskHandler : IRequestHandler<DeleteTaskCommand, bool>
             .FirstOrDefaultAsync(x => x.Id == request.Id, ct)
             ?? throw new KeyNotFoundException("Task not found.");
 
+        if (task.Category == TaskCategory.PersonalTask)
+        {
+            if (task.AssigneeUserId != _currentUser.UserId)
+            {
+                throw new ForbiddenException("forbidden_personal_task", "You can only delete your own personal tasks.");
+            }
+
+            var hasChildren = await _db.Tasks.AnyAsync(x => x.ParentTaskId == task.Id, ct);
+            if (hasChildren)
+            {
+                throw new DomainException("task_has_children", "Cannot delete a task that has children.");
+            }
+
+            _db.Tasks.Remove(task);
+            await _db.SaveChangesAsync(ct);
+            return true;
+        }
+
+        if (task.Category == TaskCategory.DepartmentTask || task.Category == TaskCategory.ProjectTask)
+        {
+            var canDelete = (PlanSupport.HasRole(_currentUser, PlanSupport.RolePhoTruongKtnb) ||
+                             PlanSupport.HasRole(_currentUser, PlanSupport.RoleTruongPhong) ||
+                             PlanSupport.HasRole(_currentUser, PlanSupport.RoleTruongNhom) ||
+                             PlanSupport.HasRole(_currentUser, PlanSupport.RoleAdmin)) &&
+                            (PlanSupport.HasRole(_currentUser, PlanSupport.RoleAdmin) ||
+                             PlanSupport.HasRole(_currentUser, PlanSupport.RolePhoTruongKtnb) ||
+                             _currentUser.DepartmentId == task.OwnerDepartmentId);
+
+            if (!canDelete)
+            {
+                throw new ForbiddenException("forbidden_task_delete", "You do not have access to delete this task.");
+            }
+
+            var hasChildren = await _db.Tasks.AnyAsync(x => x.ParentTaskId == task.Id, ct);
+            if (hasChildren)
+            {
+                throw new DomainException("task_has_children", "Cannot delete a task that has children.");
+            }
+
+            _db.Tasks.Remove(task);
+            await _db.SaveChangesAsync(ct);
+            return true;
+        }
+
         TaskSupport.EnsureCanCreateOrDeleteTask(task.Plan!, _currentUser);
         if (task.Plan!.Scope != PlanScope.Sub)
         {
             TaskSupport.EnsureNotLocked(task);
         }
 
-        var hasChildren = await _db.Tasks.AnyAsync(x => x.ParentTaskId == task.Id, ct);
-        if (hasChildren)
+        var hasPlanChildren = await _db.Tasks.AnyAsync(x => x.ParentTaskId == task.Id, ct);
+        if (hasPlanChildren)
         {
             throw new DomainException("task_has_children", "Cannot delete a task that has children.");
         }

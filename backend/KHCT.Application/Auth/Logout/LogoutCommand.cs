@@ -22,10 +22,18 @@ public class LogoutHandler : IRequestHandler<LogoutCommand, Unit>
         if (string.IsNullOrEmpty(request.RefreshToken)) return Unit.Value;
 
         var hash = _tokens.HashRefreshToken(request.RefreshToken);
-        var token = await _db.RefreshTokens.FirstOrDefaultAsync(t => t.TokenHash == hash, ct);
+        var token = await _db.RefreshTokens
+            .Include(t => t.User)
+            .FirstOrDefaultAsync(t => t.TokenHash == hash, ct);
+
         if (token is not null && token.RevokedAt is null)
         {
-            token.RevokedAt = DateTime.UtcNow;
+            var now = DateTime.UtcNow;
+            token.RevokedAt = now;
+            if (token.User is not null)
+            {
+                token.User.LastLogoutAt = now;
+            }
             await _db.SaveChangesAsync(ct);
         }
         return Unit.Value;

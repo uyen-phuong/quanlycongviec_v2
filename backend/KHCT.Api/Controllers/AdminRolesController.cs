@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KHCT.Api.Controllers;
 
-[Authorize(Roles = "ADMIN")]
+[Authorize(Policy = "RequireAdmin")]
 [Route("api/admin/roles")]
 [Tags("Admin")]
 public sealed class AdminRolesController : BaseApiController

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { toApiError } from "@/shared/api/client";
 import { useAdminDepartments, useUpdateDepartment } from "@/features/admin/hooks";
 import type { AdminDepartmentDto } from "@/features/admin/types";
+import { DataTable, type ColumnDef } from "@/shared/components/DataTable";
+import { StatusBadge } from "@/shared/components/StatusBadge";
 import "@/features/admin/AdminPages.css";
 
 function DepartmentRow({
@@ -38,9 +40,10 @@ function DepartmentRow({
         <td className="admin-table__mono">{dept.code}</td>
         <td>{dept.name}</td>
         <td>
-          <span className={`admin-badge ${dept.isActive ? "admin-badge--active" : "admin-badge--inactive"}`}>
-            {dept.isActive ? "Hoạt động" : "Tạm dừng"}
-          </span>
+          <StatusBadge
+            status={dept.isActive ? "Hoạt động" : "Tạm dừng"}
+            variant={dept.isActive ? "green" : "gray"}
+          />
         </td>
         <td>
           <button className="admin-btn admin-btn--xs" onClick={() => setEditing(true)} type="button">
@@ -109,23 +112,17 @@ export function AdminDepartmentsPage() {
       )}
 
       {deptsQuery.data && (
-        <div className="admin-table-wrapper">
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th>Mã (bất biến)</th>
-                <th>Tên đơn vị</th>
-                <th>Trạng thái</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {deptsQuery.data.map((dept) => (
-                <DepartmentRow dept={dept} key={dept.id} />
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <DataTable
+          data={deptsQuery.data}
+          keyExtractor={(d) => d.id}
+          columns={[
+            { key: "code", header: "Mã (bất biến)" },
+            { key: "name", header: "Tên đơn vị" },
+            { key: "isActive", header: "Trạng thái" },
+            { key: "actions", header: "" },
+          ]}
+          renderRow={(dept) => <DepartmentRow dept={dept} key={dept.id} />}
+        />
       )}
     </div>
   );

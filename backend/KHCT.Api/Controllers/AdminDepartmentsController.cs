@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KHCT.Api.Controllers;
 
-[Authorize(Roles = "ADMIN")]
+[Authorize(Policy = "RequireAdmin")]
 [Route("api/admin/departments")]
 [Tags("Admin")]
 public sealed class AdminDepartmentsController : BaseApiController
@@ -15,12 +15,20 @@ public sealed class AdminDepartmentsController : BaseApiController
     {
     }
 
+    public record CreateDepartmentRequest(string Code, string Name);
     public record UpdateDepartmentRequest(string Name, bool IsActive);
 
     [HttpGet]
     public async Task<IActionResult> GetDepartments(CancellationToken ct)
     {
         var result = await Sender.Send(new GetDepartmentsQuery(), ct);
+        return Ok(new ApiEnvelope<object>(result));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateDepartment([FromBody] CreateDepartmentRequest request, CancellationToken ct)
+    {
+        var result = await Sender.Send(new CreateDepartmentCommand(request.Code, request.Name), ct);
         return Ok(new ApiEnvelope<object>(result));
     }
 

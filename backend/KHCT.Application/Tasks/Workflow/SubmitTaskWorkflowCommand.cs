@@ -50,21 +50,21 @@ public class SubmitTaskWorkflowHandler : IRequestHandler<SubmitTaskWorkflowComma
         var now = DateTime.UtcNow;
         foreach (var task in workflowTasks)
         {
-            var fromStatus = task.ApprovalStatus;
-            task.ApprovalStatus = TaskApprovalStatus.PendingTeam;
+            var fromStatus = task.WorkflowStatus;
+            task.WorkflowStatus = TaskWorkflowStatus.PendingReview;
             task.SubmittedAt = now;
             task.ApprovedAt = null;
             _db.TaskApprovalHistories.Add(TaskWorkflowSupport.CreateHistory(
                 task,
                 department?.Id,
-                fromStatus == TaskApprovalStatus.Returned ? ApprovalAction.Resubmit : ApprovalAction.Submit,
+                fromStatus == TaskWorkflowStatus.Returned ? ApprovalAction.Resubmit : ApprovalAction.Submit,
                 fromStatus,
-                task.ApprovalStatus,
+                task.WorkflowStatus,
                 actorId,
                 request.Comment));
         }
 
         await _db.SaveChangesAsync(ct);
-        return TaskSupport.TaskApprovalStatusCode(TaskWorkflowSupport.AggregateStatus(workflowTasks));
+        return TaskSupport.TaskWorkflowStatusCode(TaskWorkflowSupport.AggregateStatus(workflowTasks));
     }
 }

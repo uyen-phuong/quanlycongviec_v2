@@ -12,6 +12,10 @@ import type {
   PlanListFilters,
   PlanListItem,
 } from "@/features/plans/types";
+import { DataTable, type ColumnDef } from "@/shared/components/DataTable";
+import { FilterPanel, FilterField } from "@/shared/components/FilterPanel";
+import { Pagination } from "@/shared/components/Pagination";
+import { StatusBadge } from "@/shared/components/StatusBadge";
 
 const statusOptions: Array<{ value: ApprovalStatus | ""; label: string }> = [
   { value: "", label: "Tất cả trạng thái" },
@@ -48,9 +52,6 @@ function formatMonth(plan: PlanListItem) {
   return `${String(plan.month).padStart(2, "0")}/${plan.year}`;
 }
 
-function statusClass(status: ApprovalStatus) {
-  return `plans-status plans-status--${status}`;
-}
 
 export function PlanListPage() {
   const auth = useAuth();
@@ -120,6 +121,65 @@ export function PlanListPage() {
 
   const isPending = createPlanMutation.isPending || updatePlanMutation.isPending;
 
+  const columns: ColumnDef<PlanListItem>[] = [
+    {
+      key: "month",
+      header: "Kỳ",
+      className: "plans-table__title",
+      cell: (p) => formatMonth(p),
+    },
+    {
+      key: "department",
+      header: "Phòng",
+      cell: (p) => getDepartmentLabel(p.departmentCode, p.departmentName) || "Kế hoạch tổng hợp",
+    },
+    {
+      key: "status",
+      header: "Trạng thái",
+      cell: (p) => <StatusBadge status={p.status} />,
+    },
+    {
+      key: "createdByName",
+      header: "Người tạo",
+      cell: (p) => p.createdByName ?? "Không rõ",
+    },
+    {
+      key: "submittedAt",
+      header: "Ngày nộp",
+      cell: (p) => p.submittedAt ? new Date(p.submittedAt).toLocaleString("vi-VN") : "-",
+    },
+    {
+      key: "updatedAt",
+      header: "Cập nhật",
+      cell: (p) => new Date(p.updatedAt).toLocaleString("vi-VN"),
+    },
+    {
+      key: "actions",
+      header: "",
+      cell: (plan) => (
+        <div className="plans-table__actions">
+          <button className="plans-link" onClick={() => navigate(`/plans/main/${plan.id}`)} type="button">
+            Mở chi tiết
+          </button>
+          {canOpenCreate && plan.status === "draft" ? (
+            <>
+              <button className="plans-link" onClick={() => { setEditingPlan(plan); setIsDialogOpen(true); }} type="button">
+                Sửa kỳ
+              </button>
+              <button className="plans-link plans-link--danger" disabled={deletePlanMutation.isPending} onClick={() => { void handleDelete(plan); }} type="button">
+                Xóa
+              </button>
+            </>
+          ) : null}
+        </div>
+      ),
+    },
+  ];
+
+  const totalPages = plansQuery.data
+    ? Math.ceil(plansQuery.data.meta.total / filters.pageSize)
+    : 1;
+
   return (
     <div className="plans-page">
       <section className="plans-hero">
@@ -142,11 +202,15 @@ export function PlanListPage() {
       </section>
 
       <section className="plans-panel">
-        <div className="plans-filters">
-          <label className="plans-field">
-            <span>Kỳ kế hoạch</span>
+        <FilterPanel
+          onSearch={() => { /* Fetch is driven by filters state */ }}
+          onReset={() => setFilters({ page: 1, pageSize: 10, year: null, month: null, status: "" })}
+        >
+          <FilterField label="Kỳ kế hoạch">
             <input
-              className="plans-input"
+              className="filter-input"
+              type="month"
+              value={toMonthValue(filters.year, filters.month)}
               onChange={(event) => {
                 const next = parseMonthFilter(event.target.value);
                 setFilters((current) => ({
@@ -156,15 +220,12 @@ export function PlanListPage() {
                   month: next.month,
                 }));
               }}
-              type="month"
-              value={toMonthValue(filters.year, filters.month)}
             />
-          </label>
-
-          <label className="plans-field">
-            <span>Trạng thái</span>
+          </FilterField>
+          <FilterField label="Trạng thái">
             <select
-              className="plans-input"
+              className="filter-select"
+              value={filters.status}
               onChange={(event) =>
                 setFilters((current) => ({
                   ...current,
@@ -172,7 +233,6 @@ export function PlanListPage() {
                   status: event.target.value as ApprovalStatus | "",
                 }))
               }
-              value={filters.status}
             >
               {statusOptions.map((option) => (
                 <option key={option.value || "all"} value={option.value}>
@@ -180,134 +240,28 @@ export function PlanListPage() {
                 </option>
               ))}
             </select>
-          </label>
+          </FilterField>
+        </FilterPanel>
 
-        </div>
-
-        {plansQuery.isLoading ? (
-          <div className="plans-state">
-            <h2>Đang tải danh sách</h2>
-            <p>Frontend đang gọi paged endpoint và đồng bộ filter hiện tại.</p>
-          </div>
-        ) : plansQuery.isError ? (
+        {plansQuery.isError ? (
           <div className="plans-state">
             <h2>Không tải được danh sách</h2>
             <p>{toApiError(plansQuery.error).message}</p>
           </div>
         ) : (
           <>
-            <table className="plans-table">
-              <thead>
-                <tr>
-                  <th>Kỳ</th>
-                  <th>Phòng</th>
-                  <th>Trạng thái</th>
-                  <th>Người tạo</th>
-                  <th>Ngày nộp</th>
-                  <th>Cập nhật</th>
-                  <th />
-                </tr>
-              </thead>
-              <tbody>
-                {plansQuery.data?.items.map((plan) => (
-                  <tr key={plan.id}>
-                    <td className="plans-table__title">{formatMonth(plan)}</td>
-                    <td>{getDepartmentLabel(plan.departmentCode, plan.departmentName) || "Kế hoạch tổng hợp"}</td>
-                    <td>
-                      <span className={statusClass(plan.status)}>{plan.status}</span>
-                    </td>
-                    <td>{plan.createdByName ?? "Không rõ"}</td>
-                    <td>
-                      {plan.submittedAt
-                        ? new Date(plan.submittedAt).toLocaleString("vi-VN")
-                        : "-"}
-                    </td>
-                    <td>{new Date(plan.updatedAt).toLocaleString("vi-VN")}</td>
-                    <td>
-                      <div className="plans-table__actions">
-                        <button
-                          className="plans-link"
-                          onClick={() =>
-                            navigate(`/plans/main/${plan.id}`)
-                          }
-                          type="button"
-                        >
-                          Mở chi tiết
-                        </button>
-                        {canOpenCreate && plan.status === "draft" ? (
-                          <>
-                            <button
-                              className="plans-link"
-                              onClick={() => {
-                                setEditingPlan(plan);
-                                setIsDialogOpen(true);
-                              }}
-                              type="button"
-                            >
-                              Sửa kỳ
-                            </button>
-                            <button
-                              className="plans-link plans-link--danger"
-                              disabled={deletePlanMutation.isPending}
-                              onClick={() => { void handleDelete(plan); }}
-                              type="button"
-                            >
-                              Xóa
-                            </button>
-                          </>
-                        ) : null}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <DataTable
+              data={plansQuery.data?.items ?? []}
+              columns={columns}
+              keyExtractor={(p) => p.id}
+              isLoading={plansQuery.isLoading}
+            />
 
-            {plansQuery.data?.items.length === 0 ? (
-              <div className="plans-state">
-                <h2>Chưa có bản ghi nào</h2>
-                <p>Hãy đổi filter hoặc tạo kế hoạch mới cho kỳ đang cần theo dõi.</p>
-              </div>
-            ) : null}
-
-            <div className="plans-pagination">
-              <div>
-                Tổng {plansQuery.data?.meta.total ?? 0} bản ghi, trang{" "}
-                {plansQuery.data?.meta.page ?? 1}
-              </div>
-              <div className="plans-table__actions">
-                <button
-                  className="plans-button plans-button--ghost"
-                  disabled={(plansQuery.data?.meta.page ?? 1) <= 1}
-                  onClick={() =>
-                    setFilters((current) => ({
-                      ...current,
-                      page: Math.max(1, current.page - 1),
-                    }))
-                  }
-                  type="button"
-                >
-                  Trang trước
-                </button>
-                <button
-                  className="plans-button plans-button--ghost"
-                  disabled={
-                    (plansQuery.data?.meta.page ?? 1) *
-                      (plansQuery.data?.meta.pageSize ?? filters.pageSize) >=
-                    (plansQuery.data?.meta.total ?? 0)
-                  }
-                  onClick={() =>
-                    setFilters((current) => ({
-                      ...current,
-                      page: current.page + 1,
-                    }))
-                  }
-                  type="button"
-                >
-                  Trang sau
-                </button>
-              </div>
-            </div>
+            <Pagination
+              currentPage={filters.page}
+              totalPages={totalPages}
+              onPageChange={(page) => setFilters((p) => ({ ...p, page }))}
+            />
           </>
         )}
       </section>

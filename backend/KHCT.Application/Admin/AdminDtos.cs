@@ -7,9 +7,13 @@ public record AdminUserListItemDto(
     string? Email,
     bool IsActive,
     DateTime? LastLoginAt,
+    DateTime? LastLogoutAt,
     Guid? DepartmentId,
     string? DepartmentCode,
     string? DepartmentName,
+    Guid? PositionId,
+    string? PositionCode,
+    string? PositionName,
     Guid? RoleId,
     string? RoleCode,
     string? RoleName);
@@ -21,9 +25,13 @@ public record AdminUserDetailDto(
     string? Email,
     bool IsActive,
     DateTime? LastLoginAt,
+    DateTime? LastLogoutAt,
     Guid? DepartmentId,
     string? DepartmentCode,
     string? DepartmentName,
+    Guid? PositionId,
+    string? PositionCode,
+    string? PositionName,
     Guid? RoleId,
     string? RoleCode,
     string? RoleName,
@@ -35,6 +43,13 @@ public record DepartmentDto(
     string Code,
     string Name,
     bool IsActive);
+
+public record PositionDto(
+    Guid Id,
+    string Code,
+    string Name,
+    bool IsActive,
+    int SortOrder);
 
 public record RoleDto(
     Guid Id,

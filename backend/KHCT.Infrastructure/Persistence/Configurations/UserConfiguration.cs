@@ -19,5 +19,9 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .WithMany()
             .HasForeignKey(x => x.DepartmentId)
             .OnDelete(DeleteBehavior.Restrict);
+        b.HasOne(x => x.Position)
+            .WithMany()
+            .HasForeignKey(x => x.PositionId)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }

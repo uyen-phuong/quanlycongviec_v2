@@ -45,7 +45,7 @@ public class AttachmentSupportTests
             Id = Guid.NewGuid(),
             Scope = PlanScope.Sub,
             DepartmentId = departmentId,
-            Status = ApprovalStatus.Draft
+            Status = WorkflowStatus.Draft
         };
         var user = new TestCurrentUser(departmentId, PlanSupport.RoleNhanVien);
 
@@ -62,7 +62,7 @@ public class AttachmentSupportTests
             Id = Guid.NewGuid(),
             Scope = PlanScope.Sub,
             DepartmentId = Guid.NewGuid(),
-            Status = ApprovalStatus.Draft
+            Status = WorkflowStatus.Draft
         };
         var user = new TestCurrentUser(Guid.NewGuid(), PlanSupport.RoleNhanVien);
 
@@ -81,7 +81,7 @@ public class AttachmentSupportTests
             Id = Guid.NewGuid(),
             Scope = PlanScope.Sub,
             DepartmentId = departmentId,
-            Status = ApprovalStatus.Draft
+            Status = WorkflowStatus.Draft
         };
         var user = new TestCurrentUser(departmentId, PlanSupport.RoleNhanVien);
 

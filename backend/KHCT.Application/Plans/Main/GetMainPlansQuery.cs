@@ -11,7 +11,7 @@ public record GetMainPlansQuery(
     int PageSize,
     int? Year,
     int? Month,
-    ApprovalStatus? Status) : IRequest<PagedResult<PlanListItemDto>>;
+    WorkflowStatus? Status) : IRequest<PagedResult<PlanListItemDto>>;
 
 public class GetMainPlansHandler : IRequestHandler<GetMainPlansQuery, PagedResult<PlanListItemDto>>
 {

@@ -42,13 +42,13 @@ public class SubmitPlanHandler : IRequestHandler<SubmitPlanCommand, PlanDetailDt
         WorkflowSupport.EnsureCanSubmit(plan, _currentUser);
 
         var fromStatus = plan.Status;
-        if (fromStatus == ApprovalStatus.Returned && plan.Tasks.Any(x => x.HasOpenComment))
+        if (fromStatus == WorkflowStatus.Returned && plan.Tasks.Any(x => x.HasOpenComment))
         {
             throw new Domain.Common.DomainException("plan_has_open_comments", "Resolve all open comments before resubmitting the plan.");
         }
 
-        var action = fromStatus == ApprovalStatus.Returned ? ApprovalAction.Resubmit : ApprovalAction.Submit;
-        plan.Status = ApprovalStatus.Pending;
+        var action = fromStatus == WorkflowStatus.Returned ? ApprovalAction.Resubmit : ApprovalAction.Submit;
+        plan.Status = WorkflowStatus.Pending;
         plan.SubmittedAt = DateTime.UtcNow;
         plan.ApprovedAt = null;
 

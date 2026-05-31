@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KHCT.Api.Controllers;
 
-[Authorize(Roles = "ADMIN")]
+[Authorize]
 [Route("api/admin/users")]
 [Tags("Admin")]
 public sealed class AdminUsersController : BaseApiController
@@ -21,6 +21,7 @@ public sealed class AdminUsersController : BaseApiController
         string FullName,
         string? Email,
         Guid? DepartmentId,
+        Guid? PositionId,
         Guid RoleId,
         bool IsActive);
 
@@ -28,6 +29,7 @@ public sealed class AdminUsersController : BaseApiController
         string FullName,
         string? Email,
         Guid? DepartmentId,
+        Guid? PositionId,
         bool IsActive);
 
     public record ChangeUserRoleRequest(Guid RoleId);
@@ -61,6 +63,7 @@ public sealed class AdminUsersController : BaseApiController
     }
 
     [HttpPost]
+    [Authorize(Policy = "RequireAdmin")]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request, CancellationToken ct)
     {
         var result = await Sender.Send(new CreateUserCommand(
@@ -69,6 +72,7 @@ public sealed class AdminUsersController : BaseApiController
             request.FullName,
             request.Email,
             request.DepartmentId,
+            request.PositionId,
             request.RoleId,
             request.IsActive), ct);
 
@@ -76,6 +80,7 @@ public sealed class AdminUsersController : BaseApiController
     }
 
     [HttpPut("{id:guid}")]
+    [Authorize(Policy = "RequireAdmin")]
     public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UpdateUserRequest request, CancellationToken ct)
     {
         var result = await Sender.Send(new UpdateUserCommand(
@@ -83,12 +88,14 @@ public sealed class AdminUsersController : BaseApiController
             request.FullName,
             request.Email,
             request.DepartmentId,
+            request.PositionId,
             request.IsActive), ct);
 
         return Ok(new ApiEnvelope<object>(result));
     }
 
     [HttpPut("{id:guid}/role")]
+    [Authorize(Policy = "RequireAdmin")]
     public async Task<IActionResult> ChangeRole(Guid id, [FromBody] ChangeUserRoleRequest request, CancellationToken ct)
     {
         var result = await Sender.Send(new ChangeUserRoleCommand(id, request.RoleId), ct);
@@ -96,6 +103,7 @@ public sealed class AdminUsersController : BaseApiController
     }
 
     [HttpPut("{id:guid}/password")]
+    [Authorize(Policy = "RequireAdmin")]
     public async Task<IActionResult> ResetPassword(Guid id, [FromBody] ResetUserPasswordRequest request, CancellationToken ct)
     {
         await Sender.Send(new ResetUserPasswordCommand(id, request.Password), ct);

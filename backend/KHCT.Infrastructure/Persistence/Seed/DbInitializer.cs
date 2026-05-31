@@ -45,9 +45,24 @@ public static class DbInitializer
     {
         var updated = false;
 
-        updated |= await RenameDepartmentAsync(db, "VPTNB", "Văn phòng Tây Nam Bộ");
-        updated |= await RenameDepartmentAsync(db, "TKTH", "Bộ phận Thư ký tổng hợp");
+        // Sync department names to PRD names
+        updated |= await RenameDepartmentAsync(db, "KTNB1", "Phòng KTNB1");
+        updated |= await RenameDepartmentAsync(db, "KTNB2", "Phòng KTNB2");
+        updated |= await RenameDepartmentAsync(db, "KTNB3", "Phòng KTNB3");
+        updated |= await RenameDepartmentAsync(db, "KH", "Phòng KH");
+        updated |= await RenameDepartmentAsync(db, "TKTH", "Phòng TKTH");
+        updated |= await RenameDepartmentAsync(db, "VPMN", "Phòng MN");
+        updated |= await RenameDepartmentAsync(db, "VPMT", "Phòng MT");
+        updated |= await RenameDepartmentAsync(db, "VPTNB", "Phòng TNB");
+
+        // Sync role names to PRD role names
+        updated |= await RenameRoleAsync(db, "TRUONG_KTNB", "Phê duyệt 1 – Trưởng KTNB");
+        updated |= await RenameRoleAsync(db, "PHO_TRUONG_KTNB", "Phê duyệt 2 – Phó Trưởng KTNB");
+        updated |= await RenameRoleAsync(db, "TRUONG_PHONG", "Kiểm soát 1 – Trưởng phòng");
+        updated |= await RenameRoleAsync(db, "PHO_PHONG", "Kiểm soát 2 – Phó phòng / Trưởng nhóm");
+        updated |= await RenameRoleAsync(db, "NHAN_VIEN", "Nhân viên");
         updated |= await RenameRoleAsync(db, "VAN_THU", "Văn thư");
+        updated |= await RenameRoleAsync(db, "GUEST", "Giám sát 2 – Guest");
 
         if (updated)
         {

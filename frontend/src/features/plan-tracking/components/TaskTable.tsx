@@ -7,6 +7,7 @@ import { getDepartmentLabel } from "@/shared/departmentLabels";
 import type { DepartmentLookupDto } from "@/shared/api/dtos";
 import type { ApprovalHistoryItem } from "@/features/plans/types";
 import type {
+  AdminUserListItemDto,
   CreateTaskPayload,
   LineComment,
   SaveTaskPayload,
@@ -22,7 +23,7 @@ function AddTaskRow({
   onSave,
   onCancel,
 }: {
-  planId: string;
+  planId?: string | null;
   scope: "main" | "sub";
   departments: DepartmentLookupDto[];
   nextDisplayOrder: number;
@@ -56,7 +57,7 @@ function AddTaskRow({
     setSaving(true);
     try {
       await onSave({
-        planId,
+        planId: planId || "",
         parentTaskId: null,
         outlineIndex: null,
         displayOrder: nextDisplayOrder,
@@ -66,12 +67,15 @@ function AddTaskRow({
         workStatus: "not_started",
         deadline: deadline ? `${deadline}T00:00:00` : null,
         assigneeUserId: null,
+        controllerUserId: null,
         ownerDepartmentId: needsOwner ? ownerDepartmentId : null,
         bksMemberText: bksMemberText.trim() || null,
         ktnbLeaderText: ktnbLeaderText.trim() || null,
         noteText: noteText.trim() || null,
         progressText: null,
         reasonNotCompleted: null,
+        priority: "normal",
+        complexity: "medium",
         supportingDepartmentIds,
       });
     } catch {
@@ -83,7 +87,7 @@ function AddTaskRow({
   return (
     <tr className="task-table__add-row">
       <td />
-      <td colSpan={14}>
+      <td colSpan={16}>
         <div className="task-table__add-panel">
           <div className="task-table__add-fields">
             <label className="task-table__add-header-check">
@@ -92,12 +96,12 @@ function AddTaskRow({
                 onChange={(e) => {
                   setIsHeader(e.target.checked);
                   if (e.target.checked) {
-                    setOwnerDepartmentId("");
-                    setSupportingDepartmentIds([]);
-                    setBksMemberText("");
-                    setKtnbLeaderText("");
-                    setDeadline("");
-                    setNoteText("");
+                     setOwnerDepartmentId("");
+                     setSupportingDepartmentIds([]);
+                     setBksMemberText("");
+                     setKtnbLeaderText("");
+                     setDeadline("");
+                     setNoteText("");
                   }
                 }}
                 type="checkbox"
@@ -241,6 +245,7 @@ export function TaskTable({
   scope,
   userRoles,
   departments,
+  users = [],
   minDeadline,
   planDepartmentId,
   planId,
@@ -256,17 +261,23 @@ export function TaskTable({
   onCloseDetails,
   onResolveComment,
   onAddComment,
+  onSubmitTaskSingle,
+  onAssignTaskSingle,
+  onApproveTaskSingle,
+  onReturnTaskSingle,
   onSave,
   onCreateTask,
   onDeleteTask,
+  isProjectLeader,
 }: {
   rows: TaskRowViewModel[];
   scope: "main" | "sub";
   userRoles: string[];
   departments: DepartmentLookupDto[];
+  users?: AdminUserListItemDto[];
   minDeadline: string;
   planDepartmentId: string | null;
-  planId?: string;
+  planId?: string | null;
   planStatus?: string | null;
   canAddTask?: boolean;
   selectedTask: TaskListItem | null;
@@ -280,8 +291,13 @@ export function TaskTable({
   onResolveComment: (commentId: string) => void;
   onAddComment: (taskId: string, content: string) => Promise<void>;
   onSave: (taskId: string, payload: SaveTaskPayload) => Promise<void>;
+  onSubmitTaskSingle?: (taskId: string, comment?: string | null) => Promise<void>;
+  onAssignTaskSingle?: (taskId: string, assigneeUserId: string, controllerUserId?: string | null) => Promise<void>;
+  onApproveTaskSingle?: (taskId: string, comment?: string | null) => Promise<void>;
+  onReturnTaskSingle?: (taskId: string, comment: string) => Promise<void>;
   onCreateTask?: (payload: CreateTaskPayload) => Promise<void>;
   onDeleteTask?: (taskId: string) => Promise<void>;
+  isProjectLeader?: boolean;
 }) {
   const [isAdding, setIsAdding] = useState(false);
   const nextDisplayOrder = (rows.length + 1) * 10;
@@ -298,20 +314,26 @@ export function TaskTable({
                 approvalHistory={approvalHistory}
                 canResolveComment={canResolveComment}
                 departments={departments}
+                users={users}
                 key={row.task.id}
                 minDeadline={minDeadline}
                 onAddComment={onAddComment}
                 onDelete={onDeleteTask}
                 onOpenDetails={onOpenDetails}
                 onSave={onSave}
+                onSubmitTaskSingle={onSubmitTaskSingle}
+                onAssignTaskSingle={onAssignTaskSingle}
+                onApproveTaskSingle={onApproveTaskSingle}
+                onReturnTaskSingle={onReturnTaskSingle}
                 planDepartmentId={planDepartmentId}
                 planStatus={planStatus ?? null}
                 row={row}
                 scope={scope}
                 userRoles={userRoles}
+                isProjectLeader={isProjectLeader}
               />
             ))}
-            {isAdding && planId && onCreateTask && (
+            {isAdding && onCreateTask && (
               <AddTaskRow
                 departments={departments}
                 nextDisplayOrder={nextDisplayOrder}

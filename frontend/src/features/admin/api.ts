@@ -3,6 +3,7 @@ import type { PagedMeta } from "@/shared/api/dtos";
 import type {
   AdminApprovalConfigDto,
   AdminDepartmentDto,
+  AdminPositionDto,
   AdminRoleDto,
   AdminUserDetailDto,
   AdminUserListItemDto,
@@ -35,12 +36,10 @@ export const adminApi = {
       page: filter.page,
       pageSize: filter.pageSize,
     };
-
     if (filter.departmentId) params.departmentId = filter.departmentId;
     if (filter.roleCode) params.roleCode = filter.roleCode;
     if (filter.isActive !== undefined) params.isActive = filter.isActive;
     if (filter.keyword) params.keyword = filter.keyword;
-
     const res = await apiClient.get<{ data: AdminUserListItemDto[]; meta: PagedMeta }>(
       "/admin/users",
       { params },
@@ -60,6 +59,7 @@ export const adminApi = {
       fullName: values.fullName,
       email: values.email || null,
       departmentId: values.departmentId || null,
+      positionId: values.positionId || null,
       roleId: values.roleId,
       isActive: values.isActive,
     });
@@ -71,6 +71,7 @@ export const adminApi = {
       fullName: values.fullName,
       email: values.email || null,
       departmentId: values.departmentId || null,
+      positionId: values.positionId || null,
       isActive: values.isActive,
     });
     return res.data.data;
@@ -100,12 +101,37 @@ export const adminApi = {
     return res.data.data;
   },
 
+  createDepartment: async (code: string, name: string): Promise<AdminDepartmentDto> => {
+    const res = await apiClient.post<{ data: AdminDepartmentDto }>("/admin/departments", { code, name });
+    return res.data.data;
+  },
+
   updateDepartment: async (id: string, name: string, isActive: boolean): Promise<AdminDepartmentDto> => {
     const res = await apiClient.put<{ data: AdminDepartmentDto }>(
       `/admin/departments/${id}`,
       { name, isActive },
     );
     return res.data.data;
+  },
+
+  // Positions
+  listPositions: async (): Promise<AdminPositionDto[]> => {
+    const res = await apiClient.get<{ data: AdminPositionDto[] }>("/admin/positions");
+    return res.data.data;
+  },
+
+  createPosition: async (code: string, name: string, sortOrder: number): Promise<AdminPositionDto> => {
+    const res = await apiClient.post<{ data: AdminPositionDto }>("/admin/positions", { code, name, sortOrder });
+    return res.data.data;
+  },
+
+  updatePosition: async (id: string, name: string, isActive: boolean, sortOrder: number): Promise<AdminPositionDto> => {
+    const res = await apiClient.put<{ data: AdminPositionDto }>(`/admin/positions/${id}`, { name, isActive, sortOrder });
+    return res.data.data;
+  },
+
+  deletePosition: async (id: string): Promise<void> => {
+    await apiClient.delete(`/admin/positions/${id}`);
   },
 
   // Approval configs

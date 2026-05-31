@@ -9,13 +9,14 @@ export type WorkStatus =
   | "overdue"
   | "paused";
 
-/** Task-level workflow codes (used in TaskListItem.approvalStatus) */
-export type ApprovalStatus =
-  | "draft"
-  | "pending_team"
-  | "approved_team"
-  | "approved_department"
-  | "approved_final"
+/** Task-level workflow codes (used in TaskListItem.workflowStatus) */
+export type WorkflowStatus =
+  | "new"
+  | "pending_assign"
+  | "in_progress"
+  | "pending_review"
+  | "pending_approval"
+  | "completed"
   | "returned";
 
 /** Plan-level status codes (used in ResolvedPlan.status and plan list) */
@@ -43,7 +44,9 @@ export interface ResolvedPlan {
 
 export interface TaskListItem {
   id: string;
-  planId: string;
+  planId: string | null;
+  projectId: string | null;
+  category: number;
   parentTaskId: string | null;
   outlineIndex: string | null;
   displayOrder: number;
@@ -54,6 +57,7 @@ export interface TaskListItem {
   deadline: string | null;
   assigneeUserId: string | null;
   assigneeName: string | null;
+  controllerUserId: string | null;
   ownerDepartmentId: string | null;
   ownerDepartmentCode: string | null;
   ownerDepartmentName: string | null;
@@ -62,11 +66,13 @@ export interface TaskListItem {
   noteText: string | null;
   isLocked: boolean;
   hasOpenComment: boolean;
-  approvalStatus: ApprovalStatus;
+  workflowStatus: WorkflowStatus;
   submittedAt: string | null;
   approvedAt: string | null;
   progressText: string | null;
   reasonNotCompleted: string | null;
+  priority: string;
+  complexity: string;
   supportingDepartmentIds: string[];
   createdAt: string;
   updatedAt: string;
@@ -74,7 +80,9 @@ export interface TaskListItem {
 
 export interface TaskDetailResponse {
   id: string;
-  planId: string;
+  planId: string | null;
+  projectId: string | null;
+  category: number;
   parentTaskId: string | null;
   outlineIndex: string | null;
   displayOrder: number;
@@ -85,6 +93,7 @@ export interface TaskDetailResponse {
   deadline: string | null;
   assigneeUserId: string | null;
   assigneeName: string | null;
+  controllerUserId: string | null;
   ownerDepartmentId: string | null;
   ownerDepartmentCode: string | null;
   ownerDepartmentName: string | null;
@@ -93,11 +102,13 @@ export interface TaskDetailResponse {
   noteText: string | null;
   isLocked: boolean;
   hasOpenComment: boolean;
-  approvalStatus: ApprovalStatus;
+  workflowStatus: WorkflowStatus;
   submittedAt: string | null;
   approvedAt: string | null;
   progressText: string | null;
   reasonNotCompleted: string | null;
+  priority: string;
+  complexity: string;
   supportingDepartments: Array<{
     id: string;
     code: string;
@@ -117,12 +128,15 @@ export interface SaveTaskPayload {
   workStatus: WorkStatus;
   deadline: string | null;
   assigneeUserId: string | null;
+  controllerUserId: string | null;
   ownerDepartmentId: string | null;
   bksMemberText: string | null;
   ktnbLeaderText: string | null;
   noteText: string | null;
   progressText: string | null;
   reasonNotCompleted: string | null;
+  priority: string;
+  complexity: string;
   supportingDepartmentIds: string[];
 }
 
@@ -167,11 +181,28 @@ export interface CreateTaskPayload {
   workStatus: WorkStatus;
   deadline: string | null;
   assigneeUserId: string | null;
+  controllerUserId: string | null;
   ownerDepartmentId: string | null;
   bksMemberText: string | null;
   ktnbLeaderText: string | null;
   noteText: string | null;
   progressText: string | null;
   reasonNotCompleted: string | null;
+  priority: string;
+  complexity: string;
   supportingDepartmentIds: string[];
+}
+
+export interface AdminUserListItemDto {
+  id: string;
+  username: string;
+  fullName: string;
+  email: string | null;
+  isActive: boolean;
+  departmentId: string | null;
+  departmentCode: string | null;
+  departmentName: string | null;
+  roleId: string | null;
+  roleCode: string | null;
+  roleName: string | null;
 }

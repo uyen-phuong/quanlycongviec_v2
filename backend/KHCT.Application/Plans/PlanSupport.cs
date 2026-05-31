@@ -35,15 +35,20 @@ public static class PlanSupport
     public static PlanListItemDto ToListItem(Plan plan) =>
         new(
             plan.Id,
+            plan.Name,
             ScopeCode(plan.Scope),
             plan.Year,
             plan.Month,
+            ReportingPeriodTypeCode(plan.ReportingPeriodType),
+            plan.CurrentPeriodIndex,
             StatusCode(plan.Status),
             plan.DepartmentId,
             plan.Department?.Code,
             plan.Department?.Name,
             plan.CreatedById,
             plan.CreatedBy?.FullName,
+            plan.KtnbLeaderId,
+            plan.KtnbLeader?.FullName,
             plan.SubmittedAt,
             plan.ApprovedAt,
             plan.CreatedAt,
@@ -52,15 +57,20 @@ public static class PlanSupport
     public static PlanDetailDto ToDetail(Plan plan) =>
         new(
             plan.Id,
+            plan.Name,
             ScopeCode(plan.Scope),
             plan.Year,
             plan.Month,
+            ReportingPeriodTypeCode(plan.ReportingPeriodType),
+            plan.CurrentPeriodIndex,
             StatusCode(plan.Status),
             plan.DepartmentId,
             plan.Department?.Code,
             plan.Department?.Name,
             plan.CreatedById,
             plan.CreatedBy?.FullName,
+            plan.KtnbLeaderId,
+            plan.KtnbLeader?.FullName,
             plan.SubmittedAt,
             plan.ApprovedAt,
             plan.Tasks.Count,
@@ -81,7 +91,7 @@ public static class PlanSupport
 
     public static void EnsureDraft(Plan plan)
     {
-        if (plan.Status != ApprovalStatus.Draft)
+        if (plan.Status != WorkflowStatus.Draft)
         {
             throw new DomainException("plan_not_editable", "Plan is not editable.");
         }
@@ -89,7 +99,10 @@ public static class PlanSupport
 
     public static void EnsureEditable(Plan plan)
     {
-        _ = plan;
+        if (plan.Status != WorkflowStatus.Draft && plan.Status != WorkflowStatus.Returned)
+        {
+            throw new DomainException("plan_not_editable", "Plan is not editable.");
+        }
     }
 
     public static async System.Threading.Tasks.Task EnsureUniqueMainAsync(
@@ -198,15 +211,35 @@ public static class PlanSupport
             _ => scope.ToString().ToLowerInvariant()
         };
 
-    public static string StatusCode(ApprovalStatus status) =>
+    public static string ReportingPeriodTypeCode(ReportingPeriodType type) =>
+        type switch
+        {
+            ReportingPeriodType.Monthly => "monthly",
+            ReportingPeriodType.Quarterly => "quarterly",
+            ReportingPeriodType.SemiAnnual => "semi_annual",
+            ReportingPeriodType.Annual => "annual",
+            _ => type.ToString().ToLowerInvariant()
+        };
+
+    public static ReportingPeriodType ParseReportingPeriodType(string type) =>
+        type.Trim().ToLowerInvariant() switch
+        {
+            "monthly" => ReportingPeriodType.Monthly,
+            "quarterly" => ReportingPeriodType.Quarterly,
+            "semi_annual" => ReportingPeriodType.SemiAnnual,
+            "annual" => ReportingPeriodType.Annual,
+            _ => throw new DomainException("reporting_period_type_invalid", "Reporting period type is invalid.")
+        };
+
+    public static string StatusCode(WorkflowStatus status) =>
         status switch
         {
-            ApprovalStatus.Draft => "draft",
-            ApprovalStatus.Pending => "pending",
-            ApprovalStatus.Approved1 => "approved_1",
-            ApprovalStatus.Approved2 => "approved_2",
-            ApprovalStatus.Approved3 => "approved_3",
-            ApprovalStatus.Returned => "returned",
+            WorkflowStatus.Draft => "draft",
+            WorkflowStatus.Pending => "pending",
+            WorkflowStatus.Approved1 => "approved_1",
+            WorkflowStatus.Approved2 => "approved_2",
+            WorkflowStatus.Approved3 => "approved_3",
+            WorkflowStatus.Returned => "returned",
             _ => status.ToString().ToLowerInvariant()
         };
 
@@ -215,7 +248,7 @@ public static class PlanSupport
         Plan plan,
         CancellationToken ct)
     {
-        plan.Status = ApprovalStatus.Draft;
+        plan.Status = WorkflowStatus.Draft;
         plan.SubmittedAt = null;
         plan.ApprovedAt = null;
 
@@ -225,7 +258,7 @@ public static class PlanSupport
 
         foreach (var task in tasks)
         {
-            task.ApprovalStatus = TaskApprovalStatus.Draft;
+            task.WorkflowStatus = TaskWorkflowStatus.New;
             task.SubmittedAt = null;
             task.ApprovedAt = null;
         }

@@ -19,12 +19,20 @@ import {
   useCreateTask,
   useDeleteTask,
   useDepartments,
+  useDepartmentUsers,
   useLineComments,
   useResolveLineComment,
   useResolvePlan,
   useReturnPlan,
   useSaveTask,
   useSubmitPlan,
+  useSubmitTaskWorkflow,
+  useApproveTaskWorkflow,
+  useReturnTaskWorkflow,
+  useSubmitTaskSingle,
+  useAssignTaskSingle,
+  useApproveTaskSingle,
+  useReturnTaskSingle,
   useTasks,
 } from "@/features/plan-tracking/hooks";
 import type {
@@ -205,6 +213,14 @@ export function PlanTrackingPage() {
   const submitPlanMutation = useSubmitPlan(resolvedPlanQuery.data?.planId ?? null, params.code ?? context.departmentCode);
   const approvePlanMutation = useApprovePlan(resolvedPlanQuery.data?.planId ?? null, params.code ?? context.departmentCode);
   const returnPlanMutation = useReturnPlan(resolvedPlanQuery.data?.planId ?? null);
+  const departmentUsersQuery = useDepartmentUsers(resolvedPlanQuery.data?.departmentId ?? null);
+  const submitTaskWorkflowMutation = useSubmitTaskWorkflow(resolvedPlanQuery.data?.planId ?? null, params.code ?? context.departmentCode);
+  const approveTaskWorkflowMutation = useApproveTaskWorkflow(resolvedPlanQuery.data?.planId ?? null, params.code ?? context.departmentCode);
+  const returnTaskWorkflowMutation = useReturnTaskWorkflow(resolvedPlanQuery.data?.planId ?? null);
+  const submitTaskSingleMutation = useSubmitTaskSingle(resolvedPlanQuery.data?.planId ?? null, context.workType, params.code ?? context.departmentCode);
+  const assignTaskSingleMutation = useAssignTaskSingle(resolvedPlanQuery.data?.planId ?? null, context.workType, params.code ?? context.departmentCode);
+  const approveTaskSingleMutation = useApproveTaskSingle(resolvedPlanQuery.data?.planId ?? null, context.workType, params.code ?? context.departmentCode);
+  const returnTaskSingleMutation = useReturnTaskSingle(resolvedPlanQuery.data?.planId ?? null, context.workType, params.code ?? context.departmentCode);
 
   const [searchText, setSearchText] = useState("");
 
@@ -293,6 +309,38 @@ export function PlanTrackingPage() {
     }
   }, [deleteTaskMutation]);
 
+  const handleSubmitTaskSingle = useCallback(async (taskId: string, comment?: string | null) => {
+    try {
+      await submitTaskSingleMutation.mutateAsync({ taskId, comment });
+    } catch (error) {
+      window.alert(toApiError(error).message);
+    }
+  }, [submitTaskSingleMutation]);
+
+  const handleAssignTaskSingle = useCallback(async (taskId: string, assigneeUserId: string, controllerUserId?: string | null) => {
+    try {
+      await assignTaskSingleMutation.mutateAsync({ taskId, assigneeUserId, controllerUserId });
+    } catch (error) {
+      window.alert(toApiError(error).message);
+    }
+  }, [assignTaskSingleMutation]);
+
+  const handleApproveTaskSingle = useCallback(async (taskId: string, comment?: string | null) => {
+    try {
+      await approveTaskSingleMutation.mutateAsync({ taskId, comment });
+    } catch (error) {
+      window.alert(toApiError(error).message);
+    }
+  }, [approveTaskSingleMutation]);
+
+  const handleReturnTaskSingle = useCallback(async (taskId: string, comment: string) => {
+    try {
+      await returnTaskSingleMutation.mutateAsync({ taskId, comment });
+    } catch (error) {
+      window.alert(toApiError(error).message);
+    }
+  }, [returnTaskSingleMutation]);
+
   const planStatus = resolvedPlanQuery.data?.status ?? null;
   const planDeptCode = (resolvedPlanQuery.data?.departmentCode ?? params.code ?? context.departmentCode ?? "").toUpperCase();
   const userRoles = auth.user?.roles ?? [];
@@ -331,7 +379,15 @@ export function PlanTrackingPage() {
 
   async function handleReturn(values: { comment: string | null; lineComments: Array<{ taskId: string; content: string }> }) {
     try {
-      await returnPlanMutation.mutateAsync(values);
+      if (context.scope === "sub") {
+        await returnTaskWorkflowMutation.mutateAsync({
+          departmentCode: params.code ?? context.departmentCode,
+          comment: values.comment,
+          lineComments: values.lineComments,
+        });
+      } else {
+        await returnPlanMutation.mutateAsync(values);
+      }
       setIsReturnOpen(false);
     } catch (error) {
       window.alert(toApiError(error).message);
@@ -353,7 +409,11 @@ export function PlanTrackingPage() {
     const comment = window.prompt("Nhập ghi chú kiểm soát (có thể để trống):");
     if (comment === null) return;
     try {
-      await submitPlanMutation.mutateAsync(comment);
+      if (context.scope === "sub") {
+        await submitTaskWorkflowMutation.mutateAsync(comment);
+      } else {
+        await submitPlanMutation.mutateAsync(comment);
+      }
     } catch (error) {
       window.alert(toApiError(error).message);
     }
@@ -363,7 +423,11 @@ export function PlanTrackingPage() {
     const comment = window.prompt("Nhập ghi chú phê duyệt (có thể để trống):");
     if (comment === null) return;
     try {
-      await approvePlanMutation.mutateAsync(comment);
+      if (context.scope === "sub") {
+        await approveTaskWorkflowMutation.mutateAsync(comment);
+      } else {
+        await approvePlanMutation.mutateAsync(comment);
+      }
     } catch (error) {
       window.alert(toApiError(error).message);
     }
@@ -508,6 +572,7 @@ export function PlanTrackingPage() {
               canAddTask={canAddTask}
               canResolveComment={canResolveComments(context.scope, auth.user?.roles ?? [])}
               departments={departmentsQuery.data ?? []}
+              users={departmentUsersQuery.data ?? []}
               isResolvingComment={resolveLineCommentMutation.isPending}
               minDeadline={toMinDeadline(resolvedPlanQuery.data.createdAt)}
               onAddComment={handleAddComment}
@@ -517,6 +582,10 @@ export function PlanTrackingPage() {
               onOpenDetails={setSelectedTask}
               onResolveComment={handleResolveComment}
               onSave={handleSave}
+              onSubmitTaskSingle={handleSubmitTaskSingle}
+              onAssignTaskSingle={handleAssignTaskSingle}
+              onApproveTaskSingle={handleApproveTaskSingle}
+              onReturnTaskSingle={handleReturnTaskSingle}
               planDepartmentId={resolvedPlanQuery.data.departmentId}
               planId={resolvedPlanQuery.data.planId ?? undefined}
               planStatus={resolvedPlanQuery.data.status ?? null}
@@ -532,7 +601,7 @@ export function PlanTrackingPage() {
 
       {context.scope === "sub" && (
         <ReturnPlanDialog
-          isPending={returnPlanMutation.isPending}
+          isPending={returnTaskWorkflowMutation.isPending}
           onClose={() => setIsReturnOpen(false)}
           onSubmit={(values) => { void handleReturn(values); }}
           open={isReturnOpen}

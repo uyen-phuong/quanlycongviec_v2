@@ -15,6 +15,8 @@ public static class TaskSupport
         new(
             task.Id,
             task.PlanId,
+            task.ProjectId,
+            (int)task.Category,
             task.ParentTaskId,
             task.OutlineIndex,
             task.DisplayOrder,
@@ -25,6 +27,7 @@ public static class TaskSupport
             task.Deadline,
             task.AssigneeUserId,
             task.AssigneeUser?.FullName,
+            task.ControllerUserId,
             task.OwnerDepartmentId,
             task.OwnerDepartment?.Code,
             task.OwnerDepartment?.Name,
@@ -33,11 +36,13 @@ public static class TaskSupport
             task.NoteText,
             task.IsLocked,
             task.HasOpenComment,
-            TaskApprovalStatusCode(task.ApprovalStatus),
+            TaskWorkflowStatusCode(task.WorkflowStatus),
             task.SubmittedAt,
             task.ApprovedAt,
             task.ProgressText,
             task.ReasonNotCompleted,
+            PriorityCode(task.Priority),
+            ComplexityCode(task.Complexity),
             task.SupportingDepts.Select(x => x.DepartmentId).OrderBy(x => x).ToList(),
             task.CreatedAt,
             task.UpdatedAt);
@@ -46,6 +51,8 @@ public static class TaskSupport
         new(
             task.Id,
             task.PlanId,
+            task.ProjectId,
+            (int)task.Category,
             task.ParentTaskId,
             task.OutlineIndex,
             task.DisplayOrder,
@@ -56,6 +63,7 @@ public static class TaskSupport
             task.Deadline,
             task.AssigneeUserId,
             task.AssigneeUser?.FullName,
+            task.ControllerUserId,
             task.OwnerDepartmentId,
             task.OwnerDepartment?.Code,
             task.OwnerDepartment?.Name,
@@ -64,11 +72,13 @@ public static class TaskSupport
             task.NoteText,
             task.IsLocked,
             task.HasOpenComment,
-            TaskApprovalStatusCode(task.ApprovalStatus),
+            TaskWorkflowStatusCode(task.WorkflowStatus),
             task.SubmittedAt,
             task.ApprovedAt,
             task.ProgressText,
             task.ReasonNotCompleted,
+            PriorityCode(task.Priority),
+            ComplexityCode(task.Complexity),
             task.SupportingDepts
                 .Where(x => x.Department != null)
                 .Select(x => new SupportingDepartmentDto(x.DepartmentId, x.Department!.Code, x.Department.Name))
@@ -82,6 +92,8 @@ public static class TaskSupport
         {
             task.Id,
             task.PlanId,
+            task.ProjectId,
+            Category = (int)task.Category,
             task.ParentTaskId,
             task.OutlineIndex,
             task.DisplayOrder,
@@ -91,13 +103,14 @@ public static class TaskSupport
             WorkStatus = WorkStatusCode(task.WorkStatus),
             task.Deadline,
             task.AssigneeUserId,
+            task.ControllerUserId,
             task.OwnerDepartmentId,
             task.BksMemberText,
             task.KtnbLeaderText,
             task.NoteText,
             task.IsLocked,
             task.HasOpenComment,
-            ApprovalStatus = TaskApprovalStatusCode(task.ApprovalStatus),
+            WorkflowStatus = TaskWorkflowStatusCode(task.WorkflowStatus),
             task.SubmittedAt,
             task.ApprovedAt,
             task.ProgressText,
@@ -358,10 +371,13 @@ public static class TaskSupport
             values.WorkType != task.WorkType ||
             values.Deadline != task.Deadline ||
             values.AssigneeUserId != task.AssigneeUserId ||
+            values.ControllerUserId != task.ControllerUserId ||
             values.OwnerDepartmentId != task.OwnerDepartmentId ||
             values.BksMemberText != task.BksMemberText ||
             values.KtnbLeaderText != task.KtnbLeaderText ||
             values.NoteText != task.NoteText ||
+            values.Priority != PriorityCode(task.Priority) ||
+            values.Complexity != ComplexityCode(task.Complexity) ||
             !values.SupportingDepartmentIds.OrderBy(x => x).SequenceEqual(task.SupportingDepts.Select(x => x.DepartmentId).OrderBy(x => x)))
         {
             throw new ForbiddenException("forbidden_field_change", "Only progress fields can be changed.");
@@ -390,28 +406,66 @@ public static class TaskSupport
             _ => throw new DomainException("work_status_invalid", "Work status is invalid.")
         };
 
-    public static string TaskApprovalStatusCode(TaskApprovalStatus status) =>
+    public static string TaskWorkflowStatusCode(TaskWorkflowStatus status) =>
         status switch
         {
-            TaskApprovalStatus.Draft => "draft",
-            TaskApprovalStatus.PendingTeam => "pending_team",
-            TaskApprovalStatus.ApprovedTeam => "approved_team",
-            TaskApprovalStatus.ApprovedDepartment => "approved_department",
-            TaskApprovalStatus.ApprovedFinal => "approved_final",
-            TaskApprovalStatus.Returned => "returned",
+            TaskWorkflowStatus.New => "new",
+            TaskWorkflowStatus.PendingAssign => "pending_assign",
+            TaskWorkflowStatus.InProgress => "in_progress",
+            TaskWorkflowStatus.PendingReview => "pending_review",
+            TaskWorkflowStatus.PendingApproval => "pending_approval",
+            TaskWorkflowStatus.Completed => "completed",
+            TaskWorkflowStatus.Returned => "returned",
             _ => status.ToString().ToLowerInvariant()
         };
 
-    public static TaskApprovalStatus ParseTaskApprovalStatus(string status) =>
+    public static TaskWorkflowStatus ParseTaskWorkflowStatus(string status) =>
         status.Trim().ToLowerInvariant() switch
         {
-            "draft" => TaskApprovalStatus.Draft,
-            "pending_team" => TaskApprovalStatus.PendingTeam,
-            "approved_team" => TaskApprovalStatus.ApprovedTeam,
-            "approved_department" => TaskApprovalStatus.ApprovedDepartment,
-            "approved_final" => TaskApprovalStatus.ApprovedFinal,
-            "returned" => TaskApprovalStatus.Returned,
-            _ => throw new DomainException("task_approval_status_invalid", "Task approval status is invalid.")
+            "new" => TaskWorkflowStatus.New,
+            "pending_assign" => TaskWorkflowStatus.PendingAssign,
+            "in_progress" => TaskWorkflowStatus.InProgress,
+            "pending_review" => TaskWorkflowStatus.PendingReview,
+            "pending_approval" => TaskWorkflowStatus.PendingApproval,
+            "completed" => TaskWorkflowStatus.Completed,
+            "returned" => TaskWorkflowStatus.Returned,
+            _ => throw new DomainException("task_workflow_status_invalid", "Task workflow status is invalid.")
+        };
+
+    public static string PriorityCode(TaskPriority priority) =>
+        priority switch
+        {
+            TaskPriority.Normal => "normal",
+            TaskPriority.Urgent => "urgent",
+            TaskPriority.Critical => "critical",
+            _ => priority.ToString().ToLowerInvariant()
+        };
+
+    public static TaskPriority ParsePriority(string priority) =>
+        priority.Trim().ToLowerInvariant() switch
+        {
+            "normal" => TaskPriority.Normal,
+            "urgent" => TaskPriority.Urgent,
+            "critical" => TaskPriority.Critical,
+            _ => throw new DomainException("priority_invalid", "Priority is invalid.")
+        };
+
+    public static string ComplexityCode(TaskComplexity complexity) =>
+        complexity switch
+        {
+            TaskComplexity.Low => "low",
+            TaskComplexity.Medium => "medium",
+            TaskComplexity.High => "high",
+            _ => complexity.ToString().ToLowerInvariant()
+        };
+
+    public static TaskComplexity ParseComplexity(string complexity) =>
+        complexity.Trim().ToLowerInvariant() switch
+        {
+            "low" => TaskComplexity.Low,
+            "medium" => TaskComplexity.Medium,
+            "high" => TaskComplexity.High,
+            _ => throw new DomainException("complexity_invalid", "Complexity is invalid.")
         };
 
     private static void EnsureSubDepartment(Plan plan)
@@ -433,10 +487,13 @@ public record UpdateTaskValues(
     WorkStatus WorkStatus,
     DateTime? Deadline,
     Guid? AssigneeUserId,
+    Guid? ControllerUserId,
     Guid? OwnerDepartmentId,
     string? BksMemberText,
     string? KtnbLeaderText,
     string? NoteText,
     string? ProgressText,
     string? ReasonNotCompleted,
+    string? Priority,
+    string? Complexity,
     IReadOnlyList<Guid> SupportingDepartmentIds);

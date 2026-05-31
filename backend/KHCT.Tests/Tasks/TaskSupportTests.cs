@@ -75,7 +75,7 @@ public class TaskSupportTests
     public void EnsureCanCreateOrDeleteTask_ShouldThrowDomain_WhenPlanNotDraft()
     {
         var plan = MainPlan();
-        plan.Status = ApprovalStatus.Pending;
+        plan.Status = WorkflowStatus.Pending;
         var user = new TestCurrentUser(null, PlanSupport.RoleAdmin);
 
         var act = () => TaskSupport.EnsureCanCreateOrDeleteTask(plan, user);
@@ -88,7 +88,7 @@ public class TaskSupportTests
     public void EnsureCanCreateOrDeleteTask_ShouldAllowReturnedPlan()
     {
         var plan = MainPlan();
-        plan.Status = ApprovalStatus.Returned;
+        plan.Status = WorkflowStatus.Returned;
         var user = new TestCurrentUser(null, PlanSupport.RoleAdmin);
 
         var act = () => TaskSupport.EnsureCanCreateOrDeleteTask(plan, user);
@@ -136,7 +136,7 @@ public class TaskSupportTests
             WorkStatus = WorkStatus.NotStarted,
             DisplayOrder = 10
         };
-        var values = new UpdateTaskValues(null, null, 10, false, "New", WorkType.General, WorkStatus.InProgress, null, null, null, null, null, null, "p", null, []);
+        var values = new UpdateTaskValues(null, null, 10, false, "New", WorkType.General, WorkStatus.InProgress, null, null, null, null, null, null, null, "p", null, "normal", "medium", []);
 
         var act = () => TaskSupport.EnsureProgressOnlyPayload(task, values);
 
@@ -157,7 +157,7 @@ public class TaskSupportTests
             DisplayOrder = 10,
             OwnerDepartmentId = ownerDepartmentId
         };
-        var values = new UpdateTaskValues(null, null, 10, false, "Task", WorkType.General, WorkStatus.InProgress, null, null, Guid.NewGuid(), null, null, null, "p", null, []);
+        var values = new UpdateTaskValues(null, null, 10, false, "Task", WorkType.General, WorkStatus.InProgress, null, null, null, Guid.NewGuid(), null, null, null, "p", null, "normal", "medium", []);
 
         var act = () => TaskSupport.EnsureProgressOnlyPayload(task, values);
 
@@ -182,7 +182,7 @@ public class TaskSupportTests
         {
             Id = Guid.NewGuid(),
             Scope = PlanScope.Main,
-            Status = ApprovalStatus.Draft,
+            Status = WorkflowStatus.Draft,
             CreatedAt = DateTime.UtcNow
         };
 
@@ -192,7 +192,7 @@ public class TaskSupportTests
             Id = Guid.NewGuid(),
             Scope = PlanScope.Sub,
             DepartmentId = departmentId,
-            Status = ApprovalStatus.Draft,
+            Status = WorkflowStatus.Draft,
             CreatedAt = DateTime.UtcNow
         };
 

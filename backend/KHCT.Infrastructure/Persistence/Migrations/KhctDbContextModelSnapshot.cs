@@ -81,9 +81,10 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         {
                             Id = new Guid("44444444-0000-0000-0000-000000000001"),
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DepartmentId = new Guid("11111111-0000-0000-0000-000000000004"),
                             IsActive = true,
                             Level = 1,
-                            RoleId = new Guid("22222222-0000-0000-0000-000000000003"),
+                            RoleId = new Guid("22222222-0000-0000-0000-000000000006"),
                             Scope = "Main",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
@@ -383,11 +384,20 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                     b.HasData(
                         new
                         {
+                            Id = new Guid("11111111-0000-0000-0000-000000000010"),
+                            Code = "LDKTNB",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Lãnh đạo KTNB",
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
                             Id = new Guid("11111111-0000-0000-0000-000000000001"),
                             Code = "KTNB1",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
-                            Name = "Kiểm toán nội bộ 1",
+                            Name = "Phòng KTNB1",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -396,7 +406,7 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                             Code = "KTNB2",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
-                            Name = "Kiểm toán nội bộ 2",
+                            Name = "Phòng KTNB2",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -405,7 +415,7 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                             Code = "KTNB3",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
-                            Name = "Kiểm toán nội bộ 3",
+                            Name = "Phòng KTNB3",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -414,7 +424,43 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                             Code = "KH",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
-                            Name = "Phòng Kế hoạch",
+                            Name = "Phòng KH",
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("11111111-0000-0000-0000-000000000009"),
+                            Code = "TKTH",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Phòng TKTH",
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("11111111-0000-0000-0000-000000000006"),
+                            Code = "VPMN",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Phòng MN",
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("11111111-0000-0000-0000-000000000007"),
+                            Code = "VPMT",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Phòng MT",
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("11111111-0000-0000-0000-000000000008"),
+                            Code = "VPTNB",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Phòng TNB",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -428,38 +474,20 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("11111111-0000-0000-0000-000000000006"),
-                            Code = "VPMN",
+                            Id = new Guid("11111111-0000-0000-0000-000000000011"),
+                            Code = "BKS",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
-                            Name = "Văn phòng miền Nam",
+                            Name = "Ban KS",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
-                            Id = new Guid("11111111-0000-0000-0000-000000000007"),
-                            Code = "VPMT",
+                            Id = new Guid("11111111-0000-0000-0000-000000000012"),
+                            Code = "VL",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             IsActive = true,
-                            Name = "Văn phòng miền Trung",
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
-                            Id = new Guid("11111111-0000-0000-0000-000000000008"),
-                            Code = "VPTNB",
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            IsActive = true,
-                            Name = "Văn phòng Tây Nam Bộ",
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
-                            Id = new Guid("11111111-0000-0000-0000-000000000009"),
-                            Code = "TKTH",
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            IsActive = true,
-                            Name = "Bộ phận Thư ký tổng hợp",
+                            Name = "Vãng lai",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         });
                 });
@@ -820,13 +848,32 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .HasColumnType("char(36)")
                         .HasColumnName("created_by_id");
 
+                    b.Property<int>("CurrentPeriodIndex")
+                        .HasColumnType("int")
+                        .HasColumnName("current_period_index");
+
                     b.Property<Guid?>("DepartmentId")
                         .HasColumnType("char(36)")
                         .HasColumnName("department_id");
 
+                    b.Property<Guid?>("KtnbLeaderId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("ktnb_leader_id");
+
                     b.Property<int>("Month")
                         .HasColumnType("int")
                         .HasColumnName("month");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("name");
+
+                    b.Property<string>("ReportingPeriodType")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)")
+                        .HasColumnName("reporting_period_type");
 
                     b.Property<DateTime>("RowVersion")
                         .IsConcurrencyToken()
@@ -867,10 +914,280 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                     b.HasIndex("DepartmentId")
                         .HasDatabaseName("ix_plan_department_id");
 
+                    b.HasIndex("KtnbLeaderId")
+                        .HasDatabaseName("ix_plan_ktnb_leader_id");
+
                     b.HasIndex("Scope", "DepartmentId", "Year", "Month")
                         .HasDatabaseName("ix_plan_scope_department_id_year_month");
 
                     b.ToTable("plan", (string)null);
+                });
+
+            modelBuilder.Entity("KHCT.Domain.Entities.PlanReportingPeriod", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime?>("ApprovedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("approved_at");
+
+                    b.Property<Guid?>("ApprovedByUserId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("approved_by_user_id");
+
+                    b.Property<int>("CompletionPercent")
+                        .HasColumnType("int")
+                        .HasColumnName("completion_percent");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("PeriodLabel")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)")
+                        .HasColumnName("period_label");
+
+                    b.Property<Guid>("PlanId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("plan_id");
+
+                    b.Property<string>("ProgressText")
+                        .HasMaxLength(2048)
+                        .HasColumnType("varchar(2048)")
+                        .HasColumnName("progress_text");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)")
+                        .HasColumnName("status");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("pk_plan_reporting_period");
+
+                    b.HasIndex("ApprovedByUserId")
+                        .HasDatabaseName("ix_plan_reporting_period_approved_by_user_id");
+
+                    b.HasIndex("PlanId")
+                        .HasDatabaseName("ix_plan_reporting_period_plan_id");
+
+                    b.ToTable("plan_reporting_period", (string)null);
+                });
+
+            modelBuilder.Entity("KHCT.Domain.Entities.Position", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)")
+                        .HasColumnName("code");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("created_at");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("is_active");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("name");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("int")
+                        .HasColumnName("sort_order");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("pk_position");
+
+                    b.HasIndex("Code")
+                        .IsUnique()
+                        .HasDatabaseName("ix_position_code");
+
+                    b.ToTable("position", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("55555555-0000-0000-0000-000000000001"),
+                            Code = "TRUONG_KTNB",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Trưởng KTNB",
+                            SortOrder = 1,
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("55555555-0000-0000-0000-000000000002"),
+                            Code = "PHO_TRUONG_KTNB",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Phó Trưởng KTNB",
+                            SortOrder = 2,
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("55555555-0000-0000-0000-000000000003"),
+                            Code = "TRUONG_BKS",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Trưởng BKS",
+                            SortOrder = 3,
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("55555555-0000-0000-0000-000000000004"),
+                            Code = "THANH_VIEN_BKS",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Thành viên BKS",
+                            SortOrder = 4,
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("55555555-0000-0000-0000-000000000005"),
+                            Code = "TRUONG_PHONG",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Trưởng Phòng",
+                            SortOrder = 5,
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("55555555-0000-0000-0000-000000000006"),
+                            Code = "PHO_PHONG",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Phó Phòng",
+                            SortOrder = 6,
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("55555555-0000-0000-0000-000000000007"),
+                            Code = "TRUONG_NHOM",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Trưởng nhóm",
+                            SortOrder = 7,
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("55555555-0000-0000-0000-000000000008"),
+                            Code = "NHAN_VIEN",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            IsActive = true,
+                            Name = "Nhân viên",
+                            SortOrder = 8,
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        });
+                });
+
+            modelBuilder.Entity("KHCT.Domain.Entities.Project", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime?>("ApprovedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("approved_at");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("varchar(2048)")
+                        .HasColumnName("description");
+
+                    b.Property<Guid>("LeaderId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("leader_id");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)")
+                        .HasColumnName("status");
+
+                    b.Property<Guid?>("SubLeaderId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("sub_leader_id");
+
+                    b.Property<DateTime?>("SubmittedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("submitted_at");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("pk_project");
+
+                    b.HasIndex("LeaderId")
+                        .HasDatabaseName("ix_project_leader_id");
+
+                    b.HasIndex("SubLeaderId")
+                        .HasDatabaseName("ix_project_sub_leader_id");
+
+                    b.ToTable("project", (string)null);
+                });
+
+            modelBuilder.Entity("KHCT.Domain.Entities.ProjectMember", b =>
+                {
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("project_id");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("ProjectId", "UserId")
+                        .HasName("pk_project_member");
+
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_project_member_user_id");
+
+                    b.ToTable("project_member", (string)null);
                 });
 
             modelBuilder.Entity("KHCT.Domain.Entities.RefreshToken", b =>
@@ -976,26 +1293,10 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("22222222-0000-0000-0000-000000000002"),
-                            Code = "VAN_THU",
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Văn thư",
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
-                            Id = new Guid("22222222-0000-0000-0000-000000000003"),
-                            Code = "TRUONG_KH",
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Trưởng phòng Kế hoạch",
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
                             Id = new Guid("22222222-0000-0000-0000-000000000004"),
                             Code = "TRUONG_KTNB",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Trưởng KTNB",
+                            Name = "Phê duyệt 1 – Trưởng KTNB",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -1003,7 +1304,7 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                             Id = new Guid("22222222-0000-0000-0000-000000000005"),
                             Code = "PHO_TRUONG_KTNB",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Phó Trưởng KTNB",
+                            Name = "Phê duyệt 2 – Phó Trưởng KTNB",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -1011,15 +1312,15 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                             Id = new Guid("22222222-0000-0000-0000-000000000006"),
                             Code = "TRUONG_PHONG",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Trưởng phòng",
+                            Name = "Kiểm soát 1 – Trưởng phòng",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             Id = new Guid("22222222-0000-0000-0000-000000000007"),
-                            Code = "TRUONG_NHOM",
+                            Code = "PHO_PHONG",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Trưởng nhóm",
+                            Name = "Kiểm soát 2 – Phó phòng / Trưởng nhóm",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -1028,6 +1329,22 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                             Code = "NHAN_VIEN",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Nhân viên",
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("22222222-0000-0000-0000-000000000002"),
+                            Code = "VAN_THU",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Văn thư",
+                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = new Guid("22222222-0000-0000-0000-000000000009"),
+                            Code = "GUEST",
+                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Name = "Giám sát 2 – Guest",
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         });
                 });
@@ -1038,12 +1355,6 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)")
                         .HasColumnName("id");
-
-                    b.Property<string>("ApprovalStatus")
-                        .IsRequired()
-                        .HasMaxLength(32)
-                        .HasColumnType("varchar(32)")
-                        .HasColumnName("approval_status");
 
                     b.Property<DateTime?>("ApprovedAt")
                         .HasColumnType("datetime(6)")
@@ -1057,6 +1368,22 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)")
                         .HasColumnName("bks_member_text");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)")
+                        .HasColumnName("category");
+
+                    b.Property<string>("Complexity")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)")
+                        .HasColumnName("complexity");
+
+                    b.Property<Guid?>("ControllerUserId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("controller_user_id");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)")
@@ -1108,13 +1435,23 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .HasColumnType("char(36)")
                         .HasColumnName("parent_task_id");
 
-                    b.Property<Guid>("PlanId")
+                    b.Property<Guid?>("PlanId")
                         .HasColumnType("char(36)")
                         .HasColumnName("plan_id");
+
+                    b.Property<string>("Priority")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)")
+                        .HasColumnName("priority");
 
                     b.Property<string>("ProgressText")
                         .HasColumnType("longtext")
                         .HasColumnName("progress_text");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("project_id");
 
                     b.Property<string>("ReasonNotCompleted")
                         .HasColumnType("longtext")
@@ -1144,14 +1481,20 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("work_type");
 
+                    b.Property<string>("WorkflowStatus")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)")
+                        .HasColumnName("workflow_status");
+
                     b.HasKey("Id")
                         .HasName("pk_task");
 
-                    b.HasIndex("ApprovalStatus")
-                        .HasDatabaseName("ix_task_approval_status");
-
                     b.HasIndex("AssigneeUserId")
                         .HasDatabaseName("ix_task_assignee_user_id");
+
+                    b.HasIndex("ControllerUserId")
+                        .HasDatabaseName("ix_task_controller_user_id");
 
                     b.HasIndex("InheritedFromTaskId")
                         .HasDatabaseName("ix_task_inherited_from_task_id");
@@ -1164,6 +1507,12 @@ namespace KHCT.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("PlanId")
                         .HasDatabaseName("ix_task_plan_id");
+
+                    b.HasIndex("ProjectId")
+                        .HasDatabaseName("ix_task_project_id");
+
+                    b.HasIndex("WorkflowStatus")
+                        .HasDatabaseName("ix_task_workflow_status");
 
                     b.ToTable("task", (string)null);
                 });
@@ -1233,6 +1582,40 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                     b.ToTable("task_approval_history", (string)null);
                 });
 
+            modelBuilder.Entity("KHCT.Domain.Entities.TaskCollaborator", b =>
+                {
+                    b.Property<Guid>("TaskId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("task_id");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("user_id");
+
+                    b.Property<string>("CollaborationContent")
+                        .HasMaxLength(2048)
+                        .HasColumnType("varchar(2048)")
+                        .HasColumnName("collaboration_content");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)")
+                        .HasColumnName("role");
+
+                    b.HasKey("TaskId", "UserId")
+                        .HasName("pk_task_collaborator");
+
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_task_collaborator_user_id");
+
+                    b.ToTable("task_collaborator", (string)null);
+                });
+
             modelBuilder.Entity("KHCT.Domain.Entities.TaskSupportingDept", b =>
                 {
                     b.Property<Guid>("TaskId")
@@ -1290,11 +1673,19 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .HasColumnType("datetime(6)")
                         .HasColumnName("last_login_at");
 
+                    b.Property<DateTime?>("LastLogoutAt")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("last_logout_at");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)")
                         .HasColumnName("password_hash");
+
+                    b.Property<Guid?>("PositionId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("position_id");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)")
@@ -1311,6 +1702,9 @@ namespace KHCT.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("DepartmentId")
                         .HasDatabaseName("ix_app_user_department_id");
+
+                    b.HasIndex("PositionId")
+                        .HasDatabaseName("ix_app_user_position_id");
 
                     b.HasIndex("Username")
                         .IsUnique()
@@ -1503,9 +1897,78 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .HasConstraintName("fk_plan_department_department_id");
 
+                    b.HasOne("KHCT.Domain.Entities.User", "KtnbLeader")
+                        .WithMany()
+                        .HasForeignKey("KtnbLeaderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_plan_app_user_ktnb_leader_id");
+
                     b.Navigation("CreatedBy");
 
                     b.Navigation("Department");
+
+                    b.Navigation("KtnbLeader");
+                });
+
+            modelBuilder.Entity("KHCT.Domain.Entities.PlanReportingPeriod", b =>
+                {
+                    b.HasOne("KHCT.Domain.Entities.User", "ApprovedByUser")
+                        .WithMany()
+                        .HasForeignKey("ApprovedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_plan_reporting_period_app_user_approved_by_user_id");
+
+                    b.HasOne("KHCT.Domain.Entities.Plan", "Plan")
+                        .WithMany()
+                        .HasForeignKey("PlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_plan_reporting_period_plan_plan_id");
+
+                    b.Navigation("ApprovedByUser");
+
+                    b.Navigation("Plan");
+                });
+
+            modelBuilder.Entity("KHCT.Domain.Entities.Project", b =>
+                {
+                    b.HasOne("KHCT.Domain.Entities.User", "Leader")
+                        .WithMany()
+                        .HasForeignKey("LeaderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_project_app_user_leader_id");
+
+                    b.HasOne("KHCT.Domain.Entities.User", "SubLeader")
+                        .WithMany()
+                        .HasForeignKey("SubLeaderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_project_app_user_sub_leader_id");
+
+                    b.Navigation("Leader");
+
+                    b.Navigation("SubLeader");
+                });
+
+            modelBuilder.Entity("KHCT.Domain.Entities.ProjectMember", b =>
+                {
+                    b.HasOne("KHCT.Domain.Entities.Project", "Project")
+                        .WithMany("Members")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_project_member_project_project_id");
+
+                    b.HasOne("KHCT.Domain.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_project_member_app_user_user_id");
+
+                    b.Navigation("Project");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("KHCT.Domain.Entities.RefreshToken", b =>
@@ -1527,6 +1990,11 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .HasForeignKey("AssigneeUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .HasConstraintName("fk_task_app_user_assignee_user_id");
+
+                    b.HasOne("KHCT.Domain.Entities.User", "ControllerUser")
+                        .WithMany()
+                        .HasForeignKey("ControllerUserId")
+                        .HasConstraintName("fk_task_app_user_controller_user_id");
 
                     b.HasOne("KHCT.Domain.Entities.Task", "InheritedFromTask")
                         .WithMany()
@@ -1550,10 +2018,17 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .WithMany("Tasks")
                         .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_task_plan_plan_id");
 
+                    b.HasOne("KHCT.Domain.Entities.Project", null)
+                        .WithMany("Tasks")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_task_project_project_id");
+
                     b.Navigation("AssigneeUser");
+
+                    b.Navigation("ControllerUser");
 
                     b.Navigation("InheritedFromTask");
 
@@ -1593,6 +2068,27 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                     b.Navigation("Task");
                 });
 
+            modelBuilder.Entity("KHCT.Domain.Entities.TaskCollaborator", b =>
+                {
+                    b.HasOne("KHCT.Domain.Entities.Task", "Task")
+                        .WithMany("Collaborators")
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_task_collaborator_task_task_id");
+
+                    b.HasOne("KHCT.Domain.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_task_collaborator_app_user_user_id");
+
+                    b.Navigation("Task");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("KHCT.Domain.Entities.TaskSupportingDept", b =>
                 {
                     b.HasOne("KHCT.Domain.Entities.Department", "Department")
@@ -1622,7 +2118,15 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .HasConstraintName("fk_app_user_department_department_id");
 
+                    b.HasOne("KHCT.Domain.Entities.Position", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_app_user_position_position_id");
+
                     b.Navigation("Department");
+
+                    b.Navigation("Position");
                 });
 
             modelBuilder.Entity("KHCT.Domain.Entities.UserRole", b =>
@@ -1656,11 +2160,20 @@ namespace KHCT.Infrastructure.Persistence.Migrations
                     b.Navigation("Tasks");
                 });
 
+            modelBuilder.Entity("KHCT.Domain.Entities.Project", b =>
+                {
+                    b.Navigation("Members");
+
+                    b.Navigation("Tasks");
+                });
+
             modelBuilder.Entity("KHCT.Domain.Entities.Task", b =>
                 {
                     b.Navigation("ApprovalHistories");
 
                     b.Navigation("Children");
+
+                    b.Navigation("Collaborators");
 
                     b.Navigation("SupportingDepts");
                 });

@@ -10,8 +10,8 @@ public class TaskApprovalHistory : Entity
     public Guid? DepartmentId { get; set; }
     public Department? Department { get; set; }
     public ApprovalAction Action { get; set; }
-    public TaskApprovalStatus FromStatus { get; set; }
-    public TaskApprovalStatus ToStatus { get; set; }
+    public TaskWorkflowStatus FromStatus { get; set; }
+    public TaskWorkflowStatus ToStatus { get; set; }
     public Guid ActorUserId { get; set; }
     public User? ActorUser { get; set; }
     public string? Comment { get; set; }

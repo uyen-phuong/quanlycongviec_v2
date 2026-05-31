@@ -31,7 +31,7 @@ public class ReInheritCommandHandler : IRequestHandler<ReInheritCommand, ReInher
         if (plan.Scope != PlanScope.Main)
             throw new DomainException("invalid_scope", "Re-inherit only applies to main plans.");
 
-        if (plan.Status != ApprovalStatus.Approved2)
+        if (plan.Status != WorkflowStatus.Approved2)
             throw new DomainException("invalid_status", "Re-inherit requires main plan status approved_2.");
 
         InheritService.EnsureInheritReady(plan);

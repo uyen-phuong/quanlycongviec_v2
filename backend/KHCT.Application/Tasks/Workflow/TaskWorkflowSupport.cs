@@ -48,42 +48,42 @@ public static class TaskWorkflowSupport
                 departmentId)
             .ToListAsync(ct);
 
-    public static TaskApprovalStatus AggregateStatus(IEnumerable<TaskEntity> tasks)
+    public static TaskWorkflowStatus AggregateStatus(IEnumerable<TaskEntity> tasks)
     {
         var taskList = tasks.ToList();
         if (taskList.Count == 0)
         {
-            return TaskApprovalStatus.Draft;
+            return TaskWorkflowStatus.New;
         }
 
-        if (taskList.Any(x => x.ApprovalStatus == TaskApprovalStatus.Returned))
+        if (taskList.Any(x => x.WorkflowStatus == TaskWorkflowStatus.Returned))
         {
-            return TaskApprovalStatus.Returned;
+            return TaskWorkflowStatus.Returned;
         }
 
-        if (taskList.All(x => x.ApprovalStatus == TaskApprovalStatus.ApprovedFinal))
+        if (taskList.All(x => x.WorkflowStatus == TaskWorkflowStatus.Completed))
         {
-            return TaskApprovalStatus.ApprovedFinal;
+            return TaskWorkflowStatus.Completed;
         }
 
-        if (taskList.All(x => x.ApprovalStatus is TaskApprovalStatus.ApprovedDepartment or TaskApprovalStatus.ApprovedFinal) &&
-            taskList.Any(x => x.ApprovalStatus == TaskApprovalStatus.ApprovedDepartment))
+        if (taskList.All(x => x.WorkflowStatus is TaskWorkflowStatus.Completed or TaskWorkflowStatus.Completed) &&
+            taskList.Any(x => x.WorkflowStatus == TaskWorkflowStatus.Completed))
         {
-            return TaskApprovalStatus.ApprovedDepartment;
+            return TaskWorkflowStatus.Completed;
         }
 
-        if (taskList.All(x => x.ApprovalStatus is TaskApprovalStatus.ApprovedTeam or TaskApprovalStatus.ApprovedDepartment or TaskApprovalStatus.ApprovedFinal) &&
-            taskList.Any(x => x.ApprovalStatus == TaskApprovalStatus.ApprovedTeam))
+        if (taskList.All(x => x.WorkflowStatus is TaskWorkflowStatus.PendingApproval or TaskWorkflowStatus.Completed or TaskWorkflowStatus.Completed) &&
+            taskList.Any(x => x.WorkflowStatus == TaskWorkflowStatus.PendingApproval))
         {
-            return TaskApprovalStatus.ApprovedTeam;
+            return TaskWorkflowStatus.PendingApproval;
         }
 
-        if (taskList.Any(x => x.ApprovalStatus == TaskApprovalStatus.PendingTeam))
+        if (taskList.Any(x => x.WorkflowStatus == TaskWorkflowStatus.PendingReview))
         {
-            return TaskApprovalStatus.PendingTeam;
+            return TaskWorkflowStatus.PendingReview;
         }
 
-        return TaskApprovalStatus.Draft;
+        return TaskWorkflowStatus.New;
     }
 
     public static void EnsureCanSubmit(ICurrentUser currentUser, Guid? departmentId)
@@ -111,41 +111,41 @@ public static class TaskWorkflowSupport
         throw new ForbiddenException("forbidden_role", "Current role cannot submit this workflow.");
     }
 
-    public static TaskApprovalStatus EnsureCanApprove(
+    public static TaskWorkflowStatus EnsureCanApprove(
         ICurrentUser currentUser,
         Guid? departmentId,
-        TaskApprovalStatus currentStatus)
+        TaskWorkflowStatus currentStatus)
     {
         if (!departmentId.HasValue)
         {
-            if (currentStatus == TaskApprovalStatus.PendingTeam && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKh))
+            if (currentStatus == TaskWorkflowStatus.PendingReview && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKh))
             {
-                return TaskApprovalStatus.ApprovedTeam;
+                return TaskWorkflowStatus.PendingApproval;
             }
 
-            if (currentStatus == TaskApprovalStatus.ApprovedTeam && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKtnb))
+            if (currentStatus == TaskWorkflowStatus.PendingApproval && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKtnb))
             {
-                return TaskApprovalStatus.ApprovedFinal;
+                return TaskWorkflowStatus.Completed;
             }
 
             throw new ForbiddenException("forbidden_role", "Current role cannot approve this workflow.");
         }
 
-        if (currentStatus == TaskApprovalStatus.PendingTeam && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongNhom))
+        if (currentStatus == TaskWorkflowStatus.PendingReview && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongNhom))
         {
-            return TaskApprovalStatus.ApprovedTeam;
+            return TaskWorkflowStatus.PendingApproval;
         }
 
-        if (currentStatus == TaskApprovalStatus.ApprovedTeam &&
+        if (currentStatus == TaskWorkflowStatus.PendingApproval &&
             PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) &&
             currentUser.DepartmentId == departmentId.Value)
         {
-            return TaskApprovalStatus.ApprovedDepartment;
+            return TaskWorkflowStatus.Completed;
         }
 
-        if (currentStatus == TaskApprovalStatus.ApprovedDepartment && PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb))
+        if (currentStatus == TaskWorkflowStatus.Completed && PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb))
         {
-            return TaskApprovalStatus.ApprovedFinal;
+            return TaskWorkflowStatus.Completed;
         }
 
         throw new ForbiddenException("forbidden_role", "Current role cannot approve this workflow.");
@@ -154,23 +154,23 @@ public static class TaskWorkflowSupport
     public static void EnsureCanReturn(
         ICurrentUser currentUser,
         Guid? departmentId,
-        TaskApprovalStatus currentStatus)
+        TaskWorkflowStatus currentStatus)
     {
         _ = EnsureCanApprove(currentUser, departmentId, currentStatus);
     }
 
     public static void EnsureValidForSubmit(IEnumerable<TaskEntity> tasks)
     {
-        var invalid = tasks.FirstOrDefault(x => x.ApprovalStatus is not (TaskApprovalStatus.Draft or TaskApprovalStatus.Returned));
+        var invalid = tasks.FirstOrDefault(x => x.WorkflowStatus is not (TaskWorkflowStatus.New or TaskWorkflowStatus.Returned));
         if (invalid is not null)
         {
             throw new DomainException("task_workflow_invalid_submit", "One or more tasks are not ready for submit.");
         }
     }
 
-    public static void EnsureValidForApprove(IEnumerable<TaskEntity> tasks, TaskApprovalStatus expectedStatus)
+    public static void EnsureValidForApprove(IEnumerable<TaskEntity> tasks, TaskWorkflowStatus expectedStatus)
     {
-        var invalid = tasks.FirstOrDefault(x => x.ApprovalStatus != expectedStatus);
+        var invalid = tasks.FirstOrDefault(x => x.WorkflowStatus != expectedStatus);
         if (invalid is not null)
         {
             throw new DomainException("task_workflow_invalid_approve", "One or more tasks are not on the expected approval step.");
@@ -179,7 +179,7 @@ public static class TaskWorkflowSupport
 
     public static void EnsureValidForReturn(IEnumerable<TaskEntity> tasks)
     {
-        var invalid = tasks.FirstOrDefault(x => x.ApprovalStatus is TaskApprovalStatus.Draft or TaskApprovalStatus.Returned);
+        var invalid = tasks.FirstOrDefault(x => x.WorkflowStatus is TaskWorkflowStatus.New or TaskWorkflowStatus.Returned);
         if (invalid is not null)
         {
             throw new DomainException("task_workflow_invalid_return", "One or more tasks cannot be returned at this stage.");
@@ -190,8 +190,8 @@ public static class TaskWorkflowSupport
         TaskEntity task,
         Guid? departmentId,
         ApprovalAction action,
-        TaskApprovalStatus fromStatus,
-        TaskApprovalStatus toStatus,
+        TaskWorkflowStatus fromStatus,
+        TaskWorkflowStatus toStatus,
         Guid actorUserId,
         string? comment) =>
         new()
@@ -212,8 +212,8 @@ public static class TaskWorkflowSupport
             history.TaskId,
             history.DepartmentId,
             history.Action.ToString().ToLowerInvariant(),
-            TaskSupport.TaskApprovalStatusCode(history.FromStatus),
-            TaskSupport.TaskApprovalStatusCode(history.ToStatus),
+            TaskSupport.TaskWorkflowStatusCode(history.FromStatus),
+            TaskSupport.TaskWorkflowStatusCode(history.ToStatus),
             history.ActorUserId,
             history.ActorUser?.FullName,
             history.Comment,

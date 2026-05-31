@@ -32,7 +32,7 @@ public static class NotificationHelper
     }
 
     public static async System.Threading.Tasks.Task OnPlanApprovedAsync(
-        IApplicationDbContext db, Plan plan, ApprovalStatus newStatus, Guid? actorId, CancellationToken ct)
+        IApplicationDbContext db, Plan plan, WorkflowStatus newStatus, Guid? actorId, CancellationToken ct)
     {
         string title;
         string[] roleCodes;
@@ -40,7 +40,7 @@ public static class NotificationHelper
 
         if (plan.Scope == PlanScope.Main)
         {
-            if (newStatus == ApprovalStatus.Approved1)
+            if (newStatus == WorkflowStatus.Approved1)
             {
                 title = $"Ke hoach thang {plan.Month:D2}/{plan.Year} da qua kiem soat, cho phe duyet";
                 roleCodes = ["TRUONG_KTNB"];
@@ -53,7 +53,7 @@ public static class NotificationHelper
         }
         else
         {
-            if (newStatus == ApprovalStatus.Approved2)
+            if (newStatus == WorkflowStatus.Approved2)
             {
                 title = $"Ke hoach phong {plan.Department?.Name ?? ""} cho phe duyet cuoi";
                 roleCodes = ["PHO_TRUONG_KTNB"];

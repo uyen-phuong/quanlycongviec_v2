@@ -50,7 +50,7 @@ public class ReturnPlanHandler : IRequestHandler<ReturnPlanCommand, PlanDetailDt
             ?? throw new KeyNotFoundException("Plan not found.");
 
         WorkflowSupport.EnsureCanReturn(plan, _currentUser);
-        if (plan.Status == ApprovalStatus.Returned || plan.Status == ApprovalStatus.Draft)
+        if (plan.Status == WorkflowStatus.Returned || plan.Status == WorkflowStatus.Draft)
         {
             throw new DomainException("plan_return_invalid", "Plan cannot be returned at this stage.");
         }
@@ -88,14 +88,14 @@ public class ReturnPlanHandler : IRequestHandler<ReturnPlanCommand, PlanDetailDt
         }
 
         var fromStatus = plan.Status;
-        plan.Status = ApprovalStatus.Returned;
+        plan.Status = WorkflowStatus.Returned;
         plan.ApprovedAt = null;
 
         _db.ApprovalHistories.Add(WorkflowSupport.CreateHistory(
             plan,
             ApprovalAction.Return,
             fromStatus,
-            ApprovalStatus.Returned,
+            WorkflowStatus.Returned,
             actorId,
             request.Comment));
 

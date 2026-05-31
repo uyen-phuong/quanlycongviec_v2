@@ -16,6 +16,7 @@ import {
   registerUnauthorizedHandler,
   setAccessToken,
 } from "@/shared/api/client";
+import { ROLE_ADMIN, GLOBAL_TRACKING_ROLES } from "./roles";
 
 interface AuthContextValue {
   user: UserDto | null;
@@ -25,6 +26,10 @@ interface AuthContextValue {
   login: (values: LoginFormValues) => Promise<void>;
   logout: () => Promise<void>;
   refreshSession: () => Promise<string | null>;
+  isAdmin: boolean;
+  canBrowseGlobal: boolean;
+  hasRole: (role: string) => boolean;
+  hasAnyRole: (roles: string[]) => boolean;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -101,6 +106,17 @@ export function AuthProvider({ children }: PropsWithChildren) {
     });
   }, [refreshSession]);
 
+  const hasRole = useCallback((role: string) => {
+    return user?.roles.includes(role) ?? false;
+  }, [user]);
+
+  const hasAnyRole = useCallback((roles: string[]) => {
+    return user?.roles.some((r) => roles.includes(r)) ?? false;
+  }, [user]);
+
+  const isAdmin = hasRole(ROLE_ADMIN);
+  const canBrowseGlobal = hasAnyRole(GLOBAL_TRACKING_ROLES);
+
   return (
     <AuthContext.Provider
       value={{
@@ -111,6 +127,10 @@ export function AuthProvider({ children }: PropsWithChildren) {
         login,
         logout,
         refreshSession,
+        isAdmin,
+        canBrowseGlobal,
+        hasRole,
+        hasAnyRole,
       }}
     >
       {children}

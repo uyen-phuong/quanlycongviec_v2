@@ -18,6 +18,19 @@ export const planTrackingKeys = {
     ["plan-tracking", "line-comments", planId] as const,
 };
 
+export const departmentTaskKeys = {
+  tasks: (departmentCode?: string | null) => ["department-tasks", "tasks", departmentCode] as const,
+};
+
+export const personalTaskKeys = {
+  tasks: () => ["personal-tasks", "tasks"] as const,
+};
+
+export const projectKeys = {
+  projects: ["projects"] as const,
+  tasks: (projectId: string | null) => ["projects", "tasks", projectId] as const,
+};
+
 export function useDepartments() {
   return useQuery({
     queryKey: planTrackingKeys.departments,
@@ -220,6 +233,378 @@ export function useReturnPlan(planId: string | null) {
     }) => plansApi.returnPlan(planId!, values),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["plan-tracking"] });
+    },
+  });
+}
+
+export function useDepartmentUsers(departmentId: string | null) {
+  return useQuery({
+    queryKey: ["plan-tracking", "users", departmentId] as const,
+    queryFn: () => planTrackingApi.listDepartmentUsers(departmentId!),
+    enabled: Boolean(departmentId),
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+export function useSubmitTaskWorkflow(planId: string | null, departmentCode: string | null) {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (comment?: string | null) =>
+      planTrackingApi.submitTaskWorkflow(planId!, { departmentCode, comment }),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["plan-tracking"] });
+    },
+  });
+}
+
+export function useApproveTaskWorkflow(planId: string | null, departmentCode: string | null) {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (comment?: string | null) =>
+      planTrackingApi.approveTaskWorkflow(planId!, { departmentCode, comment }),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["plan-tracking"] });
+    },
+  });
+}
+
+export function useReturnTaskWorkflow(planId: string | null) {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (values: {
+      departmentCode?: string | null;
+      comment?: string | null;
+      lineComments: Array<{ taskId: string; content: string }>;
+    }) => planTrackingApi.returnTaskWorkflow(planId!, values),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["plan-tracking"] });
+    },
+  });
+}
+
+export function useSubmitTaskSingle(planId: string | null, workType: number | null, departmentCode: string | null) {
+  const queryClient = useQueryClient();
+  const key = [...planTrackingKeys.tasks(planId, workType), departmentCode] as const;
+
+  return useMutation({
+    mutationFn: ({ taskId, comment }: { taskId: string; comment?: string | null }) =>
+      planTrackingApi.submitTask(taskId, comment),
+    onSuccess: (updatedTask) => {
+      queryClient.setQueryData<TaskListItem[]>(
+        key,
+        (currentTasks) =>
+          currentTasks?.map((task) =>
+            task.id === updatedTask.id ? updatedTask : task,
+          ) ?? [],
+      );
+      void queryClient.invalidateQueries({ queryKey: ["plan-tracking"] });
+    },
+  });
+}
+
+export function useAssignTaskSingle(planId: string | null, workType: number | null, departmentCode: string | null) {
+  const queryClient = useQueryClient();
+  const key = [...planTrackingKeys.tasks(planId, workType), departmentCode] as const;
+
+  return useMutation({
+    mutationFn: ({ taskId, assigneeUserId, controllerUserId }: { taskId: string; assigneeUserId: string; controllerUserId?: string | null }) =>
+      planTrackingApi.assignTask(taskId, assigneeUserId, controllerUserId),
+    onSuccess: (updatedTask) => {
+      queryClient.setQueryData<TaskListItem[]>(
+        key,
+        (currentTasks) =>
+          currentTasks?.map((task) =>
+            task.id === updatedTask.id ? updatedTask : task,
+          ) ?? [],
+      );
+      void queryClient.invalidateQueries({ queryKey: ["plan-tracking"] });
+    },
+  });
+}
+
+export function useApproveTaskSingle(planId: string | null, workType: number | null, departmentCode: string | null) {
+  const queryClient = useQueryClient();
+  const key = [...planTrackingKeys.tasks(planId, workType), departmentCode] as const;
+
+  return useMutation({
+    mutationFn: ({ taskId, comment }: { taskId: string; comment?: string | null }) =>
+      planTrackingApi.approveTask(taskId, comment),
+    onSuccess: (updatedTask) => {
+      queryClient.setQueryData<TaskListItem[]>(
+        key,
+        (currentTasks) =>
+          currentTasks?.map((task) =>
+            task.id === updatedTask.id ? updatedTask : task,
+          ) ?? [],
+      );
+      void queryClient.invalidateQueries({ queryKey: ["plan-tracking"] });
+    },
+  });
+}
+
+export function useReturnTaskSingle(planId: string | null, workType: number | null, departmentCode: string | null) {
+  const queryClient = useQueryClient();
+  const key = [...planTrackingKeys.tasks(planId, workType), departmentCode] as const;
+
+  return useMutation({
+    mutationFn: ({ taskId, comment }: { taskId: string; comment: string }) =>
+      planTrackingApi.returnTask(taskId, comment),
+    onSuccess: (updatedTask) => {
+      queryClient.setQueryData<TaskListItem[]>(
+        key,
+        (currentTasks) =>
+          currentTasks?.map((task) =>
+            task.id === updatedTask.id ? updatedTask : task,
+          ) ?? [],
+      );
+      void queryClient.invalidateQueries({ queryKey: ["plan-tracking"] });
+    },
+  });
+}
+
+export function useDepartmentTasks(departmentCode?: string | null) {
+  return useQuery({
+    queryKey: departmentTaskKeys.tasks(departmentCode),
+    queryFn: () => planTrackingApi.listDepartmentTasks(departmentCode),
+    staleTime: 30 * 1000,
+  });
+}
+
+export function useCreateDepartmentTask(departmentCode?: string | null) {
+  const queryClient = useQueryClient();
+  const key = departmentTaskKeys.tasks(departmentCode);
+
+  return useMutation({
+    mutationFn: (payload: Omit<CreateTaskPayload, "planId">) =>
+      planTrackingApi.createDepartmentTask(payload),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useSaveDepartmentTask(departmentCode?: string | null) {
+  const queryClient = useQueryClient();
+  const key = departmentTaskKeys.tasks(departmentCode);
+
+  return useMutation({
+    mutationFn: ({ taskId, payload }: { taskId: string; payload: Parameters<typeof planTrackingApi.saveTask>[1] }) =>
+      planTrackingApi.saveTask(taskId, payload),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useDeleteDepartmentTask(departmentCode?: string | null) {
+  const queryClient = useQueryClient();
+  const key = departmentTaskKeys.tasks(departmentCode);
+
+  return useMutation({
+    mutationFn: (taskId: string) => planTrackingApi.deleteTask(taskId),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useSubmitDepartmentTaskSingle(departmentCode?: string | null) {
+  const queryClient = useQueryClient();
+  const key = departmentTaskKeys.tasks(departmentCode);
+
+  return useMutation({
+    mutationFn: ({ taskId, comment }: { taskId: string; comment?: string | null }) =>
+      planTrackingApi.submitTask(taskId, comment),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useAssignDepartmentTaskSingle(departmentCode?: string | null) {
+  const queryClient = useQueryClient();
+  const key = departmentTaskKeys.tasks(departmentCode);
+
+  return useMutation({
+    mutationFn: ({ taskId, assigneeUserId, controllerUserId }: { taskId: string; assigneeUserId: string; controllerUserId?: string | null }) =>
+      planTrackingApi.assignTask(taskId, assigneeUserId, controllerUserId),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useApproveDepartmentTaskSingle(departmentCode?: string | null) {
+  const queryClient = useQueryClient();
+  const key = departmentTaskKeys.tasks(departmentCode);
+
+  return useMutation({
+    mutationFn: ({ taskId, comment }: { taskId: string; comment?: string | null }) =>
+      planTrackingApi.approveTask(taskId, comment),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useReturnDepartmentTaskSingle(departmentCode?: string | null) {
+  const queryClient = useQueryClient();
+  const key = departmentTaskKeys.tasks(departmentCode);
+
+  return useMutation({
+    mutationFn: ({ taskId, comment }: { taskId: string; comment: string }) =>
+      planTrackingApi.returnTask(taskId, comment),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function usePersonalTasks() {
+  return useQuery({
+    queryKey: personalTaskKeys.tasks(),
+    queryFn: planTrackingApi.listPersonalTasks,
+    staleTime: 30 * 1000,
+  });
+}
+
+export function useCreatePersonalTask() {
+  const queryClient = useQueryClient();
+  const key = personalTaskKeys.tasks();
+
+  return useMutation({
+    mutationFn: (payload: { title: string; deadline?: string | null; noteText?: string | null; priority?: string | null; complexity?: string | null; displayOrder: number }) =>
+      planTrackingApi.createPersonalTask(payload),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useSavePersonalTask() {
+  const queryClient = useQueryClient();
+  const key = personalTaskKeys.tasks();
+
+  return useMutation({
+    mutationFn: ({ taskId, payload }: { taskId: string; payload: Parameters<typeof planTrackingApi.saveTask>[1] }) =>
+      planTrackingApi.saveTask(taskId, payload),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useDeletePersonalTask() {
+  const queryClient = useQueryClient();
+  const key = personalTaskKeys.tasks();
+
+  return useMutation({
+    mutationFn: (taskId: string) => planTrackingApi.deleteTask(taskId),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useProjects() {
+  return useQuery({
+    queryKey: projectKeys.projects,
+    queryFn: planTrackingApi.listProjects,
+    staleTime: 30 * 1000,
+  });
+}
+
+export function useCreateProject() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (payload: { name: string; description: string; leaderId: string; subLeaderId: string | null; memberUserIds: string[] }) =>
+      planTrackingApi.createProject(payload),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: projectKeys.projects });
+    },
+  });
+}
+
+export function useSubmitProject() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: string) => planTrackingApi.submitProject(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: projectKeys.projects });
+    },
+  });
+}
+
+export function useApproveProject() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: string) => planTrackingApi.approveProject(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: projectKeys.projects });
+    },
+  });
+}
+
+export function useReturnProject() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, comment }: { id: string; comment: string }) => planTrackingApi.returnProject(id, comment),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: projectKeys.projects });
+    },
+  });
+}
+
+export function useProjectTasks(projectId: string | null) {
+  return useQuery({
+    queryKey: projectKeys.tasks(projectId),
+    queryFn: () => planTrackingApi.listProjectTasks(projectId!),
+    enabled: Boolean(projectId),
+    staleTime: 30 * 1000,
+  });
+}
+
+export function useCreateProjectTask(projectId: string | null) {
+  const queryClient = useQueryClient();
+  const key = projectKeys.tasks(projectId);
+
+  return useMutation({
+    mutationFn: (payload: Omit<CreateTaskPayload, "planId">) =>
+      planTrackingApi.createProjectTask(projectId!, payload),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useSaveProjectTask(projectId: string | null) {
+  const queryClient = useQueryClient();
+  const key = projectKeys.tasks(projectId);
+
+  return useMutation({
+    mutationFn: ({ taskId, payload }: { taskId: string; payload: Parameters<typeof planTrackingApi.saveTask>[1] }) =>
+      planTrackingApi.saveTask(taskId, payload),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
+    },
+  });
+}
+
+export function useDeleteProjectTask(projectId: string | null) {
+  const queryClient = useQueryClient();
+  const key = projectKeys.tasks(projectId);
+
+  return useMutation({
+    mutationFn: (taskId: string) => planTrackingApi.deleteTask(taskId),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: key });
     },
   });
 }

@@ -12,6 +12,7 @@ public record UpdateUserCommand(
     string FullName,
     string? Email,
     Guid? DepartmentId,
+    Guid? PositionId,
     bool IsActive) : IRequest<AdminUserDetailDto>;
 
 public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
@@ -39,6 +40,7 @@ public class UpdateUserHandler : IRequestHandler<UpdateUserCommand, AdminUserDet
     {
         var user = await _db.Users
             .Include(x => x.Department)
+            .Include(x => x.Position)
             .Include(x => x.UserRoles)
                 .ThenInclude(x => x.Role)
             .FirstOrDefaultAsync(x => x.Id == request.Id, ct)
@@ -50,11 +52,16 @@ public class UpdateUserHandler : IRequestHandler<UpdateUserCommand, AdminUserDet
         }
 
         var department = await ApplicationSupport.RequireActiveDepartmentAsync(_db, request.DepartmentId, ct);
+        var position = request.PositionId.HasValue
+            ? await _db.Positions.FindAsync([request.PositionId.Value], ct)
+            : null;
 
         user.FullName = request.FullName.Trim();
         user.Email = AdminSupport.NormalizeEmail(request.Email);
         user.DepartmentId = department?.Id;
         user.Department = department;
+        user.PositionId = position?.Id;
+        user.Position = position;
         user.IsActive = request.IsActive;
 
         await _db.SaveChangesAsync(ct);

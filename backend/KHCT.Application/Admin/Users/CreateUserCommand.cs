@@ -15,6 +15,7 @@ public record CreateUserCommand(
     string FullName,
     string? Email,
     Guid? DepartmentId,
+    Guid? PositionId,
     Guid RoleId,
     bool IsActive) : IRequest<AdminUserDetailDto>;
 
@@ -53,6 +54,9 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, AdminUserDet
 
         var role = await AdminSupport.RequireRoleAsync(_db, request.RoleId, ct);
         var department = await ApplicationSupport.RequireActiveDepartmentAsync(_db, request.DepartmentId, ct);
+        var position = request.PositionId.HasValue
+            ? await _db.Positions.FindAsync([request.PositionId.Value], ct)
+            : null;
 
         var user = new User
         {
@@ -62,6 +66,7 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, AdminUserDet
             FullName = request.FullName.Trim(),
             Email = AdminSupport.NormalizeEmail(request.Email),
             DepartmentId = department?.Id,
+            PositionId = position?.Id,
             IsActive = request.IsActive
         };
 
@@ -77,6 +82,7 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, AdminUserDet
         await _db.SaveChangesAsync(ct);
 
         user.Department = department;
+        user.Position = position;
         userRole.Role = role;
         return AdminSupport.ToDetail(user);
     }

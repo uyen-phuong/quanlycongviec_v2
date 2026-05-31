@@ -21,12 +21,15 @@ public record CreateTaskCommand(
     string WorkStatus,
     DateTime? Deadline,
     Guid? AssigneeUserId,
+    Guid? ControllerUserId,
     Guid? OwnerDepartmentId,
     string? BksMemberText,
     string? KtnbLeaderText,
     string? NoteText,
     string? ProgressText,
     string? ReasonNotCompleted,
+    string? Priority,
+    string? Complexity,
     IReadOnlyList<Guid> SupportingDepartmentIds) : IRequest<TaskDetailDto>;
 
 public class CreateTaskCommandValidator : AbstractValidator<CreateTaskCommand>
@@ -76,6 +79,9 @@ public class CreateTaskHandler : IRequestHandler<CreateTaskCommand, TaskDetailDt
         var supportingIds = await TaskSupport.ValidateSupportingDepartmentsAsync(_db, plan, request.SupportingDepartmentIds, ct);
         var ownerDepartmentId = await TaskSupport.ValidateOwnerDepartmentAsync(_db, plan, request.IsHeader, (WorkType)request.WorkType, request.OwnerDepartmentId, ct);
 
+        var priority = string.IsNullOrWhiteSpace(request.Priority) ? TaskPriority.Normal : TaskSupport.ParsePriority(request.Priority);
+        var complexity = string.IsNullOrWhiteSpace(request.Complexity) ? TaskComplexity.Medium : TaskSupport.ParseComplexity(request.Complexity);
+
         var task = new TaskEntity
         {
             Id = Guid.NewGuid(),
@@ -89,12 +95,15 @@ public class CreateTaskHandler : IRequestHandler<CreateTaskCommand, TaskDetailDt
             WorkStatus = workStatus,
             Deadline = request.Deadline,
             AssigneeUserId = request.AssigneeUserId,
+            ControllerUserId = request.ControllerUserId,
             OwnerDepartmentId = ownerDepartmentId,
             BksMemberText = string.IsNullOrWhiteSpace(request.BksMemberText) ? null : request.BksMemberText.Trim(),
             KtnbLeaderText = string.IsNullOrWhiteSpace(request.KtnbLeaderText) ? null : request.KtnbLeaderText.Trim(),
             NoteText = string.IsNullOrWhiteSpace(request.NoteText) ? null : request.NoteText.Trim(),
             ProgressText = string.IsNullOrWhiteSpace(request.ProgressText) ? null : request.ProgressText.Trim(),
-            ReasonNotCompleted = string.IsNullOrWhiteSpace(request.ReasonNotCompleted) ? null : request.ReasonNotCompleted.Trim()
+            ReasonNotCompleted = string.IsNullOrWhiteSpace(request.ReasonNotCompleted) ? null : request.ReasonNotCompleted.Trim(),
+            Priority = priority,
+            Complexity = complexity
         };
 
         TaskSupport.ApplySupportingDepartments(task, supportingIds);

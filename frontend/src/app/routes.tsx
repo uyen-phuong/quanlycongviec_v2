@@ -6,16 +6,18 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { AdminApprovalConfigsPage } from "@/features/admin/AdminApprovalConfigsPage";
-import { AdminDepartmentsPage } from "@/features/admin/AdminDepartmentsPage";
-import { AdminRolesPage } from "@/features/admin/AdminRolesPage";
 import { AdminUsersPage } from "@/features/admin/AdminUsersPage";
+import { AdminConfigPage } from "@/features/admin/AdminConfigPage";
+import { AdminPermissionMatrixPage } from "@/features/admin/AdminPermissionMatrixPage";
 import { LoginPage } from "@/features/auth/LoginPage";
-import { PersonalEvaluationPage } from "@/features/personal-evaluation/PersonalEvaluationPage";
 import { PlanTrackingPage } from "@/features/plan-tracking/PlanTrackingPage";
 import { MainPlanDetailPage } from "@/features/plans/MainPlanDetailPage";
 import { MainPlansPage } from "@/features/plans/MainPlansPage";
+import { DepartmentTasksPage } from "@/features/department-tasks/DepartmentTasksPage";
+import { PersonalTasksPage } from "@/features/personal-tasks/PersonalTasksPage";
 import { AppShell } from "@/layouts/AppShell";
 import { useAuth } from "@/shared/auth/useAuth";
+import { ROLE_ADMIN } from "@/shared/auth/roles";
 
 function RequireAuth({ children }: { children: ReactNode }) {
   const auth = useAuth();
@@ -115,8 +117,12 @@ export const router = createBrowserRouter([
         element: <PlanTrackingPage />,
       },
       {
-        path: "plan-tracking/personal",
-        element: <PersonalEvaluationPage />,
+        path: "department-tasks",
+        element: <DepartmentTasksPage />,
+      },
+      {
+        path: "personal-tasks",
+        element: <PersonalTasksPage />,
       },
       {
         path: "plans/main",
@@ -127,19 +133,23 @@ export const router = createBrowserRouter([
         element: <MainPlanDetailPage />,
       },
       {
-        element: <RequireRole roles={["ADMIN"]} />,
+        path: "projects",
+        element: <FullscreenMessage title="Module Dự án Triển khai giải pháp đang được xây dựng" />,
+      },
+      {
+        element: <RequireRole roles={[ROLE_ADMIN]} />,
         children: [
           {
             path: "admin/users",
             element: <AdminUsersPage />,
           },
           {
-            path: "admin/departments",
-            element: <AdminDepartmentsPage />,
+            path: "admin/config",
+            element: <AdminConfigPage />,
           },
           {
-            path: "admin/roles",
-            element: <AdminRolesPage />,
+            path: "admin/permissions",
+            element: <AdminPermissionMatrixPage />,
           },
           {
             path: "admin/approval-configs",

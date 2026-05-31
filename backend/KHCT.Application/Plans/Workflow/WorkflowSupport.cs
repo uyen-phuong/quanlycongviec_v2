@@ -43,34 +43,34 @@ public static class WorkflowSupport
         throw new ForbiddenException("forbidden_role", "Current role cannot submit sub plan.");
     }
 
-    public static ApprovalStatus EnsureCanApprove(Plan plan, ICurrentUser currentUser)
+    public static WorkflowStatus EnsureCanApprove(Plan plan, ICurrentUser currentUser)
     {
         if (plan.Scope == PlanScope.Main)
         {
-            if (plan.Status == ApprovalStatus.Pending && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKh))
+            if (plan.Status == WorkflowStatus.Pending && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKh))
             {
-                return ApprovalStatus.Approved1;
+                return WorkflowStatus.Approved1;
             }
 
-            if (plan.Status == ApprovalStatus.Approved1 && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKtnb))
+            if (plan.Status == WorkflowStatus.Approved1 && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKtnb))
             {
-                return ApprovalStatus.Approved2;
+                return WorkflowStatus.Approved2;
             }
 
             throw new ForbiddenException("forbidden_role", "Current role cannot approve main plan at this stage.");
         }
 
-        if (plan.Status == ApprovalStatus.Pending &&
+        if (plan.Status == WorkflowStatus.Pending &&
             plan.DepartmentId.HasValue &&
             PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) &&
             currentUser.DepartmentId == plan.DepartmentId.Value)
         {
-            return ApprovalStatus.Approved2;
+            return WorkflowStatus.Approved2;
         }
 
-        if (plan.Status == ApprovalStatus.Approved2 && PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb))
+        if (plan.Status == WorkflowStatus.Approved2 && PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb))
         {
-            return ApprovalStatus.Approved3;
+            return WorkflowStatus.Approved3;
         }
 
         throw new ForbiddenException("forbidden_role", "Current role cannot approve sub plan at this stage.");
@@ -130,8 +130,8 @@ public static class WorkflowSupport
     public static ApprovalHistory CreateHistory(
         Plan plan,
         ApprovalAction action,
-        ApprovalStatus fromStatus,
-        ApprovalStatus toStatus,
+        WorkflowStatus fromStatus,
+        WorkflowStatus toStatus,
         Guid actorUserId,
         string? comment) =>
         new()

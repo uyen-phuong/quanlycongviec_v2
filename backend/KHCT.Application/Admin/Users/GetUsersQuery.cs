@@ -30,6 +30,7 @@ public class GetUsersHandler : IRequestHandler<GetUsersQuery, PagedResult<AdminU
         var query = _db.Users
             .AsNoTracking()
             .Include(x => x.Department)
+            .Include(x => x.Position)
             .Include(x => x.UserRoles)
                 .ThenInclude(x => x.Role)
             .AsQueryable();

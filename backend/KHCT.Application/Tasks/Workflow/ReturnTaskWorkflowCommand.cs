@@ -91,20 +91,20 @@ public class ReturnTaskWorkflowHandler : IRequestHandler<ReturnTaskWorkflowComma
 
         foreach (var task in workflowTasks)
         {
-            var fromStatus = task.ApprovalStatus;
-            task.ApprovalStatus = TaskApprovalStatus.Returned;
+            var fromStatus = task.WorkflowStatus;
+            task.WorkflowStatus = TaskWorkflowStatus.Returned;
             task.ApprovedAt = null;
             _db.TaskApprovalHistories.Add(TaskWorkflowSupport.CreateHistory(
                 task,
                 department?.Id,
                 ApprovalAction.Return,
                 fromStatus,
-                TaskApprovalStatus.Returned,
+                TaskWorkflowStatus.Returned,
                 actorId,
                 request.Comment));
         }
 
         await _db.SaveChangesAsync(ct);
-        return TaskSupport.TaskApprovalStatusCode(TaskWorkflowSupport.AggregateStatus(workflowTasks));
+        return TaskSupport.TaskWorkflowStatusCode(TaskWorkflowSupport.AggregateStatus(workflowTasks));
     }
 }

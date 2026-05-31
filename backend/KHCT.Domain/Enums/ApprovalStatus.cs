@@ -1,6 +1,6 @@
 namespace KHCT.Domain.Enums;
 
-public enum ApprovalStatus
+public enum WorkflowStatus
 {
     Draft = 0,
     Pending = 1,

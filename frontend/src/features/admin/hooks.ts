@@ -7,6 +7,7 @@ export const adminKeys = {
   users: (filter: UsersFilter) => ["admin", "users", filter] as const,
   roles: ["admin", "roles"] as const,
   departments: ["admin", "departments"] as const,
+  positions: ["admin", "positions"] as const,
   approvalConfigs: ["admin", "approval-configs"] as const,
 };
 
@@ -34,6 +35,14 @@ export function useAdminDepartments() {
   });
 }
 
+export function useAdminPositions() {
+  return useQuery({
+    queryKey: adminKeys.positions,
+    queryFn: adminApi.listPositions,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
 export function useAdminApprovalConfigs() {
   return useQuery({
     queryKey: adminKeys.approvalConfigs,
@@ -44,7 +53,6 @@ export function useAdminApprovalConfigs() {
 
 export function useCreateUser() {
   const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: (values: CreateUserValues) => adminApi.createUser(values),
     onSuccess: () => {
@@ -55,7 +63,6 @@ export function useCreateUser() {
 
 export function useUpdateUser(userId: string, filter: UsersFilter) {
   const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: (values: UpdateUserValues) => adminApi.updateUser(userId, values),
     onSuccess: (updated) => {
@@ -72,7 +79,6 @@ export function useUpdateUser(userId: string, filter: UsersFilter) {
 
 export function useChangeRole(userId: string) {
   const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: (values: ChangeRoleValues) => adminApi.changeRole(userId, values),
     onSuccess: () => {
@@ -89,7 +95,6 @@ export function useResetPassword(userId: string) {
 
 export function useUpdateDepartment() {
   const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: ({ id, name, isActive }: { id: string; name: string; isActive: boolean }) =>
       adminApi.updateDepartment(id, name, isActive),
@@ -99,9 +104,51 @@ export function useUpdateDepartment() {
   });
 }
 
+export function useCreateDepartment() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ code, name }: { code: string; name: string }) =>
+      adminApi.createDepartment(code, name),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: adminKeys.departments });
+    },
+  });
+}
+
+export function useCreatePosition() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ code, name, sortOrder }: { code: string; name: string; sortOrder: number }) =>
+      adminApi.createPosition(code, name, sortOrder),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: adminKeys.positions });
+    },
+  });
+}
+
+export function useUpdatePosition() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, name, isActive, sortOrder }: { id: string; name: string; isActive: boolean; sortOrder: number }) =>
+      adminApi.updatePosition(id, name, isActive, sortOrder),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: adminKeys.positions });
+    },
+  });
+}
+
+export function useDeletePosition() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => adminApi.deletePosition(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: adminKeys.positions });
+    },
+  });
+}
+
 export function useUpdateApprovalConfig() {
   const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: ({
       id,

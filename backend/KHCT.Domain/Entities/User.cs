@@ -12,6 +12,9 @@ public class User : Entity
     public Department? Department { get; set; }
     public bool IsActive { get; set; } = true;
     public DateTime? LastLoginAt { get; set; }
+    public DateTime? LastLogoutAt { get; set; }
+    public Guid? PositionId { get; set; }
+    public Position? Position { get; set; }
 
     public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 }

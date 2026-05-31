@@ -19,6 +19,10 @@ public class PlanConfiguration : IEntityTypeConfiguration<Plan>
             .WithMany()
             .HasForeignKey(x => x.CreatedById)
             .OnDelete(DeleteBehavior.Restrict);
+        b.HasOne(x => x.KtnbLeader)
+            .WithMany()
+            .HasForeignKey(x => x.KtnbLeaderId)
+            .OnDelete(DeleteBehavior.Restrict);
         b.Property(x => x.RowVersion).IsRowVersion();
     }
 }

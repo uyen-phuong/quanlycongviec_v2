@@ -33,7 +33,13 @@ public class JwtTokenService : ITokenService
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
         if (user.DepartmentId.HasValue)
+        {
             claims.Add(new Claim("dept", user.DepartmentId.Value.ToString()));
+            if (!string.IsNullOrEmpty(user.Department?.Code))
+            {
+                claims.Add(new Claim("deptCode", user.Department.Code));
+            }
+        }
         foreach (var r in roleCodes)
             claims.Add(new Claim(ClaimTypes.Role, r));
 

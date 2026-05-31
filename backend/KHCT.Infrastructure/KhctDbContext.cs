@@ -19,6 +19,7 @@ public sealed class KhctDbContext : DbContext, IApplicationDbContext
     }
 
     public DbSet<Department> Departments => Set<Department>();
+    public DbSet<Position> Positions => Set<Position>();
     public DbSet<Role> Roles => Set<Role>();
     public DbSet<User> Users => Set<User>();
     public DbSet<UserRole> UserRoles => Set<UserRole>();
@@ -26,8 +27,10 @@ public sealed class KhctDbContext : DbContext, IApplicationDbContext
     public DbSet<ApprovalConfig> ApprovalConfigs => Set<ApprovalConfig>();
     public DbSet<BksMember> BksMembers => Set<BksMember>();
     public DbSet<Plan> Plans => Set<Plan>();
+    public DbSet<PlanReportingPeriod> PlanReportingPeriods => Set<PlanReportingPeriod>();
     public DbSet<TaskEntity> Tasks => Set<TaskEntity>();
     public DbSet<TaskSupportingDept> TaskSupportingDepts => Set<TaskSupportingDept>();
+    public DbSet<TaskCollaborator> TaskCollaborators => Set<TaskCollaborator>();
     public DbSet<TaskApprovalHistory> TaskApprovalHistories => Set<TaskApprovalHistory>();
     public DbSet<ApprovalHistory> ApprovalHistories => Set<ApprovalHistory>();
     public DbSet<LineComment> LineComments => Set<LineComment>();
@@ -36,6 +39,8 @@ public sealed class KhctDbContext : DbContext, IApplicationDbContext
     public DbSet<Notification> Notifications => Set<Notification>();
     public DbSet<PersonalEvaluationPeriod> PersonalEvaluationPeriods => Set<PersonalEvaluationPeriod>();
     public DbSet<PersonalEvaluationItem> PersonalEvaluationItems => Set<PersonalEvaluationItem>();
+    public DbSet<Project> Projects => Set<Project>();
+    public DbSet<ProjectMember> ProjectMembers => Set<ProjectMember>();
     Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade IApplicationDbContext.Database => base.Database;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -130,6 +135,11 @@ public sealed class KhctDbContext : DbContext, IApplicationDbContext
                 entry.Entity.CreatedAt = now;
         }
         foreach (var entry in ChangeTracker.Entries<TaskSupportingDept>())
+        {
+            if (entry.State == EntityState.Added)
+                entry.Entity.CreatedAt = now;
+        }
+        foreach (var entry in ChangeTracker.Entries<TaskCollaborator>())
         {
             if (entry.State == EntityState.Added)
                 entry.Entity.CreatedAt = now;

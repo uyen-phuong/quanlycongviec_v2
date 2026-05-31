@@ -8,7 +8,7 @@ $stderrLog = Join-Path $logDir "backend-stderr.log"
 if (Test-Path $stdoutLog) { Remove-Item -Force $stdoutLog }
 if (Test-Path $stderrLog) { Remove-Item -Force $stderrLog }
 
-$command = "$env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE='1'; $env:DOTNET_CLI_HOME='$workspace\.dotnet'; $env:APPDATA='$workspace\.appdata'; $env:ASPNETCORE_URLS='http://127.0.0.1:5051'; dotnet run --no-build --project '$workspace\backend\KHCT.Api\KHCT.Api.csproj'"
+$command = "$env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE='1'; $env:DOTNET_CLI_HOME='$workspace\.dotnet'; $env:APPDATA='$workspace\.appdata'; $env:ASPNETCORE_URLS='http://127.0.0.1:5051'; dotnet run --project '$workspace\backend\KHCT.Api\KHCT.Api.csproj'"
 
 $psi = [System.Diagnostics.ProcessStartInfo]::new()
 $psi.FileName = "powershell.exe"

@@ -95,7 +95,7 @@ internal static class InheritService
                     DepartmentId = deptId,
                     Year = mainPlan.Year,
                     Month = mainPlan.Month,
-                    Status = ApprovalStatus.Draft,
+                    Status = WorkflowStatus.Draft,
                     CreatedById = actorUserId ?? mainPlan.CreatedById
                 };
                 db.Plans.Add(subPlan);

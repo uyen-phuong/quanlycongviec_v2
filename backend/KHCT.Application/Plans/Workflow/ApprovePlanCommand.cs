@@ -43,12 +43,12 @@ public class ApprovePlanHandler : IRequestHandler<ApprovePlanCommand, PlanDetail
         var nextStatus = WorkflowSupport.EnsureCanApprove(plan, _currentUser);
 
         var triggersInherit = plan.Scope == PlanScope.Main
-            && fromStatus == ApprovalStatus.Approved1
-            && nextStatus == ApprovalStatus.Approved2;
+            && fromStatus == WorkflowStatus.Approved1
+            && nextStatus == WorkflowStatus.Approved2;
 
         var triggersSync = plan.Scope == PlanScope.Sub
-            && fromStatus == ApprovalStatus.Approved2
-            && nextStatus == ApprovalStatus.Approved3;
+            && fromStatus == WorkflowStatus.Approved2
+            && nextStatus == WorkflowStatus.Approved3;
 
         if (triggersInherit)
         {
@@ -61,7 +61,7 @@ public class ApprovePlanHandler : IRequestHandler<ApprovePlanCommand, PlanDetail
         }
 
         plan.Status = nextStatus;
-        if (nextStatus is ApprovalStatus.Approved2 or ApprovalStatus.Approved3)
+        if (nextStatus is WorkflowStatus.Approved2 or WorkflowStatus.Approved3)
         {
             plan.ApprovedAt = DateTime.UtcNow;
         }
