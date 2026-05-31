@@ -42,7 +42,7 @@ function NotificationItem({ item }: { item: NotificationDto }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "8px" }}>
         <span style={{
           fontSize: "10px", fontWeight: 600, color: "#fff",
-          background: item.isRead ? "#aaa" : "#5C1F1F",
+          background: item.isRead ? "#aaa" : "var(--red)",
           borderRadius: "3px", padding: "1px 5px", whiteSpace: "nowrap",
         }}>
           {tag}
@@ -178,11 +178,14 @@ export function Header() {
         </div>
 
         {/* User info */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <div style={{
-            width: "32px", height: "32px", background: "rgba(255,255,255,.22)",
+            width: "34px", height: "34px",
+            background: "linear-gradient(135deg, rgba(255,255,255,.24) 0%, rgba(255,255,255,.08) 100%)",
+            border: "1.5px solid var(--gold)",
             borderRadius: "50%", display: "flex", alignItems: "center",
             justifyContent: "center", fontWeight: 700, fontSize: "11.5px", color: "#fff",
+            boxShadow: "0 2px 6px rgba(0,0,0,.15)",
           }}>
             {initials}
           </div>
@@ -190,7 +193,7 @@ export function Header() {
             <div style={{ fontSize: "12.5px", fontWeight: 600, color: "#fff" }}>
               {auth.user?.fullName ?? "Guest"}
             </div>
-            <div style={{ fontSize: "10px", color: "rgba(255,255,255,.6)" }}>
+            <div style={{ fontSize: "10px", color: "rgba(255,255,255,.7)", fontWeight: 500 }}>
               {roleText}
             </div>
           </div>

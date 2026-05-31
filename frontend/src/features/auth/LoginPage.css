@@ -1,23 +1,453 @@
+/* Clean premium background for Agribank login */
 .login-page {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top right, rgba(92, 31, 31, 0.14), transparent 24%),
-    radial-gradient(circle at bottom left, rgba(155, 107, 61, 0.16), transparent 22%),
-    linear-gradient(180deg, #f7f2e8 0%, #efe7d9 100%);
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #5c0a1b 0%, #2b030b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  color: #fff;
+  padding: 24px;
 }
 
-.login-card {
+/* Container layout split */
+.login-container {
+  width: 100%;
+  max-width: 1120px;
+  min-height: 620px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  z-index: 10;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .login-container {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+  }
+}
+
+/* Left Brand Column styling */
+.login-brand-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  text-align: left;
+}
+
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.brand-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-logo-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1.2px;
+  line-height: 1.1;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.brand-logo-slogan {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.8px;
+  margin-top: 3px;
+  opacity: 0.95;
+}
+
+.brand-main-title {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.2px;
+  margin-bottom: 16px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.brand-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 48px;
+  max-width: 480px;
+}
+
+/* Features Grid */
+.login-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.login-feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 18px 14px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-feature-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.feature-card-icon {
+  width: 38px;
+  height: 38px;
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--red);
+  margin-bottom: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.feature-card-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.feature-card-desc {
+  font-size: 11px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.brand-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: auto;
+}
+
+/* Right side white form card */
+.login-form-card {
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 24px 72px -12px rgba(0, 0, 0, 0.35);
+  padding: 36px 40px;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.form-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--red);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.form-subtitle {
+  font-size: 12px;
+  color: var(--ink3);
+  margin-top: 4px;
+}
+
+.form-divider-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0;
+  position: relative;
+}
+
+.form-divider-line {
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.form-divider-icon {
+  width: 28px;
+  height: 28px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink3);
+  z-index: 2;
+  margin: 0 10px;
+}
+
+.form-group-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.input-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink2);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.input-box-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon-left {
+  position: absolute;
+  left: 14px;
+  color: var(--ink3);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon-right {
+  position: absolute;
+  right: 14px;
+  color: var(--ink3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+  transition: color 0.15s;
+}
+
+.input-icon-right:hover {
+  color: var(--red);
+}
+
+.login-form-input {
+  width: 100%;
+  height: 44px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0 16px 0 40px;
+  font-size: 12.5px;
+  font-family: inherit;
+  color: var(--ink);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.login-form-input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(174, 28, 63, 0.15);
+}
+
+.login-form-input::placeholder {
+  color: #a0aec0;
+}
+
+/* Remind and forgot password bar */
+.form-options-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 24px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--red);
+  cursor: pointer;
+}
+
+.forgot-pwd-link {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.forgot-pwd-link:hover {
+  color: var(--red-d);
+  text-decoration: underline;
+}
+
+/* Submit button with arrow */
+.btn-agri-submit {
+  width: 100%;
+  height: 46px;
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-d) 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(174, 28, 63, 0.25);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
-.login-card::after {
-  content: "";
+.btn-agri-submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, #c0234a 0%, var(--red) 100%);
+  box-shadow: 0 6px 20px rgba(174, 28, 63, 0.35);
+  transform: translateY(-1.5px);
+}
+
+.btn-agri-submit:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-agri-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-agri-submit-arrow {
   position: absolute;
-  inset: auto -24px -24px auto;
-  height: 140px;
-  width: 140px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(92, 31, 31, 0.16), transparent 70%);
-  pointer-events: none;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.btn-agri-submit:hover:not(:disabled) .btn-agri-submit-arrow {
+  transform: translateX(3px);
+}
+
+/* SSO / OTP alternative login */
+.or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: var(--ink4);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.or-divider::before, .or-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1.5px dashed #e2e8f0;
+}
+
+.or-divider:not(:empty)::before {
+  margin-right: 10px;
+}
+
+.or-divider:not(:empty)::after {
+  margin-left: 10px;
+}
+
+.social-login-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.btn-social-login {
+  height: 38px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-social-login:hover {
+  background: #f8fafc;
+  border-color: var(--ink4);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-social-login:active {
+  transform: scale(0.97);
+}
+
+/* Support call footer */
+.form-footer-support {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: var(--ink3);
+  margin-top: auto;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+  text-align: center;
+}
+
+.form-footer-support svg {
+  color: var(--red);
 }

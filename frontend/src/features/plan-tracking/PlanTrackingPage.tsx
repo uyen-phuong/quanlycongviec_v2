@@ -213,6 +213,18 @@ export function PlanTrackingPage() {
     [tasksQuery.data],
   );
 
+  const stats = useMemo(() => {
+    const list = tasksQuery.data ?? [];
+    const nonHeaders = list.filter((t) => !t.isHeader);
+    const total = nonHeaders.length;
+    const done = nonHeaders.filter((t) => t.workStatus === "done").length;
+    const overdue = nonHeaders.filter((t) => t.workStatus === "overdue").length;
+    const withComments = nonHeaders.filter((t) => t.hasOpenComment).length;
+    const attention = nonHeaders.filter((t) => t.workStatus === "overdue" || t.hasOpenComment).length;
+    const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+    return { total, done, overdue, withComments, attention, percent };
+  }, [tasksQuery.data]);
+
   const filteredRows = useMemo(() => {
     const q = searchText.trim().toLowerCase();
     if (!q) return rows;
@@ -396,6 +408,60 @@ export function PlanTrackingPage() {
           )}
         </button>
       </div>
+
+      {resolvedPlanQuery.data?.found && tasksQuery.data && tasksQuery.data.length > 0 && (
+        <div className="hero-stats">
+          <div className="stat-card">
+            <div className="stat-icon-wrapper blue">
+              <svg fill="none" height="20" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="20">
+                <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
+                <rect x="9" y="3" width="6" height="4" rx="2" />
+              </svg>
+            </div>
+            <div className="stat-info">
+              <span className="stat-label">Tổng Số Công Việc</span>
+              <span className="stat-val">{stats.total}</span>
+              <span className="stat-desc">Đầu mục công tác trong kỳ</span>
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-icon-wrapper green">
+              <svg fill="none" height="20" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="20">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <div className="stat-info">
+              <span className="stat-label">Tiến Độ Hoàn Thành</span>
+              <div style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+                <span className="stat-val">{stats.percent}%</span>
+                <span className="stat-subval">({stats.done}/{stats.total})</span>
+              </div>
+              <div className="stat-progress-bg">
+                <div className="stat-progress-bar" style={{ width: `${stats.percent}%` }} />
+              </div>
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-icon-wrapper red">
+              <svg fill="none" height="20" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" width="20">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" x2="12" y1="9" y2="13" />
+                <line x1="12" x2="12.01" y1="17" y2="17" />
+              </svg>
+            </div>
+            <div className="stat-info">
+              <span className="stat-label">Đầu Mục Cần Lưu Ý</span>
+              <span className="stat-val warning">{stats.attention}</span>
+              <span className="stat-desc">
+                {stats.overdue} trễ hạn · {stats.withComments} phản hồi chưa giải quyết
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="card">
         <Toolbar

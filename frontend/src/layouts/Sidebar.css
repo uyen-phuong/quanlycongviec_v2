@@ -23,7 +23,7 @@
 .sb-ico {
   width: 28px;
   height: 28px;
-  background: rgba(255,255,255,.22);
+  background: transparent;
   border-radius: 7px;
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@
   flex-shrink: 0;
 }
 
-.sb-brand { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.3; }
+.sb-brand { font-size: 13px; font-weight: 800; color: #fff; line-height: 1.3; }
 .sb-sub { font-size: 9px; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .5px; }
 
 .sb-scroll { flex: 1; overflow-y: auto; padding: 6px 0; }
@@ -45,7 +45,7 @@
   padding: 12px 16px 4px;
   font-size: 9px;
   font-weight: 700;
-  color: rgba(255,255,255,.38);
+  color: rgba(255,255,255,.45);
   letter-spacing: 1.2px;
   text-transform: uppercase;
 }
@@ -59,13 +59,13 @@
   color: rgba(255,255,255,.8);
   cursor: pointer;
   border-left: 3px solid transparent;
-  transition: background .12s;
+  transition: all .2s ease;
   text-decoration: none;
 }
-.sba:hover { background: rgba(255,255,255,.1); color: #fff; }
+.sba:hover { background: rgba(255,255,255,.08); color: #fff; }
 .sba.on, .sba[data-active="true"] {
-  background: rgba(255,255,255,.17);
-  border-left-color: #fff;
+  background: rgba(255,255,255,.14);
+  border-left-color: var(--gold);
   color: #fff;
   font-weight: 600;
 }
@@ -85,8 +85,8 @@
 .sb-suba:hover { background: rgba(255,255,255,.08); color: #fff; }
 .sb-suba.on, .sb-suba[data-active="true"] {
   background: rgba(255,255,255,.12);
-  color: #fff;
-  font-weight: 600;
+  color: var(--gold);
+  font-weight: 700;
 }
 
 .sb-suba.lv2 {
@@ -96,8 +96,8 @@
 }
 .sb-suba.lv2:hover { background: rgba(255,255,255,.06); color: rgba(255,255,255,.9); }
 .sb-suba.lv2.on, .sb-suba.lv2[data-active="true"] {
-  color: #fff;
-  font-weight: 600;
+  color: var(--gold);
+  font-weight: 700;
   background: rgba(255,255,255,.1);
 }
 

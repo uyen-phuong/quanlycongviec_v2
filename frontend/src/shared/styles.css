@@ -5,33 +5,169 @@
 @tailwind utilities;
 
 :root {
-  --red: #b5271e;
-  --red-d: #8e1e17;
-  --red-xl: #fff3f2;
-  --red-b: #f5c6c2;
-  --ink: #1c2333;
-  --ink2: #4a5568;
-  --ink3: #8896a7;
-  --ink4: #d1d9e0;
-  --bg: #eef1f6;
+  /* Hệ màu thương hiệu Agribank chính thức */
+  --red: #ae1c3f;        /* Đỏ Bordeaux thương hiệu */
+  --red-d: #8c122f;      /* Đỏ Bordeaux sậm khi hover */
+  --red-xl: #fff5f6;     /* Nền đỏ nhạt */
+  --red-b: #f8ccd4;      /* Đường viền đỏ nhạt */
+  
+  --grn: #0b7f58;        /* Xanh lá đậm Agribank */
+  --grn-lt: #e8f7f2;     /* Nền xanh nhạt */
+  
+  --gold: #ffdd00;       /* Vàng lúa chín tạo điểm nhấn */
+  --gold-d: #e5c300;     /* Vàng sậm */
+  
+  --ink: #0f172a;        /* Slate đậm cho chữ chính */
+  --ink2: #475569;       /* Slate vừa cho chữ phụ */
+  --ink3: #64748b;       /* Slate nhạt */
+  --ink4: #94a3b8;       /* Slate rất nhạt */
+  
+  --bg: #f8fafc;         /* Nền trung tính cao cấp nhã nhặn */
   --white: #fff;
-  --bdr: #dde3eb;
-  --grn: #1a7a3c;
-  --grn-lt: #e8f5e9;
-  --blu: #1565c0;
-  --blu-lt: #e3f2fd;
-  --org: #e65100;
-  --org-lt: #fff3e0;
+  --bdr: #e2e8f0;        /* Viền xám mảnh tinh tế */
+  
+  --blu: #1d4ed8;        /* Xanh dương */
+  --blu-lt: #eff6ff;     /* Nền xanh dương nhạt */
+  
+  --org: #f97316;        /* Cam */
+  --org-lt: #fff7ed;     /* Nền cam nhạt */
+  
+  /* Hiệu ứng cao cấp */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-premium: 0 12px 24px -10px rgba(174, 28, 63, 0.08), 0 4px 12px -5px rgba(0, 0, 0, 0.02);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { height: 100%; overflow: hidden; }
+html, body { height: 100%; width: 100%; overflow: hidden; }
 body {
   font-family: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
   background: var(--bg);
   display: flex;
+  width: 100%;
   font-size: 13px;
   color: var(--ink);
 }
 #root { display: flex; width: 100%; height: 100%; }
 button, input, select, textarea { font: inherit; }
+
+/* ==========================================================================
+   AGRIBANK BRAND SYSTEM UTILITIES (Extracted from css_agri_tmp.html)
+   ========================================================================== */
+
+/* Typography Utilities */
+.body-18 { font-size: 18px !important; line-height: 1.5; }
+.body-15 { font-size: 15px !important; line-height: 1.5; }
+.body-14 { font-size: 14px !important; line-height: 1.4; }
+.body-13 { font-size: 13px !important; line-height: 1.4; }
+.body-12 { font-size: 12px !important; line-height: 1.35; }
+.subtitle-12 { font-size: 12px !important; font-weight: 500; color: var(--ink3); opacity: 0.85; }
+.overline-title { font-size: 11px !important; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Color Utilities */
+.color-white { color: #ffffff !important; }
+.color-black { color: #000000 !important; }
+.color-dark-1 { color: var(--ink) !important; }
+.color-dark-2 { color: var(--ink2) !important; }
+.color-dark-3 { color: var(--ink3) !important; }
+.color-brand-red { color: var(--red) !important; }
+.color-brand-green { color: var(--grn) !important; }
+
+/* Backgrounds */
+.bg-brand-red { background-color: var(--red) !important; }
+.bg-brand-green { background-color: var(--grn) !important; }
+.bg-brand-gold { background-color: var(--gold) !important; }
+
+/* Hover Interactive Utilities */
+.color-hover-w:hover {
+  color: var(--gold) !important;
+  transition: color 0.2s ease-in-out;
+}
+.color-hover-red:hover {
+  color: var(--red) !important;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Layout & Divider Elements */
+.line-v {
+  width: 1px;
+  height: 16px;
+  background-color: var(--bdr);
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 12px;
+}
+.line-h {
+  width: 100%;
+  height: 1px;
+  background-color: var(--bdr);
+  margin: 12px 0;
+}
+
+/* Premium Card Component */
+.card-premium {
+  background: var(--white);
+  border: 1px solid var(--bdr);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-premium);
+}
+
+/* Premium Buttons Aligned with Agribank Brand Identity */
+.btn-agri-primary {
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-d) 100%);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(174, 28, 63, 0.15);
+}
+.btn-agri-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #c0234a 0%, var(--red) 100%);
+  box-shadow: 0 4px 12px rgba(174, 28, 63, 0.25);
+  transform: translateY(-1px);
+}
+.btn-agri-primary:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.btn-agri-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-agri-secondary {
+  background: #ffffff;
+  color: var(--red) !important;
+  border: 1px solid var(--red-b);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-agri-secondary:hover:not(:disabled) {
+  background: var(--red-xl);
+  border-color: var(--red);
+  transform: translateY(-1px);
+}
+.btn-agri-secondary:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.btn-agri-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

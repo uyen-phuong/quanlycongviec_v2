@@ -47,13 +47,30 @@ export function Sidebar() {
   return (
     <aside className="sb">
       <div className="sb-top">
-        <div className="sb-ico">B</div>
+        <div className="sb-ico">
+          <svg viewBox="0 0 32 32" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#053e2b" />
+            <rect x="1.5" y="1.5" width="29" height="29" rx="4.5" stroke="#ffdd00" strokeWidth="1.5" />
+            {/* Elegant stylized gold rice seedlings */}
+            <path d="M16 6V26" stroke="#ffdd00" strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M16 8C14 10 11 13 11 17" stroke="#ffdd00" strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M16 8C18 10 21 13 21 17" stroke="#ffdd00" strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M16 14C14 16 12 18 12 21" stroke="#ffdd00" strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M16 14C18 16 20 18 20 21" stroke="#ffdd00" strokeWidth="1.8" strokeLinecap="round" />
+            {/* Small leaves/rice grains details */}
+            <circle cx="16" cy="7" r="1.2" fill="#fff" />
+            <circle cx="12" cy="12" r="1" fill="#fff" />
+            <circle cx="20" cy="12" r="1" fill="#fff" />
+            <circle cx="13" cy="17" r="1" fill="#fff" />
+            <circle cx="19" cy="17" r="1" fill="#fff" />
+          </svg>
+        </div>
         <div>
-          <div className="sb-brand">BankCore</div>
-          <div className="sb-sub">
+          <div className="sb-brand" style={{ letterSpacing: "0.5px", fontWeight: 800 }}>AGRIBANK</div>
+          <div className="sb-sub" style={{ color: "#ffdd00", fontWeight: 600, opacity: 0.9 }}>
             {isDeptScopedUser
               ? getDepartmentLabel(auth.user?.departmentCode, ownDepartment?.name ?? null)
-              : "Giám sát"}
+              : "Khối KTNB"}
           </div>
         </div>
       </div>
