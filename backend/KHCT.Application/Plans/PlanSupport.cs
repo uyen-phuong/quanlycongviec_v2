@@ -10,19 +10,19 @@ public static class PlanSupport
 {
     public const string RoleAdmin = "ADMIN";
     public const string RoleVanThu = "VAN_THU";
-    public const string RoleTruongKh = "TRUONG_KH";
     public const string RoleTruongKtnb = "TRUONG_KTNB";
     public const string RolePhoTruongKtnb = "PHO_TRUONG_KTNB";
     public const string RoleTruongPhong = "TRUONG_PHONG";
-    public const string RoleTruongNhom = "TRUONG_NHOM";
+    // PHO_PHONG = Phó phòng / Trưởng nhóm (PRD role, replaces old TRUONG_NHOM)
+    public const string RolePhoPhong = "PHO_PHONG";
     public const string RoleNhanVien = "NHAN_VIEN";
+    public const string RoleGuest = "GUEST";
 
     private static readonly HashSet<string> SubSeeAllRoles = new(StringComparer.Ordinal)
     {
         RoleAdmin,
         RoleTruongKtnb,
         RolePhoTruongKtnb,
-        RoleTruongKh,
         RoleVanThu
     };
 

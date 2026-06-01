@@ -161,3 +161,38 @@ export function useExportMainPlanExcel(planId: string | null) {
     mutationFn: () => plansApi.exportMainPlanExcel(planId!),
   });
 }
+
+export const reportingPeriodKeys = {
+  list: (planId: string | null) => ["plans", "reporting-periods", planId] as const,
+};
+
+export function useReportingPeriods(planId: string | null) {
+  return useQuery({
+    queryKey: reportingPeriodKeys.list(planId),
+    queryFn: () => plansApi.listReportingPeriods(planId!),
+    enabled: Boolean(planId),
+    staleTime: 30 * 1000,
+  });
+}
+
+export function useUpdateReportingPeriodProgress(planId: string | null) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ progressText, completionPercent }: { progressText: string | null; completionPercent: number }) =>
+      plansApi.updateReportingPeriodProgress(planId!, progressText, completionPercent),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: reportingPeriodKeys.list(planId) });
+    },
+  });
+}
+
+export function useApproveReportingPeriod(planId: string | null) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => plansApi.approveReportingPeriod(planId!),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: reportingPeriodKeys.list(planId) });
+      void queryClient.invalidateQueries({ queryKey: plansKeys.detail(planId) });
+    },
+  });
+}

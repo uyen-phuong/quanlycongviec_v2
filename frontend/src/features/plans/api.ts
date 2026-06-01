@@ -11,6 +11,7 @@ import type {
   PlanFormValues,
   PlanListFilters,
   PlanListItem,
+  ReportingPeriod,
   ReturnLineCommentDraft,
 } from "@/features/plans/types";
 
@@ -156,5 +157,23 @@ export const plansApi = {
       blob: response.data as Blob,
       fileName: filenameMatch?.[1] ?? `khct-main-plan-${planId}.xlsx`,
     };
+  },
+
+  async listReportingPeriods(planId: string): Promise<ReportingPeriod[]> {
+    const res = await apiClient.get<ApiEnvelope<ReportingPeriod[]>>(`/plans/main/${planId}/reporting-periods`);
+    return res.data.data;
+  },
+
+  async updateReportingPeriodProgress(planId: string, progressText: string | null, completionPercent: number): Promise<ReportingPeriod> {
+    const res = await apiClient.put<ApiEnvelope<ReportingPeriod>>(`/plans/main/${planId}/reporting-periods/current`, {
+      progressText,
+      completionPercent,
+    });
+    return res.data.data;
+  },
+
+  async approveReportingPeriod(planId: string): Promise<ReportingPeriod> {
+    const res = await apiClient.post<ApiEnvelope<ReportingPeriod>>(`/plans/main/${planId}/reporting-periods/approve`);
+    return res.data.data;
   },
 };

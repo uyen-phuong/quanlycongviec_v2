@@ -601,3 +601,191 @@
   color: var(--ink3);
   margin: 2px 0 0;
 }
+
+/* Plan detail page redesign */
+.plans-hero__breadcrumb {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.plans-hero__title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.plans-hero__sub {
+  font-size: 12px;
+  color: var(--ink3);
+  margin: 3px 0 0;
+}
+
+.plans-status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Action bar (toolbar for workflow) */
+.plans-action-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  border: 1px solid #f0f2f5;
+}
+
+/* Section title */
+.plans-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--ink2);
+  margin: 0 0 12px;
+}
+
+/* Meta section */
+.plans-meta-section,
+.plans-history-section {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  padding: 20px;
+}
+
+/* Timeline redesign */
+.plans-timeline__action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.plans-timeline__action strong {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.plans-timeline__arrow {
+  font-size: 11px;
+  color: var(--ink3);
+}
+
+.plans-timeline__meta {
+  display: flex;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--ink3);
+  margin-top: 3px;
+}
+
+.plans-timeline__comment {
+  font-size: 11.5px;
+  color: var(--ink2);
+  font-style: italic;
+  margin-top: 3px;
+  padding: 4px 8px;
+  background: #f9fafb;
+  border-radius: 4px;
+  border-left: 2px solid var(--bdr);
+}
+
+/* Tasks section */
+.plans-tasks-section {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  padding: 16px;
+}
+
+.plans-state--inline {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Spinner */
+.plans-state__spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--bdr);
+  border-top-color: var(--red);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Reporting Period Section */
+.plans-period-section {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  padding: 20px;
+  border-left: 4px solid #16a34a;
+}
+
+.plans-period-card {
+  border-radius: 8px;
+  padding: 14px;
+  border: 1px solid;
+}
+
+.plans-period-card--open {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.plans-period-card--closed {
+  background: #f9fafb;
+  border-color: #e2e8f0;
+  margin-bottom: 8px;
+}
+
+.plans-period-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.plans-period-card__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  flex: 1;
+}
+
+.plans-period-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.plans-period-status--open {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.plans-period-status--closed {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}

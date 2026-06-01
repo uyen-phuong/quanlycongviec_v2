@@ -1,5 +1,19 @@
 namespace KHCT.Application.Plans;
 
+public record ReportingPeriodDto(
+    Guid Id,
+    Guid PlanId,
+    string PeriodLabel,
+    string? ProgressText,
+    int CompletionPercent,
+    string Status,
+    Guid? ApprovedByUserId,
+    string? ApprovedByUserName,
+    DateTime? ApprovedAt,
+    DateTime CreatedAt,
+    DateTime UpdatedAt);
+
+
 public record PlanListItemDto(
     Guid Id,
     string Name,

@@ -105,11 +105,26 @@ export function Sidebar() {
 
   const [adminOpen, setAdminOpen] = useState(true);
 
-  const ktnbDepts = (departmentsQuery.data ?? []).filter((d) =>
-    d.code.startsWith("KTNB"),
-  );
-  const otherDepts = (departmentsQuery.data ?? []).filter((d) => !d.code.startsWith("KTNB"));
-  const ownDepartment = (departmentsQuery.data ?? []).find(
+  // Các phòng thuộc Bộ phận KTNB (hiển thị trong sidebar, theo thứ tự cố định)
+  const KTNB_CODES = ["KTNB1", "KTNB2", "KTNB3", "KH", "GS", "VPMN", "VPMT", "VPTNB"];
+  // Các phòng thuộc Bộ phận khác (hiển thị)
+  const OTHER_CODES = ["TKTH"];
+  // Các mã KHÔNG hiển thị trong sidebar
+  const HIDDEN_CODES = ["LDKTNB", "BKS", "VL"];
+
+  const allDepts = departmentsQuery.data ?? [];
+
+  const ktnbDepts = KTNB_CODES
+    .map((code) => allDepts.find((d) => d.code === code))
+    .filter((d): d is NonNullable<typeof d> => d !== undefined && d.isActive);
+
+  const otherDepts = OTHER_CODES
+    .map((code) => allDepts.find((d) => d.code === code))
+    .filter((d): d is NonNullable<typeof d> => d !== undefined && d.isActive);
+
+  void HIDDEN_CODES; // acknowledged — intentionally not shown
+
+  const ownDepartment = allDepts.find(
     (department) => department.code === auth.user?.departmentCode,
   );
   const isDeptScopedUser = hasOwnDepartment && !canBrowseDepts;
@@ -218,7 +233,7 @@ export function Sidebar() {
 
         {canBrowseDepts && otherDepts.length > 0 && (
           <>
-            <div className="sb-sec">Đơn vị khác</div>
+            <div className="sb-sec">Bộ phận khác</div>
             {otherDepts.map((d) => (
               <NavLink
                 key={d.code}

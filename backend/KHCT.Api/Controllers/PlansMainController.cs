@@ -2,6 +2,7 @@ using KHCT.Api.Common;
 using KHCT.Application.Plans.Export;
 using KHCT.Application.Plans.Import;
 using KHCT.Application.Plans.Main;
+using KHCT.Application.Plans.ReportingPeriods;
 using KHCT.Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -115,6 +116,40 @@ public sealed class PlansMainController : BaseApiController
         var result = await Sender.Send(new ImportMainPlanExcelCommand(id, request.File.FileName, stream.ToArray()), ct);
         return Ok(new ApiEnvelope<object>(result));
     }
+
+    // ── Reporting Periods ──────────────────────────────────────────────────────
+
+    [Authorize]
+    [HttpGet("{id:guid}/reporting-periods")]
+    [EndpointSummary("Lấy danh sách kỳ báo cáo của kế hoạch")]
+    public async Task<IActionResult> GetReportingPeriods(Guid id, CancellationToken ct)
+    {
+        var result = await Sender.Send(new GetReportingPeriodsQuery(id), ct);
+        return Ok(new ApiEnvelope<object>(result));
+    }
+
+    [Authorize]
+    [HttpPut("{id:guid}/reporting-periods/current")]
+    [EndpointSummary("Cập nhật tiến độ kỳ báo cáo hiện tại (Cán bộ đầu mối nhập)")]
+    public async Task<IActionResult> UpdateReportingPeriodProgress(
+        Guid id,
+        [FromBody] UpdateReportingPeriodProgressRequest request,
+        CancellationToken ct)
+    {
+        var result = await Sender.Send(new UpdateReportingPeriodProgressCommand(id, request.ProgressText, request.CompletionPercent), ct);
+        return Ok(new ApiEnvelope<object>(result));
+    }
+
+    [Authorize]
+    [HttpPost("{id:guid}/reporting-periods/approve")]
+    [EndpointSummary("Lãnh đạo KTNB duyệt và đóng kỳ báo cáo hiện tại")]
+    public async Task<IActionResult> ApproveReportingPeriod(Guid id, CancellationToken ct)
+    {
+        var result = await Sender.Send(new ApproveReportingPeriodCommand(id), ct);
+        return Ok(new ApiEnvelope<object>(result));
+    }
+
+    public record UpdateReportingPeriodProgressRequest(string? ProgressText, int CompletionPercent);
 
     private static WorkflowStatus? ParseStatus(string? status)
     {

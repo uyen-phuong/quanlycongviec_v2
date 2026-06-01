@@ -61,7 +61,7 @@ public class DeleteTaskHandler : IRequestHandler<DeleteTaskCommand, bool>
         {
             var canDelete = (PlanSupport.HasRole(_currentUser, PlanSupport.RolePhoTruongKtnb) ||
                              PlanSupport.HasRole(_currentUser, PlanSupport.RoleTruongPhong) ||
-                             PlanSupport.HasRole(_currentUser, PlanSupport.RoleTruongNhom) ||
+                             PlanSupport.HasRole(_currentUser, PlanSupport.RolePhoPhong) ||
                              PlanSupport.HasRole(_currentUser, PlanSupport.RoleAdmin)) &&
                             (PlanSupport.HasRole(_currentUser, PlanSupport.RoleAdmin) ||
                              PlanSupport.HasRole(_currentUser, PlanSupport.RolePhoTruongKtnb) ||

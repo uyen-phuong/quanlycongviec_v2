@@ -75,6 +75,20 @@ export interface ReturnLineCommentDraft {
   content: string;
 }
 
+export interface ReportingPeriod {
+  id: string;
+  planId: string;
+  periodLabel: string;
+  progressText: string | null;
+  completionPercent: number;
+  status: "open" | "closed";
+  approvedByUserId: string | null;
+  approvedByUserName: string | null;
+  approvedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface ImportMainPlanExcelResult {
   success: boolean;
   fileName: string;

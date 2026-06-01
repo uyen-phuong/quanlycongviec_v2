@@ -56,17 +56,20 @@ internal static class SeedData
     public static void Apply(ModelBuilder mb)
     {
         mb.Entity<Department>().HasData(
-            new { Id = DeptIds.LanhDaoKtnb, Code = "LDKTNB", Name = "Lãnh đạo KTNB", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
+            // Bộ phận KTNB — hiển thị trong sidebar
             new { Id = DeptIds.Ktnb1, Code = "KTNB1", Name = "Phòng KTNB1", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
             new { Id = DeptIds.Ktnb2, Code = "KTNB2", Name = "Phòng KTNB2", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
             new { Id = DeptIds.Ktnb3, Code = "KTNB3", Name = "Phòng KTNB3", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
-            new { Id = DeptIds.Kh, Code = "KH", Name = "Phòng KH", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
-            new { Id = DeptIds.Tkth, Code = "TKTH", Name = "Phòng TKTH", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
-            new { Id = DeptIds.Vpmn, Code = "VPMN", Name = "Phòng MN", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
-            new { Id = DeptIds.Vpmt, Code = "VPMT", Name = "Phòng MT", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
-            new { Id = DeptIds.Vptnb, Code = "VPTNB", Name = "Phòng TNB", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
+            new { Id = DeptIds.Kh, Code = "KH", Name = "Phòng Kế hoạch", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
             new { Id = DeptIds.Gs, Code = "GS", Name = "Phòng Giám sát", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
-            new { Id = DeptIds.BanKs, Code = "BKS", Name = "Ban KS", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
+            new { Id = DeptIds.Vpmn, Code = "VPMN", Name = "Phòng KTNB Miền Nam", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
+            new { Id = DeptIds.Vpmt, Code = "VPMT", Name = "Phòng KTNB Miền Trung", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
+            new { Id = DeptIds.Vptnb, Code = "VPTNB", Name = "Phòng KTNB Miền Tây", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
+            // Bộ phận khác — hiển thị trong sidebar
+            new { Id = DeptIds.Tkth, Code = "TKTH", Name = "Phòng Thư ký", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
+            // Không hiển thị trong sidebar (quản lý nội bộ)
+            new { Id = DeptIds.LanhDaoKtnb, Code = "LDKTNB", Name = "Lãnh đạo KTNB", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
+            new { Id = DeptIds.BanKs, Code = "BKS", Name = "Ban Kiểm sát", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime },
             new { Id = DeptIds.VangLai, Code = "VL", Name = "Vãng lai", IsActive = true, CreatedAt = SeedTime, UpdatedAt = SeedTime }
         );
 

@@ -31,7 +31,6 @@ public class GetTasksByProjectHandler : IRequestHandler<GetTasksByProjectQuery, 
         // Access Control
         var isGlobalMonitor = PlanSupport.HasRole(_currentUser, PlanSupport.RoleAdmin) ||
                               PlanSupport.HasRole(_currentUser, PlanSupport.RoleVanThu) ||
-                              PlanSupport.HasRole(_currentUser, PlanSupport.RoleTruongKh) ||
                               PlanSupport.HasRole(_currentUser, PlanSupport.RoleTruongKtnb) ||
                               PlanSupport.HasRole(_currentUser, PlanSupport.RolePhoTruongKtnb);
 

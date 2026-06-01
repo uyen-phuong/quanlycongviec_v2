@@ -17,8 +17,8 @@ public static class NotificationHelper
 
         if (plan.Scope == PlanScope.Main)
         {
-            title = $"Ke hoach thang {plan.Month:D2}/{plan.Year} cho kiem soat";
-            roleCodes = ["TRUONG_KH"];
+            title = $"Kế hoạch tháng {plan.Month:D2}/{plan.Year} chờ kiểm soát";
+            roleCodes = ["TRUONG_PHONG"];
         }
         else
         {
@@ -42,26 +42,26 @@ public static class NotificationHelper
         {
             if (newStatus == WorkflowStatus.Approved1)
             {
-                title = $"Ke hoach thang {plan.Month:D2}/{plan.Year} da qua kiem soat, cho phe duyet";
+                title = $"Kế hoạch tháng {plan.Month:D2}/{plan.Year} đã qua kiểm soát, chờ phê duyệt";
                 roleCodes = ["TRUONG_KTNB"];
             }
             else
             {
-                title = $"Ke hoach thang {plan.Month:D2}/{plan.Year} da duoc phe duyet, ke hoach phong duoc cap phat";
-                roleCodes = ["TRUONG_PHONG", "TRUONG_NHOM", "NHAN_VIEN"];
+                title = $"Kế hoạch tháng {plan.Month:D2}/{plan.Year} đã được phê duyệt";
+                roleCodes = ["TRUONG_PHONG", "PHO_PHONG", "NHAN_VIEN"];
             }
         }
         else
         {
             if (newStatus == WorkflowStatus.Approved2)
             {
-                title = $"Ke hoach phong {plan.Department?.Name ?? ""} cho phe duyet cuoi";
+                title = $"Kế hoạch phòng {plan.Department?.Name ?? ""} chờ phê duyệt cuối";
                 roleCodes = ["PHO_TRUONG_KTNB"];
             }
             else
             {
-                title = $"Ke hoach phong {plan.Department?.Name ?? ""} da duoc phe duyet";
-                roleCodes = ["TRUONG_PHONG", "TRUONG_NHOM", "NHAN_VIEN"];
+                title = $"Kế hoạch phòng {plan.Department?.Name ?? ""} đã được phê duyệt";
+                roleCodes = ["TRUONG_PHONG", "PHO_PHONG", "NHAN_VIEN"];
                 deptId = plan.DepartmentId;
             }
         }
@@ -79,13 +79,13 @@ public static class NotificationHelper
 
         if (plan.Scope == PlanScope.Main)
         {
-            title = $"Ke hoach thang {plan.Month:D2}/{plan.Year} bi chuyen tra, vui long chinh sua";
+            title = $"Kế hoạch tháng {plan.Month:D2}/{plan.Year} bị chuyển trả, vui lòng chỉnh sửa";
             roleCodes = ["VAN_THU"];
         }
         else
         {
-            title = $"Ke hoach phong {plan.Department?.Name ?? ""} bi chuyen tra, vui long chinh sua";
-            roleCodes = ["TRUONG_PHONG", "TRUONG_NHOM", "NHAN_VIEN"];
+            title = $"Kế hoạch phòng {plan.Department?.Name ?? ""} bị chuyển trả, vui lòng chỉnh sửa";
+            roleCodes = ["TRUONG_PHONG", "PHO_PHONG", "NHAN_VIEN"];
             deptId = plan.DepartmentId;
         }
 
@@ -99,7 +99,7 @@ public static class NotificationHelper
         var title = $"Cong viec moi: {Truncate(task.Title, 80)}";
         var roleCodes = plan.Scope == PlanScope.Main
             ? new[] { "VAN_THU", "ADMIN" }
-            : new[] { "TRUONG_PHONG", "TRUONG_NHOM" };
+            : new[] { "TRUONG_PHONG", "PHO_PHONG" };
         var deptId = plan.Scope == PlanScope.Sub ? plan.DepartmentId : null;
 
         var userIds = await GetUserIdsAsync(db, roleCodes, deptId, actorId, ct);
@@ -109,10 +109,10 @@ public static class NotificationHelper
     public static async System.Threading.Tasks.Task OnTaskDeletedAsync(
         IApplicationDbContext db, TaskEntity task, Plan plan, Guid? actorId, CancellationToken ct)
     {
-        var title = $"Cong viec bi xoa: {Truncate(task.Title, 80)}";
+        var title = $"Công việc bị xóa: {Truncate(task.Title, 80)}";
         var roleCodes = plan.Scope == PlanScope.Main
             ? new[] { "VAN_THU", "ADMIN" }
-            : new[] { "TRUONG_PHONG", "TRUONG_NHOM" };
+            : new[] { "TRUONG_PHONG", "PHO_PHONG" };
         var deptId = plan.Scope == PlanScope.Sub ? plan.DepartmentId : null;
 
         var userIds = await GetUserIdsAsync(db, roleCodes, deptId, actorId, ct);

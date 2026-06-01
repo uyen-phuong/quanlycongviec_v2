@@ -116,14 +116,20 @@ public static class TaskWorkflowSupport
         Guid? departmentId,
         TaskWorkflowStatus currentStatus)
     {
+        // Main plan tasks (departmentId = null): VAN_THU tạo, TRUONG_PHONG kiểm soát, TRUONG_KTNB phê duyệt
         if (!departmentId.HasValue)
         {
-            if (currentStatus == TaskWorkflowStatus.PendingReview && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKh))
+            if (currentStatus == TaskWorkflowStatus.PendingReview &&
+                (PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) ||
+                 PlanSupport.HasRole(currentUser, PlanSupport.RoleAdmin)))
             {
                 return TaskWorkflowStatus.PendingApproval;
             }
 
-            if (currentStatus == TaskWorkflowStatus.PendingApproval && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKtnb))
+            if (currentStatus == TaskWorkflowStatus.PendingApproval &&
+                (PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKtnb) ||
+                 PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb) ||
+                 PlanSupport.HasRole(currentUser, PlanSupport.RoleAdmin)))
             {
                 return TaskWorkflowStatus.Completed;
             }
@@ -131,19 +137,26 @@ public static class TaskWorkflowSupport
             throw new ForbiddenException("forbidden_role", "Current role cannot approve this workflow.");
         }
 
-        if (currentStatus == TaskWorkflowStatus.PendingReview && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongNhom))
+        // Sub plan tasks: PHO_PHONG (Phó phòng/Trưởng nhóm) kiểm soát, TRUONG_PHONG phê duyệt
+        if (currentStatus == TaskWorkflowStatus.PendingReview &&
+            (PlanSupport.HasRole(currentUser, PlanSupport.RolePhoPhong) ||
+             PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) ||
+             PlanSupport.HasRole(currentUser, PlanSupport.RoleAdmin)))
         {
             return TaskWorkflowStatus.PendingApproval;
         }
 
         if (currentStatus == TaskWorkflowStatus.PendingApproval &&
-            PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) &&
-            currentUser.DepartmentId == departmentId.Value)
+            (PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) ||
+             PlanSupport.HasRole(currentUser, PlanSupport.RoleAdmin)) &&
+            (currentUser.DepartmentId == departmentId.Value || PlanSupport.HasRole(currentUser, PlanSupport.RoleAdmin)))
         {
             return TaskWorkflowStatus.Completed;
         }
 
-        if (currentStatus == TaskWorkflowStatus.Completed && PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb))
+        // PHO_TRUONG_KTNB có thể phê duyệt cuối cùng (approved_3)
+        if (currentStatus == TaskWorkflowStatus.Completed &&
+            PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb))
         {
             return TaskWorkflowStatus.Completed;
         }

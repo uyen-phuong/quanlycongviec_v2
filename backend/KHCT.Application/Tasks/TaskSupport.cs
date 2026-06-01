@@ -136,7 +136,7 @@ public static class TaskSupport
         EnsureSubDepartment(plan);
         if (!PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb) &&
             !PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) &&
-            !PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongNhom))
+            !PlanSupport.HasRole(currentUser, PlanSupport.RolePhoPhong))
         {
             throw new ForbiddenException("forbidden_role", "Current role cannot mutate sub plan tasks.");
         }
@@ -175,10 +175,10 @@ public static class TaskSupport
 
         return (PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb) ||
                 PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) ||
-                PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongNhom)) &&
+                PlanSupport.HasRole(currentUser, PlanSupport.RolePhoPhong)) &&
             (!PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) ||
                 currentUser.DepartmentId == plan.DepartmentId) &&
-            (!PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongNhom) ||
+            (!PlanSupport.HasRole(currentUser, PlanSupport.RolePhoPhong) ||
                 currentUser.DepartmentId == plan.DepartmentId);
     }
 

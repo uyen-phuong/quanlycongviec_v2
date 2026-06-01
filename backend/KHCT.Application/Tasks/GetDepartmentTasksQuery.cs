@@ -44,7 +44,6 @@ public class GetDepartmentTasksHandler : IRequestHandler<GetDepartmentTasksQuery
         // Access Control Check
         var isGlobalMonitor = PlanSupport.HasRole(_currentUser, PlanSupport.RoleAdmin) ||
                               PlanSupport.HasRole(_currentUser, PlanSupport.RoleVanThu) ||
-                              PlanSupport.HasRole(_currentUser, PlanSupport.RoleTruongKh) ||
                               PlanSupport.HasRole(_currentUser, PlanSupport.RoleTruongKtnb) ||
                               PlanSupport.HasRole(_currentUser, PlanSupport.RolePhoTruongKtnb);
 

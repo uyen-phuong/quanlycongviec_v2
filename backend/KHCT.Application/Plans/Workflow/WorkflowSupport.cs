@@ -33,7 +33,7 @@ public static class WorkflowSupport
         }
 
         if ((PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) ||
-             PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongNhom) ||
+             PlanSupport.HasRole(currentUser, PlanSupport.RolePhoPhong) ||
              PlanSupport.HasRole(currentUser, PlanSupport.RoleNhanVien)) &&
             currentUser.DepartmentId == plan.DepartmentId.Value)
         {
@@ -47,7 +47,9 @@ public static class WorkflowSupport
     {
         if (plan.Scope == PlanScope.Main)
         {
-            if (plan.Status == WorkflowStatus.Pending && PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKh))
+            if (plan.Status == WorkflowStatus.Pending &&
+                (PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) ||
+                 PlanSupport.HasRole(currentUser, PlanSupport.RoleAdmin)))
             {
                 return WorkflowStatus.Approved1;
             }
@@ -147,15 +149,14 @@ public static class WorkflowSupport
 
     public static CommentRole ResolveCommentRole(ICurrentUser currentUser)
     {
-        if (PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKh))
+        if (PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) ||
+            PlanSupport.HasRole(currentUser, PlanSupport.RolePhoPhong))
         {
             return CommentRole.Controller;
         }
 
         if (PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongKtnb) ||
-            PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb) ||
-            PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongPhong) ||
-            PlanSupport.HasRole(currentUser, PlanSupport.RoleTruongNhom))
+            PlanSupport.HasRole(currentUser, PlanSupport.RolePhoTruongKtnb))
         {
             return CommentRole.Approver;
         }

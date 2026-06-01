@@ -22,6 +22,24 @@ const workTypeOptions: Array<{ value: WorkType; label: string }> = [
   { value: 2, label: "Công việc cá nhân" },
 ];
 
+export const workflowStatusLabels: Record<string, string> = {
+  new: "Tạo mới",
+  pending_assign: "Chờ Giao việc",
+  in_progress: "Đang thực hiện",
+  pending_review: "Chờ kiểm soát",
+  pending_approval: "Chờ phê duyệt",
+  completed: "Hoàn thành",
+  returned: "Đã chuyển trả",
+};
+
+export function WorkflowStatusBadge({ status }: { status: string }) {
+  return (
+    <span className={`wf-status-badge wf-status--${status}`}>
+      {workflowStatusLabels[status] ?? status}
+    </span>
+  );
+}
+
 function workTypeLabel(value: WorkType) {
   return workTypeOptions.find((o) => o.value === value)?.label ?? "-";
 }
@@ -257,38 +275,40 @@ export function TaskRow({
   const renderWorkflowButtons = () => {
     if (task.isHeader) return null;
 
-    const isNV = userRoles.includes("NHAN_VIEN");
-    const isTP = userRoles.includes("TRUONG_PHONG") || userRoles.includes("PHO_TRUONG_KTNB");
-    const isTTo = userRoles.includes("TRUONG_NHOM");
+    const isNV = userRoles.includes("NHAN_VIEN") || userRoles.includes("VAN_THU");
+    const isTP = userRoles.includes("TRUONG_PHONG");
+    const isPhoKtnb = userRoles.includes("PHO_TRUONG_KTNB");
+    const isPhoPhong = userRoles.includes("PHO_PHONG"); // Phó phòng / Trưởng nhóm
     const isAdmin = userRoles.includes("ADMIN");
     const isAssignee = task.assigneeUserId === currentUser?.id;
 
     const buttons = [];
 
-    // 1. New / Returned -> Submit (NV, TP, Admin)
+    // 1. New / Returned -> Trình lên → Chờ Giao việc
+    // Ai có thể trình: NV, VAN_THU, PHO_PHONG, TP, Admin
     if (task.workflowStatus === "new" || task.workflowStatus === "returned") {
-      if (isNV || isTP || isAdmin) {
+      if (isNV || isTP || isPhoPhong || isPhoKtnb || isAdmin) {
         buttons.push(
           <button
             key="submit"
             className="wf-btn wf-btn--primary"
             onClick={async () => {
-              const comment = window.prompt("Nhập ý kiến trình duyệt (tùy chọn):");
+              const comment = window.prompt("Nhập ý kiến trình lên (có thể để trống):");
               if (comment !== null && onSubmitTaskSingle) {
                 await onSubmitTaskSingle(task.id, comment);
               }
             }}
             type="button"
           >
-            Trình duyệt
+            Trình lên
           </button>
         );
       }
     }
 
-    // 2. Pending Assign -> Assign/Giao việc (TP, Admin)
+    // 2. Pending Assign -> Giao việc (TP, PHO_PHONG khi được uỷ quyền, Admin)
     if (task.workflowStatus === "pending_assign") {
-      if (isTP || isAdmin) {
+      if (isTP || isPhoKtnb || isAdmin) {
         if (draft.assigneeUserId) {
           buttons.push(
             <button
@@ -314,9 +334,9 @@ export function TaskRow({
       }
     }
 
-    // 3. In Progress -> Submit Completed/Trình hoàn thành (Assignee, TP, Admin)
+    // 3. In Progress -> Trình hoàn thành (Assignee, NV, TP, Admin)
     if (task.workflowStatus === "in_progress") {
-      if (isAssignee || isTP || isAdmin) {
+      if (isAssignee || isNV || isTP || isPhoPhong || isAdmin) {
         buttons.push(
           <button
             key="submit-complete"
@@ -335,22 +355,23 @@ export function TaskRow({
       }
     }
 
-    // 4. Pending Review -> Review Approve/Duyệt kiểm soát, Return/Trả lại (TruongNhom, TP, Admin)
+    // 4. Pending Review -> Kiểm soát đạt, Chuyển trả
+    // Main plan: TP kiểm soát. Sub plan: PHO_PHONG hoặc TP kiểm soát
     if (task.workflowStatus === "pending_review") {
-      if (isTTo || isTP || isAdmin) {
+      if (isTP || isPhoPhong || isAdmin) {
         buttons.push(
           <button
             key="review-approve"
             className="wf-btn wf-btn--success"
             onClick={async () => {
-              const comment = window.prompt("Nhập ý kiến kiểm soát (tùy chọn):");
+              const comment = window.prompt("Nhập ý kiến kiểm soát (có thể để trống):");
               if (comment !== null && onApproveTaskSingle) {
                 await onApproveTaskSingle(task.id, comment);
               }
             }}
             type="button"
           >
-            Duyệt kiểm soát
+            Kiểm soát đạt
           </button>
         );
         buttons.push(
@@ -358,30 +379,32 @@ export function TaskRow({
             key="review-return"
             className="wf-btn wf-btn--danger"
             onClick={async () => {
-              const comment = window.prompt("Nhập nguyên nhân trả lại (bắt buộc):");
+              const comment = window.prompt("Nhập lý do chuyển trả (bắt buộc):");
               if (comment && onReturnTaskSingle) {
                 await onReturnTaskSingle(task.id, comment);
               } else if (comment === "") {
-                window.alert("Nguyên nhân trả lại là bắt buộc.");
+                window.alert("Lý do chuyển trả là bắt buộc.");
               }
             }}
             type="button"
           >
-            Trả lại
+            Chuyển trả
           </button>
         );
       }
     }
 
-    // 5. Pending Approval -> Approve/Phê duyệt, Return/Trả lại (TP, PhoTruongKtnb, Admin)
+    // 5. Pending Approval -> Phê duyệt, Chuyển trả
+    // Main plan: TRUONG_KTNB phê duyệt. Sub plan: TP phê duyệt.
     if (task.workflowStatus === "pending_approval") {
-      if (isTP || isAdmin) {
+      const isTruongKtnb = userRoles.includes("TRUONG_KTNB");
+      if (isTP || isPhoKtnb || isTruongKtnb || isAdmin) {
         buttons.push(
           <button
             key="approve"
             className="wf-btn wf-btn--success"
             onClick={async () => {
-              const comment = window.prompt("Nhập ý kiến phê duyệt (tùy chọn):");
+              const comment = window.prompt("Nhập ý kiến phê duyệt (có thể để trống):");
               if (comment !== null && onApproveTaskSingle) {
                 await onApproveTaskSingle(task.id, comment);
               }
@@ -396,16 +419,16 @@ export function TaskRow({
             key="approve-return"
             className="wf-btn wf-btn--danger"
             onClick={async () => {
-              const comment = window.prompt("Nhập nguyên nhân trả lại (bắt buộc):");
+              const comment = window.prompt("Nhập lý do chuyển trả (bắt buộc):");
               if (comment && onReturnTaskSingle) {
                 await onReturnTaskSingle(task.id, comment);
               } else if (comment === "") {
-                window.alert("Nguyên nhân trả lại là bắt buộc.");
+                window.alert("Lý do chuyển trả là bắt buộc.");
               }
             }}
             type="button"
           >
-            Trả lại
+            Chuyển trả
           </button>
         );
       }
@@ -967,9 +990,7 @@ export function TaskRow({
           <span>-</span>
         ) : (
           <>
-            <span className={`status-badge status-${draft.workStatus}`}>
-              {workStatusOptions.find((o) => o.value === draft.workStatus)?.label ?? draft.workStatus}
-            </span>
+            <WorkflowStatusBadge status={task.workflowStatus} />
             {renderWorkflowButtons()}
           </>
         )}
